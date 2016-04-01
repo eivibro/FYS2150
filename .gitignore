@@ -1,10 +1,4 @@
-*.pdf
-*.eps
-*.png
-*.xml
-*.aux
-*.bcf
-*.tdo
-*.log
-*.blg
-matlab/
+*.*
+!*.tex
+!*.eps
+!.gitignore
