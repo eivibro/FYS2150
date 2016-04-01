@@ -86,12 +86,12 @@ Det generelle oppsettet var som i figur \ref{fig:oppsett}, hvor solarimeteret ku
 Strømmene gjennom solcellene finner vi ved Ohms lov og måling av spenning over dekademotstanden, slik at $I = V_L/R_L$. Dekademotstanden fungerer som lastmotstand, $R_L$, for solcellen, og $V_L$ er spenningen over denne lasten (se for eksempel figur \ref{fig:solcelleMedSpenning}). Dette gjorde vi i stedet for å måle strømmen direkte med et multimeter fordi solcellen ofte krever lavere lastmotstand enn den indre motstanden i multimeteret.
 \subsection{Solcellen som halvlederdiode}
 Vi finner strøm-spenning-karakteristikken til solcellen vår under belysning, med og uten påtrykt spenning over cellen.
-\subsubsection{Påtrykt spenning}
+\subsubsection{Med påtrykt spenning}
 Den første strøm-spenning-karakteristikken finner vi med påtrykt spenning over solcellen. Den påtrykte spenningen lot vi være 5V for alle målingene. Vi koblet utstyr som i figur \ref{fig:solcelleMedSpenning} først, og utførte endel målinger der. Etter dette snudde vi polariteten til den påtrykte spenningen. Vi målte altså først for strøm i solcellens lederetning, før vi gjorde målinger for strøm i sperreretning.
 
 \begin{figure}[!ht]
 	\includegraphics[width = 0.5\textwidth]{solcelleMedSpenning.png}
-	\caption{Koblingsskjema for målinger av strøm-spenning-karakteristikken til en solcelle med påtrykt spenning.\todo[inline]{Referanse figur}}
+	\caption{Koblingsskjema for målinger av strøm-spenning-karakteristikken til en solcelle med påtrykt spenning.}
 	\label{fig:solcelleMedSpenning}
 \end{figure}
 
@@ -118,6 +118,18 @@ Vi ønsker også å bli kjent med hvordan sammenkoblede solceller fungerer. Para
 For å sammenligne effekten for de forskjellige forholdene benytter vi ligning \eqref{eq:forhold}. Strømmen ved kortslutning måler vi ved å sette lastmotstanden til $0.5\Omega$ og benytte Ohms lov til å regne ut strømmen fra den målte spenningen over lasten. Spenningen ved åpen krets finner vi ved å koble fra motstanden og måle spenningen over solcellen.
 
 \subsection{Solcellens effektivitet}
+I dette forsøket brukte vi i tillegg til det generelle utstyret også følgende utstyr:
+
+\begin{itemize}
+	\item Solarimeter Type CM11, Kipp \& Zonen
+	\item Wratten 47B, blått filter
+	\item Wratten 70, rødt filter.
+\end{itemize}
+Solarimeterets sensitivitet var på $4.84\cdot10^{-6}$V/Wm$^{-2}$, og instrumentet brukes til å bestemme irradiansen til lys.
+
+Vi byttet ut den ene solcellen på den optiske benken med solarimeteret. Vi fant den maksimale effekten som solcellen gav og sammenlignet dette med hvilken effekt vi fant med solarimeteret. 
+
+Effekten fra solarimeteret fant vi ved å passe på at hele det sorte område på instrumentet var belyst, og at det hadde vært belyst bortimot et halvt minutt.
 
 \section{Resultater}
 \subsection{Strøm-spenning-karakteristikk}
@@ -149,7 +161,7 @@ Figur \ref{fig:resMedSpenning} viser karakteristikken vi fant for solcellen vår
 \begin{figure}[!ht]
 	\includegraphics[width = 0.5\textwidth]{matlab/LAB/utenSpenning.eps}
 	\caption{Strøm-spenning-karakteristikk for belyst solcelle med og uten påtrykt spenning.}
-	\label{fig:resMedSpenning}
+	\label{fig:resUtenSpenning}
 \end{figure}
 
 \subsection{Solcellens optimale belastning}
@@ -168,7 +180,25 @@ Figur \ref{fig:effekt} viser sammenhengen mellom spenning og effekt for solcelle
 	\label{fig:effekt}
 \end{figure}
 
+\subsection{Kombinasjon av solceller}
+
+\begin{table}[!ht]
+	\begin{tabular}{lccc}
+		\toprule
+		\toprule
+		Kobling & $V_L$[mV] & $V_\text{oc}$[mV] & $I_\text{sc}$[mA]\\
+		\hline
+		To belyst$_\text{p}$ & 193.1 & 514.8 & 386.2\\
+		To belyst$_\text{s}$ &  96 & 1028 & 2056\\
+		\'En belyst$_\text{p}$ &  99.7 & 491.7 & 199.4\\
+		\'En belyst$_\text{s}$ &  0.21 & 618 & 0.42\\
+		\toprule
+	\end{tabular}
+	\caption{Resultater for måling av parallellkoblet (p) krets og seriekoblet (s) krets for to og \'en belyste solceller.}
+\end{table}
+
 \subsection{Solcellens effektivitet}
+For å finne ut hvor stor effektivitet en solcelle har så må vi først vite arealet til cellen. Figur \ref{fig:solcelleoverflate} viser en skisse av overflaten til solcellen, og hvilke verdier vi målte for lengdene.
 \begin{figure}[!ht]
 \centering
 	\begin{tikzpicture}
@@ -183,10 +213,52 @@ Figur \ref{fig:effekt} viser sammenhengen mellom spenning og effekt for solcelle
 		%Målte lengder
 		\draw (0,0.5)--(5,0.5);
 		\draw (0.5,5)--(0.5,0);
-		\node (l) at (2.5, 1) {$10$};
+		\node (l) at (2.5, 0.8) {$\approx10$cm};
+		\node (h) at (0.8, 2.5) {$\approx10$cm};
+		\node (t) at (1.5,1.5) {$\approx1$cm};
+		\draw [thick, ->] (1.1,1.3) -- (0.25, 0.5);
+		\draw [thick, ->] (1.2,1.3) -- (0.5, 0.25);
 	\end{tikzpicture}
-	\caption{Solcellens overflate}
+	\caption{Solcellens overflate med estimerte mål}
+	\label{fig:solcelleoverflate}
 \end{figure}
+Vi finner et areal for solcellen på
+\begin{align}
+	A &\approx (10\text{cm}^2)-4\cdot\frac{(1\text{cm})^2}{2}\\
+	&= 98\text{cm}^2 = \underline{98\cdot 10^{-4}\text{m}^2}
+\end{align}
+
+Videre fant vi den maksimale effekten fra data vi allerede hadde funnet i forsøket med enkelt belyst solcelle, uten påtrykt spenning. Denne effekten fant vi til å være 0.068W. Solarimeteret viste 0.363mV. Dermed blir solcellen bestrålt med en effekt på
+\begin{equation}
+	P_\text{inn} = \frac{0.363\text{mV}\cdot98\cdot10^{-4}\text{m}^2}{4.84\cdot10^{-3}\text{mV/Wm}^{-2}} = 0.735W
+\end{equation}
+
+Virkningsgraden til solcellen blir dermed
+\begin{equation}
+	\eta = \frac{P_\text{max}}{P_\text{inn}} = \frac{0.068W}{0.735W} = 9.25\text{\%}
+\end{equation}
+Videre betrakter vi samme oppsett, men filtrer lyset fra kilden med to forskjellige fargefilter.
+\subsubsection{Blått fargefilter}
+Solarimeteret viste en spenning på på 0.012\text{mV}. Dette gir en innlyst effekt på 0.0243W, regnet på samme måte som over. Vi fant spenningskurven vist i figur \ref{fig:effektBlue} og avgjorde fra denne og dataene at den maksimale effekten var på 0.0016W. Vi får dermed en virkningsgrad på 
+\begin{equation}
+	\eta = \frac{0.0016\text{W}}{0.0243\text{W}} = 6.6\text{\%}
+\end{equation}
+\begin{figure}[!ht]
+	\includegraphics[width = 0.5\textwidth]{matlab/LAB/effektBlue.eps}
+	\caption{Effekt som funksjon av lastmotstand for blått fargefilter.}
+	\label{fig:effektBlue}
+\end{figure}
+\subsubsection{Rødt fargefilter}
+Solarimeteret viste en spenning på på 0.047\text{mV}. Dette gir en innlyst effekt på 0.0952W, regnet på samme måte som over.
+\begin{figure}[!ht]
+	\includegraphics[width = 0.5\textwidth]{matlab/LAB/effektRed.eps}
+	\caption{Effekt som funksjon av lastmotstand for rødt fargefilter.}
+	\label{fig:effektRed}
+\end{figure}
+Ved å betrakte figur \ref{fig:effektRed} og dataene punktene plottet består av finner vi en maksimal effekt på 0.009W. Dermed får vi en virkningsgrad på 
+\begin{equation}
+	\eta = \frac{0.009\text{W}}{0.0952W} = 9.5\text{\%}
+\end{equation}
 \section{Diskusjon}
 \subsection{Strøm-spenning}
 Sammenfallende karakteristikk for målingene gjort med og uten påtrykt spenning.
