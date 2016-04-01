@@ -44,6 +44,27 @@ Solen varmer opp og skaper bevegelse i havene, den setter lufta i bevegelse og f
 
 Solceller lar oss gjøre nettopp dette. Mellomledd er fortsatt til stede, men energien er momentant tilgjengelig så lenge solen skinner. Utfordringer knyttet til solcelleteknologi dreier seg om å effektivisere produksjon og drift. I denne rapporten ser vi nettopp på solcellens virkemåte i forhold til hvordan cellene kobles sammen, hvilken last som bør brukes for å oppnå maksimal effekt og hvilke bølgelengder som gir størst effektivitet.   
 \section{Teori}
+Ideelle motstander virker under Ohms lov, spenning er lik strøm multiplisert med motstand, $V=RI$. Denne forenklingen benytter vi i dette arbeidet. I tillegg benytter vi at effekt er spenning multiplisert med strøm, $P = VI$.
+
+For arbeidet med å finne maksimal effekt vi kan få ut fra to solceller under forskjellige koblinger og lysforhold benytter vi en forenkling for å slippe å finne strøm-spenning karakteristikken for alle forholdene.
+
+\begin{figure}[!ht]
+	\includegraphics[width = 0.5\textwidth]{stromSpenningSolcelle.png}
+	\caption{Strøm-spenning-karakteristikk for en solcelle. Det skraverte rektangelet tilsvarer effekten solcellen leverer.}
+	\label{fig:powerCurrentVoltage}
+\end{figure}
+
+I figur \ref{fig:powerCurrentVoltage} kan vi regne ut effekten som arealet av det skraverte rektangelet. Vi benytter at forholdet mellom dette arealet på sitt største og arealet til rektangelet som omslutter hele karakteristikken er tilnærmet konstant. Vi har dermed 
+\begin{equation}
+	\frac{P_\text{max}}{V_\text{oc}I_\text{sc}}\approx\text{konstant}
+\end{equation}
+der $P_\text{max}$ er den maksimale effekten ved optimal lastmotstand, $V_\text{oc}$ er spenningen over lasten ved åpen krets, og $I_\text{sc}$ er strømmen gjennom solcellen når kretsen kortsluttes.
+
+Forholdet mellom de optimale effektene for to oppsett blir dermed
+\begin{equation}
+	\frac{(P_\text{max})_1}{(P_\text{max})_2} \approx \frac{(V_\text{oc}I_\text{sc})_1}{(V_\text{oc}I_\text{sc})_2}
+	\label{eq:forhold}
+\end{equation}
 \section{Eksperimentelt}
 Mye av utstyret brukt til de forskjellige forsøkene var likt. Det generelle utstyret er derfor listet opp her.
 
@@ -56,17 +77,17 @@ Mye av utstyret brukt til de forskjellige forsøkene var likt. Det generelle uts
 	\item Optisk benk
 \end{itemize}
 
-Det generelle oppsettet var som i figur \ref{fig:oppsett}, hvor solarimeteret kunne byttes ut med en annen solcelle. Det første vi gjorde var å stille inn avstanden mellom solcellen og lyskilden slik at lyskilden akkurat ville dekke to solceller som stod ved siden av hverandre. Denne avstanden brukte vi for resten av eksperimentene.
+Det generelle oppsettet var som i figur \ref{fig:oppsett}, hvor solarimeteret kunne byttes ut med en annen solcelle. Det første vi gjorde var å stille inn avstanden mellom solcellen og lyskilden slik at lyset fra lyskilden akkurat ville dekke to solceller som stod ved siden av hverandre. Denne avstanden brukte vi for resten av eksperimentene.
 \begin{figure}[ht!]
 	\includegraphics[width = 0.5\textwidth]{optiskBenk.png}
 	\caption{Generelt oppsett for forsøkene}
 	\label{fig:oppsett}
 \end{figure}
-Strømmene gjennom solcellene finner vi ved Ohms lov og måling av spenning over dekademotstanden, slik at $I = V_L/R_L$. Dekademotstanden fungerer som lastmotstand, $R_L$, for solcellen, og $V_L$ er spenningen over denne lasten (se for eksempel figur \ref{fig:solcelleMedSpenning}).
+Strømmene gjennom solcellene finner vi ved Ohms lov og måling av spenning over dekademotstanden, slik at $I = V_L/R_L$. Dekademotstanden fungerer som lastmotstand, $R_L$, for solcellen, og $V_L$ er spenningen over denne lasten (se for eksempel figur \ref{fig:solcelleMedSpenning}). Dette gjorde vi i stedet for å måle strømmen direkte med et multimeter fordi solcellen ofte krever lavere lastmotstand enn den indre motstanden i multimeteret.
 \subsection{Solcellen som halvlederdiode}
-Vi finner strøm-spenning-karakteristikken til til solcellen vår under belysning, med og uten påtrykt spenning over cellen.
+Vi finner strøm-spenning-karakteristikken til solcellen vår under belysning, med og uten påtrykt spenning over cellen.
 \subsubsection{Påtrykt spenning}
-Den første strøm-spenning-karakteristikken finner vi med påtrykt spenning over solcellen. Vi koblet utstyr som i figur \ref{fig:solcelleMedSpenning}.
+Den første strøm-spenning-karakteristikken finner vi med påtrykt spenning over solcellen. Den påtrykte spenningen lot vi være 5V for alle målingene. Vi koblet utstyr som i figur \ref{fig:solcelleMedSpenning} først, og utførte endel målinger der. Etter dette snudde vi polariteten til den påtrykte spenningen. Vi målte altså først for strøm i solcellens lederetning, før vi gjorde målinger for strøm i sperreretning.
 
 \begin{figure}[!ht]
 	\includegraphics[width = 0.5\textwidth]{solcelleMedSpenning.png}
@@ -78,10 +99,26 @@ Den første strøm-spenning-karakteristikken finner vi med påtrykt spenning ove
 Videre fjernet vi spenningen som var påtrykt solcellen (koblet ut spenningskilden, $\varepsilon$ i figur \ref{fig:solcelleMedSpenning}, og koblet sammen ledningene).
 
 \subsection{Solcellens optimale belastning}
-
+Det er interessant å se på hva slags forhold en solcelle arbeider best under.
+For å undersøke solcellens optimale belastning sammenlignes data fra målingene gjort med full belysning uten påtrykt spenning med nye data med redusert belysning. Måten vi reduserte belysningen på var ved å rotere solcellen slik at spenningen over solcellen ble omtrent halvparten av det vi målte når den ikke var rotert med belastning på 0.5$\Omega$ for begge målingene. Dette tilsvarte omtrent 60$^\circ$ rotasjon.
 \subsection{Kombinasjon av enkeltceller til et solcellepanel}
+Vi ønsker også å bli kjent med hvordan sammenkoblede solceller fungerer. Parallell- og seriekobling av solceller undersøkes nærmere ved belysning av begge cellene og dekking av \'en av cellene. Figur \ref{fig:parallell} og \ref{fig:serie} viser henholdsvis kretsen for parallellkoblede og seriekoblede solceller.
+\begin{figure}[!ht]
+	\includegraphics[width = 0.5\textwidth]{parallellkobletKrets.png}
+	\caption{Parallellkoblede solceller}
+	\label{fig:parallell}
+\end{figure}
+
+\begin{figure}[!ht]
+	\includegraphics[width = 0.5\textwidth]{seriekobletKrets.png}
+	\caption{Seriekoblede solceller}
+	\label{fig:serie}
+\end{figure}
+
+For å sammenligne effekten for de forskjellige forholdene benytter vi ligning \eqref{eq:forhold}. Strømmen ved kortslutning måler vi ved å sette lastmotstanden til $0.5\Omega$ og benytte Ohms lov til å regne ut strømmen fra den målte spenningen over lasten. Spenningen ved åpen krets finner vi ved å koble fra motstanden og måle spenningen over solcellen.
 
 \subsection{Solcellens effektivitet}
+
 \section{Resultater}
 \subsection{Strøm-spenning-karakteristikk}
 \subsubsection{Med påtrykt spenning over solcellen}
@@ -114,7 +151,45 @@ Figur \ref{fig:resMedSpenning} viser karakteristikken vi fant for solcellen vår
 	\caption{Strøm-spenning-karakteristikk for belyst solcelle med og uten påtrykt spenning.}
 	\label{fig:resMedSpenning}
 \end{figure}
+
+\subsection{Solcellens optimale belastning}
+Strøm-spenning-karakteristikken til den roterte solcellen er plottet i figur \ref{fig:currentVoltageRotation}, sammen med samme karakteristikk for solcellen under full belysning.
+
+\begin{figure}[!ht]
+	\includegraphics[width = 0.5\textwidth]{matlab/LAB/currentVoltageRotated.eps}
+	\caption{Strøm-spenning-karakteristikk for solcellen før og etter rotasjon.}
+	\label{fig:currentVoltageRotation}
+\end{figure}
+
+Figur \ref{fig:effekt} viser sammenhengen mellom spenning og effekt for solcellen ved full og redusert belysning. Maksimal effekt fant vi ved 7$\Omega$ og 2.2$\Omega$, for henholdsvis redusert og full belysning.
+\begin{figure}[!ht]
+	\includegraphics[width = 0.5\textwidth]{matlab/LAB/optimalBelastning.eps}
+	\caption{Effekt som funksjon av spenning for solcellen under full og redusert belysning.}
+	\label{fig:effekt}
+\end{figure}
+
+\subsection{Solcellens effektivitet}
+\begin{figure}[!ht]
+\centering
+	\begin{tikzpicture}
+		\draw (0.5,0)--(4.5,0);
+		\draw (4.5,0)--(5,0.5);
+		\draw (5,0.5)--(5,4.5);
+		\draw (5,4.5)--(4.5,5);
+		\draw (4.5,5)--(0.5,5);
+		\draw (0.5,5)--(0,4.5);
+		\draw (0,4.5)--(0,0.5);
+		\draw (0,0.5)--(0.5,0);
+		%Målte lengder
+		\draw (0,0.5)--(5,0.5);
+		\draw (0.5,5)--(0.5,0);
+		\node (l) at (2.5, 1) {$10$};
+	\end{tikzpicture}
+	\caption{Solcellens overflate}
+\end{figure}
 \section{Diskusjon}
+\subsection{Strøm-spenning}
+Sammenfallende karakteristikk for målingene gjort med og uten påtrykt spenning.
 
 %\printbibliography
 \clearpage
