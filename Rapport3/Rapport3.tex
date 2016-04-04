@@ -30,9 +30,12 @@
 \begin{document}
 
 \maketitle
-\listoftodos
 \begin{abstract}
+I dette prosjektet undersøkte vi egenskapene til solceller. Vi fant først en strøm-spenning-karakteristikk for en solcelle. Det viste seg at en gitt spenning over solcellen gav en gitt strøm gjennom cellen, uavhengig av hvor stor lastmotstanden i kretsen var. 
 
+Vi fant at solcellens optimale last var forskjellig ved forskjellige lysforhold, og at cellen var bedre på å omdanne energi fra rødt lys enn blått lys. Effektiviteten for solcellen for vår lyskilde fant vi til å være 9.3\%.
+
+Vi betraktet også serie- og parallellkobling av solceller til et solcellepanel. Vi fant at seriekobling er nyttig for å øke spenningen i kretsen, men dersom så lite som \'en av solcellene kommer i skygge så er resten av seriekoblingen mer eller mindre også ubrukelig. Dette problemet har vi derimot ikke for parallellkoblinger, men vi får på den annen side ikke en øking i spenning, men heller i strøm.
 \end{abstract}
 
 \section{Introduksjon}
@@ -65,7 +68,6 @@ Forholdet mellom de optimale effektene for to oppsett blir dermed
 	\frac{(P_\text{max})_1}{(P_\text{max})_2} \approx \frac{(V_\text{oc}I_\text{sc})_1}{(V_\text{oc}I_\text{sc})_2}
 	\label{eq:forhold}
 \end{equation}
-\todo[inline]{Kanskje noe om hvordan solcellen fungerer!}
 \section{Eksperimentelt}
 Mye av utstyret brukt til de forskjellige forsøkene var likt. Det generelle utstyret er derfor listet opp her.
 
@@ -120,7 +122,7 @@ Vi ønsker også å bli kjent med hvordan sammenkoblede solceller fungerer. Para
 For å sammenligne effekten for de forskjellige forholdene benytter vi ligning \eqref{eq:forhold}. Strømmen ved kortslutning måler vi ved å sette lastmotstanden til $0.5\Omega$ og benytte Ohms lov til å regne ut strømmen fra den målte spenningen over lasten. Spenningen ved åpen krets finner vi ved å koble fra motstanden og måle spenningen over solcellen.
 
 \subsection{Solcellens effektivitet}
-I dette forsøket brukte vi i tillegg til det generelle utstyret også følgende utstyr:
+I dette forsøket brukte vi i tillegg til det generelle utstyret, også følgende utstyr:
 
 \begin{itemize}
 	\item Solarimeter Type CM11, Kipp \& Zonen
@@ -131,7 +133,15 @@ Solarimeterets sensitivitet var på $4.84\cdot10^{-6}$V/Wm$^{-2}$, og instrument
 
 Vi byttet ut den ene solcellen på den optiske benken med solarimeteret. Vi fant den maksimale effekten som solcellen gav og sammenlignet dette med hvilken effekt vi fant med solarimeteret. 
 
-Effekten fra solarimeteret fant vi ved å passe på at hele det sorte område på instrumentet var belyst, og at det hadde vært belyst bortimot et halvt minutt.
+Irradiansen fra solarimeteret fant vi ved å passe på at hele det sorte område på instrumentet var belyst, og at det hadde vært belyst bortimot et halvt minutt, før vi målte spenningen over instrumentet. Denne spenningen ble dividert med sensitiviteten for å finne irradiansen.
+
+Vi gjorde dette for det vanlige lyset i tillegg til lys gjennom rødt filter og lys gjennom blått filter.
+
+Effekten som faller inn på solcellen er spenningen over solarimeteret multiplisert med arealet til solcellen, dividert med sensitiviteten til solarimeteret:
+
+\begin{equation}
+	P_\text{inn} = \frac{V_sA}{a}
+\end{equation}
 
 \section{Resultater}
 \subsection{Strøm-spenning-karakteristikk}
@@ -260,9 +270,9 @@ Videre fant vi den maksimale effekten fra data vi allerede hadde funnet i forsø
 
 Virkningsgraden til solcellen blir dermed
 \begin{equation}
-	\eta = \frac{P_\text{max}}{P_\text{inn}} = \frac{0.068W}{0.735W} = 9.25\text{\%}
+	\eta = \frac{P_\text{max}}{P_\text{inn}} = \frac{0.068W}{0.735W} = 9.3\text{\%}
 \end{equation}
-Videre betrakter vi samme oppsett, men filtrer lyset fra kilden med to forskjellige fargefilter.
+Videre betrakter vi samme oppsett, men filtrerer lyset fra kilden med to forskjellige fargefilter.
 \subsubsection{Blått fargefilter}
 Solarimeteret viste en spenning på på 0.012\text{mV}. Dette gir en innlyst effekt på 0.0243W, regnet på samme måte som over. Vi fant spenningskurven vist i figur \ref{fig:effektBlue} og avgjorde fra denne og dataene at den maksimale effekten var på 0.0016W. Vi får dermed en virkningsgrad på 
 \begin{equation}
@@ -294,9 +304,23 @@ Av figur \ref{fig:resUtenSpenning}, som viser plot for solcellen både med og ut
 Vi ser fra resultatene at den optimale lastmotstanden til solcellen forandrer seg med belysningen, med tanke på å produsere mest mulig effekt. Det er dermed ikke optimalt å belaste solcellen med den samme resistansen hele tiden. En grei mulighet for å lage en reguleringskrets ville vært å la solcellen levere variabel strøm under konstant spenning. Fra figur \ref{fig:effekt} ser vi at maksimal effekt levert fra solcellen er ved ca. samme spenning for de to forskjellige belysningene. Figur \ref{fig:currentVoltageRotation} viser oss at redusert belysning gir oss drastiske forandringer i strømmen, mens spenningen forblir omtrent den samme. Fra samme figur ser vi også at det er problematisk å sette en konstant strøm for å oppnå maksimalt areal innenfor begge karakteristikkene, men at det går helt greit med konstant spenning.
 
 \subsection{Kombinasjon av solceller}
-Fra resultatene våre finner vi at både parallell- og seriekobling vil gi en proporsjonal øking av effekt. For parallellkobling forsvinner den effekten som en solcelle gir hvis den tildekkes slik at den ikke mottar lys. Hvis solcellene derimot er koblet i serie så vil bortimot all effekten forsvinne dersom så lite som \'en av cellene dekkes til. Dette er fordi kretsen nærmest blir kortsluttet når solcellen ikke er belyst, slik at det ikke går noen strøm i kretsen.
+Fra resultatene våre finner vi at både parallell- og seriekobling vil gi en proporsjonal øking av effekt. For parallellkobling forsvinner den effekten som en solcelle gir hvis den tildekkes slik at den ikke mottar lys. Hvis solcellene derimot er koblet i serie så vil bortimot all effekten forsvinne dersom så lite som \'en av cellene dekkes til. Dette er fordi kretsen nærmest blir kortsluttet når solcellen ikke er belyst, slik at det ikke går strøm i kretsen.
 
 \subsection{Solcellens effektivitet} 
+Vi fant at solcellen har en effektivitet på 9.3\% for lyset fra lysbildeframviseren. Hvis vi antar at effektiviteten er den samme for sollys, og at sola stråler med 950W/m$^2$, så blir effekten per kvadratmeter for solcellen på omtrent 88W.
+
+For farget lys fant vi at solcellen hadde en effektivitet på 6.6\% og 9.5\% for henholdsvis blått og rødt lys. Det er altså et poeng å dimensjonere solcellen for de bølgelengdene sollyset kommer til å treffe den med. 
+
+\section{Konklusjon}
+Vi kan konkludere med at strømmen gjennom solcellen er avhengig av spenningen over den og ikke nødvendigvis bare lastmotstanden. 
+
+Vi fant at solcellen har forskjellig optimal belastning under forskjellige lysforhold, og kom fram til at det vil være lurt å benytte konstant spenning og variabel strøm for oppsett av en eventuell reguleringskrets. 
+
+Når det gjelder kombinasjon av solceller til et solcellepanel fant vi at det er nødvendig å seriekoble solceller for å øke spenningen, men at om bare \'en av solcellene som er koblet i serie kommer i skygge for lyset, så vil det ødelegge for alle de andre i samme serie. Her er parallellkoblinger mer nyttige ettersom man ved å skygge for \'en celle bare fjerner den effekten og strømmen denne bidrar med.
+
+Vi fant også at fullt belyste paneler vil føre til at et tillegg på en solcelle vil føre til en øking i effekt som tilsvarer hva denne cellen ville produsert i en krets alene, både for parallell- og seriekobling.
+
+Til slutt fant vi en effektivitet for solcellen ved hvitt, blått og rødt lys, og konkluderte med at solcellen var bedre på å omdanne rødt lys enn blått lys til strøm.
 
 %\printbibliography
 \clearpage
