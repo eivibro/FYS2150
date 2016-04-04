@@ -40,7 +40,7 @@ Energi er et viktig tema innenfor vitenskap, økonomi og politikk. Det diskutere
 
 I utgangspunktet er det bare tre kilder til energi som påvirker jorden. Solen er den som bidrar sterkest til energien mennesker nyttiggjør seg av idag. Geotermisk energi fra jorden indre prosesser utnyttes i mindre grad, og energi fra kosmisk stråling har lite potensial.
 
-Solen varmer opp og skaper bevegelse i havene, den setter lufta i bevegelse og får planter til å vokse. Alt disse effektene kan brukes til å indirekte høste energi fra solen. Det kunne kanskje være interessant å høste energien mer direkte fra solen og kvitte seg med flere av mellomleddene?
+Solen varmer opp og skaper bevegelse i havene, den setter lufta i bevegelse og får planter til å vokse. Alle disse effektene kan brukes til å indirekte høste energi fra solen. Det kunne kanskje være interessant å høste energien mer direkte fra solen og kvitte seg med flere av mellomleddene?
 
 Solceller lar oss gjøre nettopp dette. Mellomledd er fortsatt til stede, men energien er momentant tilgjengelig så lenge solen skinner. Utfordringer knyttet til solcelleteknologi dreier seg om å effektivisere produksjon og drift. I denne rapporten ser vi nettopp på solcellens virkemåte i forhold til hvordan cellene kobles sammen, hvilken last som bør brukes for å oppnå maksimal effekt og hvilke bølgelengder som gir størst effektivitet.   
 \section{Teori}
@@ -65,6 +65,7 @@ Forholdet mellom de optimale effektene for to oppsett blir dermed
 	\frac{(P_\text{max})_1}{(P_\text{max})_2} \approx \frac{(V_\text{oc}I_\text{sc})_1}{(V_\text{oc}I_\text{sc})_2}
 	\label{eq:forhold}
 \end{equation}
+\todo[inline]{Kanskje noe om hvordan solcellen fungerer!}
 \section{Eksperimentelt}
 Mye av utstyret brukt til de forskjellige forsøkene var likt. Det generelle utstyret er derfor listet opp her.
 
@@ -85,9 +86,9 @@ Det generelle oppsettet var som i figur \ref{fig:oppsett}, hvor solarimeteret ku
 \end{figure}
 Strømmene gjennom solcellene finner vi ved Ohms lov og måling av spenning over dekademotstanden, slik at $I = V_L/R_L$. Dekademotstanden fungerer som lastmotstand, $R_L$, for solcellen, og $V_L$ er spenningen over denne lasten (se for eksempel figur \ref{fig:solcelleMedSpenning}). Dette gjorde vi i stedet for å måle strømmen direkte med et multimeter fordi solcellen ofte krever lavere lastmotstand enn den indre motstanden i multimeteret.
 \subsection{Solcellen som halvlederdiode}
-Vi finner strøm-spenning-karakteristikken til solcellen vår under belysning, med og uten påtrykt spenning over cellen.
+Vi finner strøm-spenning-karakteristikken til solcellen vår under belysning, med og uten påtrykt spenning over cellen. Dette gjør vi ved å måle strøm gjennom og spenning over solcellen ved forskjellige lastmotstandsverdier. 
 \subsubsection{Med påtrykt spenning}
-Den første strøm-spenning-karakteristikken finner vi med påtrykt spenning over solcellen. Den påtrykte spenningen lot vi være 5V for alle målingene. Vi koblet utstyr som i figur \ref{fig:solcelleMedSpenning} først, og utførte endel målinger der. Etter dette snudde vi polariteten til den påtrykte spenningen. Vi målte altså først for strøm i solcellens lederetning, før vi gjorde målinger for strøm i sperreretning.
+Den første strøm-spenning-karakteristikken finner vi med påtrykt spenning over solcellen. Den påtrykte spenningen lot vi være 5V for alle målingene. Vi brukte fastspenningsuttakene ettersom disse har mulighet til å levere høyere strøm enn de variable. Vi koblet utstyr som i figur \ref{fig:solcelleMedSpenning} først, og utførte endel målinger for dette oppsettet. Etter dette snudde vi polariteten til den påtrykte spenningen. Vi målte altså først for strøm i solcellens lederetning, før vi gjorde målinger for strøm i sperreretning. Vi forsøkte å velge smarte verdier for lastmotstanden for å dekke de områdene med størst endring med flest målinger.
 
 \begin{figure}[!ht]
 	\includegraphics[width = 0.5\textwidth]{solcelleMedSpenning.png}
@@ -96,13 +97,14 @@ Den første strøm-spenning-karakteristikken finner vi med påtrykt spenning ove
 \end{figure}
 
 \subsubsection{Uten påtrykt spenning}
-Videre fjernet vi spenningen som var påtrykt solcellen (koblet ut spenningskilden, $\varepsilon$ i figur \ref{fig:solcelleMedSpenning}, og koblet sammen ledningene).
-
+Videre fjernet vi spenningen som var påtrykt solcellen (koblet ut spenningskilden, $\varepsilon$ i figur \ref{fig:solcelleMedSpenning}, og koblet sammen ledningene). Omtrent samme framgangsmåte som i forrige seksjon ble benyttet.
 \subsection{Solcellens optimale belastning}
 Det er interessant å se på hva slags forhold en solcelle arbeider best under.
 For å undersøke solcellens optimale belastning sammenlignes data fra målingene gjort med full belysning uten påtrykt spenning med nye data med redusert belysning. Måten vi reduserte belysningen på var ved å rotere solcellen slik at spenningen over solcellen ble omtrent halvparten av det vi målte når den ikke var rotert med belastning på 0.5$\Omega$ for begge målingene. Dette tilsvarte omtrent 60$^\circ$ rotasjon.
+
+Vi fant den optimale effekten ved å plotte effekten solcellen gav som funksjon av spenningen, før vi fant hvilken motstand denne spenningen fant sted ved. Vi brukte dataene vi allerede hadde for den fullt belyste solcellen og utførte nye målinger for redusert belysning.
 \subsection{Kombinasjon av enkeltceller til et solcellepanel}
-Vi ønsker også å bli kjent med hvordan sammenkoblede solceller fungerer. Parallell- og seriekobling av solceller undersøkes nærmere ved belysning av begge cellene og dekking av \'en av cellene. Figur \ref{fig:parallell} og \ref{fig:serie} viser henholdsvis kretsen for parallellkoblede og seriekoblede solceller.
+Vi ønsker også å bli kjent med hvordan sammenkoblede solceller fungerer. Parallell- og seriekobling av solceller undersøkes nærmere ved belysning av begge cellene og tildekking av \'en av cellene. Figur \ref{fig:parallell} og \ref{fig:serie} viser henholdsvis kretsen for parallellkoblede og seriekoblede solceller.
 \begin{figure}[!ht]
 	\includegraphics[width = 0.5\textwidth]{parallellkobletKrets.png}
 	\caption{Parallellkoblede solceller}
@@ -133,11 +135,14 @@ Effekten fra solarimeteret fant vi ved å passe på at hele det sorte område p�
 
 \section{Resultater}
 \subsection{Strøm-spenning-karakteristikk}
+Resultatene for solcellen som en halvleder diode er presentert i form av strøm-spenning-karakteristikker.
 \subsubsection{Med påtrykt spenning over solcellen}
 Figur \ref{fig:resMedSpenning} viser karakteristikken vi fant for solcellen vår med påtrykt spenning. Noen av målepunktene er ekskluderte i figuren fordi de gav så negative strømmer at stigningen rundt 0.5V ville sett veldig bratt ut. Disse er heller gitt i tabell \ref{tab:ekstra}.
 
 \begin{table}[!ht]
 \centering
+	\caption{Ekstra verdier som gav dårlig skalering av plottet}
+	\label{tab:ekstra}
 	\begin{tabular}{cc}
 		\toprule
 		\toprule
@@ -147,8 +152,6 @@ Figur \ref{fig:resMedSpenning} viser karakteristikken vi fant for solcellen vår
 		-0.18 & -1.42\\
 		\toprule
 	\end{tabular}
-	\caption{Ekstra verdier som gav dårlig skalering av plottet}
-	\label{tab:ekstra}
 \end{table}
 
 \begin{figure}[!ht]
@@ -158,6 +161,7 @@ Figur \ref{fig:resMedSpenning} viser karakteristikken vi fant for solcellen vår
 \end{figure}
 
 \subsubsection{Uten påtrykt spenning}
+Figur \ref{fig:resUtenSpenning} viser strøm-spenning-karakteristikk for solcellen både med og uten påtrykt spenning.
 \begin{figure}[!ht]
 	\includegraphics[width = 0.5\textwidth]{matlab/LAB/utenSpenning.eps}
 	\caption{Strøm-spenning-karakteristikk for belyst solcelle med og uten påtrykt spenning.}
@@ -181,22 +185,43 @@ Figur \ref{fig:effekt} viser sammenhengen mellom spenning og effekt for solcelle
 \end{figure}
 
 \subsection{Kombinasjon av solceller}
+Resultatene for målinger på parallell- og seriekoblede solceller er presentert i tabell \ref{tab:serieParallell}. Spenningen over lasten er bare målt for en lastmotstand på $0.5\Omega$
 
 \begin{table}[!ht]
+	\caption{Resultater for måling av parallellkoblet (p) krets og seriekoblet (s) krets for to belyste solceller og \'en belyst solcelle.}
+	\label{tab:serieParallell}
 	\begin{tabular}{lccc}
 		\toprule
 		\toprule
-		Kobling & $V_L$[mV] & $V_\text{oc}$[mV] & $I_\text{sc}$[mA]\\
+		Kobling & $V_L$[mV]  & $I_\text{sc}$[mA] & $V_\text{oc}$[mV]\\
 		\hline
-		To belyst$_\text{p}$ & 193.1 & 514.8 & 386.2\\
-		To belyst$_\text{s}$ &  96 & 1028 & 2056\\
-		\'En belyst$_\text{p}$ &  99.7 & 491.7 & 199.4\\
-		\'En belyst$_\text{s}$ &  0.21 & 618 & 0.42\\
+		To belyst$_\text{p}$ & 193.1  & 386.2 & 514.8\\
+		To belyst$_\text{s}$ &  96  & 192 & 1028\\
+		\'En belyst$_\text{p}$ &  99.7  & 199.4 & 491.7\\
+		\'En belyst$_\text{s}$ &  0.21  & 0.42 & 618\\
 		\toprule
 	\end{tabular}
-	\caption{Resultater for måling av parallellkoblet (p) krets og seriekoblet (s) krets for to og \'en belyste solceller.}
 \end{table}
 
+Vi benytter nå ligning \eqref{eq:forhold} til å bestemme forholdet mellom den maksimale effekten mellom to belyste celler og \'en belyst celle. 
+
+For parallellkobling har vi 
+\begin{equation}
+	\frac{P_\text{max, to belyst}}{P_\text{max, \'en belyst}} = \frac{514.8\cdot386.2}{491.7\cdot199.4} = 2.03
+\end{equation}
+
+For seriekobling har vi 
+\begin{equation}
+	\frac{P_\text{max, to belyst}}{P_\text{max, \'en belyst}} = \frac{1028\cdot2056}{0.42\cdot618} = 8142
+\end{equation}
+Vi kan bruke samme ligning til å se på forholdet mellom serie- og parallellkobling der begge cellene er belyst for begge kretsene.
+\begin{equation}
+	\frac{P_\text{max, parallell}}{P_\text{max, serie}} = \frac{514.8\cdot386.2}{1028\cdot192} = 1.01
+\end{equation}
+Omtrentlige tall fra figur \ref{fig:resUtenSpenning} gir at vi for \'en  belyst solcelle i en enkel krets har $V_\text{oc}=515$mV og $I_\text{sc}=190$mA. Så hvis vi sammenligner effekten til en enkelt solcelle i forhold til to i parallell får vi
+\begin{equation}
+	\frac{P_\text{max, parallell}}{P_\text{max, enkelt}} = \frac{514.8\cdot386.2}{515\cdot190} = 2.03
+\end{equation}
 \subsection{Solcellens effektivitet}
 For å finne ut hvor stor effektivitet en solcelle har så må vi først vite arealet til cellen. Figur \ref{fig:solcelleoverflate} viser en skisse av overflaten til solcellen, og hvilke verdier vi målte for lengdene.
 \begin{figure}[!ht]
@@ -260,8 +285,18 @@ Ved å betrakte figur \ref{fig:effektRed} og dataene punktene plottet består av
 	\eta = \frac{0.009\text{W}}{0.0952W} = 9.5\text{\%}
 \end{equation}
 \section{Diskusjon}
-\subsection{Strøm-spenning}
-Sammenfallende karakteristikk for målingene gjort med og uten påtrykt spenning.
+\subsection{Strøm-spenning-karakteristikken}
+Vi kunne nok ha valgt enda bedre punkter for målingene våre med påtrykt spenning. Det viktige området viser seg å ligge mellom 0.4 og 0.5V. Dette området ble dekt bedre for målingene uten påtrykt spenning. 
+
+Av figur \ref{fig:resUtenSpenning}, som viser plot for solcellen både med og uten påtrykt spenning, ser vi at karakteristikkene sammenfaller. Vi finner selvfølgelig ikke de positive strømmene for solcellen uten påtrykt spenning, og heller ikke negative spenninger, men i fjerde kvadrant er karakteristikkene mer eller mindre like. Dette er naturlig ettersom oppførselen til solcellen i forhold til hvor mye strøm som går gjennom den i hovedsak avhenger av spenningen over cellen. Vi oppnår disse spenningene ved forskjellig lastmotstand for kretsen med og uten påtrykt spenning, men den resulterende karakteristikken i det gjeldende området blir den samme.
+
+\subsection{Solcellens optimale belastning}
+Vi ser fra resultatene at den optimale lastmotstanden til solcellen forandrer seg med belysningen, med tanke på å produsere mest mulig effekt. Det er dermed ikke optimalt å belaste solcellen med den samme resistansen hele tiden. En grei mulighet for å lage en reguleringskrets ville vært å la solcellen levere variabel strøm under konstant spenning. Fra figur \ref{fig:effekt} ser vi at maksimal effekt levert fra solcellen er ved ca. samme spenning for de to forskjellige belysningene. Figur \ref{fig:currentVoltageRotation} viser oss at redusert belysning gir oss drastiske forandringer i strømmen, mens spenningen forblir omtrent den samme. Fra samme figur ser vi også at det er problematisk å sette en konstant strøm for å oppnå maksimalt areal innenfor begge karakteristikkene, men at det går helt greit med konstant spenning.
+
+\subsection{Kombinasjon av solceller}
+Fra resultatene våre finner vi at både parallell- og seriekobling vil gi en proporsjonal øking av effekt. For parallellkobling forsvinner den effekten som en solcelle gir hvis den tildekkes slik at den ikke mottar lys. Hvis solcellene derimot er koblet i serie så vil bortimot all effekten forsvinne dersom så lite som \'en av cellene dekkes til. Dette er fordi kretsen nærmest blir kortsluttet når solcellen ikke er belyst, slik at det ikke går noen strøm i kretsen.
+
+\subsection{Solcellens effektivitet} 
 
 %\printbibliography
 \clearpage
@@ -269,6 +304,6 @@ Sammenfallende karakteristikk for målingene gjort med og uten påtrykt spenning
 \appendix
 
 
-\section{Matlab-script}
+%\section{Matlab-script}
 
 \end{document}
