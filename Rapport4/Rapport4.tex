@@ -46,6 +46,7 @@ Fra oppgaveteksten for det eksperimentelle arbeidet, \cite{oppgavetekst}, har vi
 
 \begin{equation}
 	h(m) = \frac{mgl^3}{48EI}
+	\label{eq:h}
 \end{equation}
 
 Der $mg$ er kraften som virker midt bjelken, $l$ er avstanden mellom punktene bjelken hviler på, $E$ er elastisitetsmodulen og $I$ er andre arealmoment. For en sylinder har vi
@@ -104,6 +105,14 @@ Vi får en usikkerhet på
 	s_E = E\sqrt{\left(\frac{2s_d}{d}\right)^2+\left(\frac{2s_f}{f}\right)^2+\left(\frac{s_L}{L}\right)^2+\left(\frac{s_m}{M}\right)^2}	
 	\label{eq:feilDynamisk}
 \end{equation}
+
+Vi kan bytte ut tettheten i ligning \eqref{eq:dynEl} med formelen for tettheten til en sylinder, og få
+
+\begin{align}
+	E &= \frac{16Lf^2M}{\pi d^2}
+\end{align}
+
+der $M$ er massen til 
 
 \section{Eksperimentelt}
 {\bf Utstyr:}
@@ -200,7 +209,7 @@ Tabell \ref{tab:diameter} viser målingene våre for diameteren til messingstave
 \begin{tabular}{ccc}
 	\toprule
 	\toprule
-	 & D[mm]&\\
+	 & d[mm]&\\
 	\hline
 	15.99 & 15.99 & 16.01\\
 	16.00 & 15.99 & 15.99\\
@@ -227,7 +236,7 @@ Med balansevekten målte vi massen til messingstaven til å være 2447.9g.  Dett
 Usikkerheten for mikrometeret er angitt til å være 0.02mm, som er mye større enn standardfeilen funnet for målingene vi gjorde. Vi velger derfor å benytte 0.02mm som usikkerhet, slik at
 
 \begin{equation}
-	D = 16.00\pm0.02\text{mm}
+	d = 16.00\pm0.02\text{mm}
 \end{equation}
 
 \subsection{Defleksjon av messingstav}
@@ -281,6 +290,8 @@ Usikkerheten finner vi ved ligning \eqref{eq:feilDefleksjon}
 	&\implies \underline{E = 104.6\pm0.6\text{GPa}}
 \end{align}
 
+Bruker vi ligning
+
 
 \subsection{Dynamisk måling}
 For metoden med svevelyd kom vi fram til en frekvens på 1213Hz, der vi anslo at usikkerheten i forhold til hvor godt vi hørte lyden, og hvor nøye vi stilte inn frekvensgeneratoren burde ligge innenfor 0.5Hz. 
@@ -293,13 +304,7 @@ For fourieranalysen fant vi en frekvens på 1213.2Hz. Målingen vi benyttet vart
 	\label{fig:frekvensspekter}
 \end{figure}
 
-Når vi vet dette kan vi bytte ut tettheten i ligning \eqref{eq:dynEl} med formelen for tettheten til en sylinder, og få
-
-\begin{align}
-	E &= \frac{16Lf^2M}{\pi d^2}\\
-	&=\frac{16\cdot 1.444\text{m}\cdot(1213.2Hz)^2\cdot2.4476\text{kg}}{\pi (0.016\text{m})^2}\\
-	&= 103.49\text{GPa}
-\end{align}
+Når vi vet dette 
 
 Usikkerheten finner vi til å være $s_E = 0.133$GPa ved å bruke ligning \ref{eq:feilDynamisk}. Dette gir oss en elastisitetsmodul på
 
@@ -307,7 +312,45 @@ Usikkerheten finner vi til å være $s_E = 0.133$GPa ved å bruke ligning \ref{e
 	E = 103.5\pm1\text{GPa}
 \end{equation}
 
+\subsection{Sammenligning av resultatene}
+Differansen for de to estimatene vi har funnet er 
+
+\begin{equation}
+	D = 104.57-103.49\text{GPa} = 1.08\text{GPa} 
+\end{equation}
+
+Usikkerheten for denne differansen er 
+
+\begin{align}
+s_D &= D\sqrt{s_{E, \text{defleksjon}}^2+s_{E, \text{dynamisk}}^2}\\
+&= 0.58\text{GPa}
+\end{align}
+
+Vi får altså at differansen $|D|>s_D$, men $|D|<2s_D$.
 \section{Diskusjon}
+
+\subsection{Kalibrering av lodd}
+Vi fikk at loddene ikke avviker i veldig stor grad fra den kalibrerte verdien vi fant. Det kunne vært lurt å gjøre flere målinger for kalibreringen for å få en mer allsidig kalibreringskurve, men for bruken i denne oppgaven er det ikke veldig nødvendig.
+
+\subsection{Parametre for messingstaven}
+Vi kunne fått mer nøyaktige målinger med et målebånd uten slark i festeleddet.
+
+Massen til messingstaven lå et godt stykke over det høyeste kalibreringspunktet vårt. Vi måtte derfor ekstrapolere i forhold til de verdiene vi hadde å kalibrere med. Dette fører til større usikkerheter enn om vi hadde interpolert, kanskje også større usikkerhet enn det som er benyttet.
+
+Målingene for diameteren er nok det som vil være vanskeligst å forbedre ettersom de allerede er gjort med et mikrometer, som er et ganske nøyaktig instrument for å måle lengde. Samtidig er diameteren en av de faktorene som fører til størst usikkerhet.
+
+\subsection{Defleksjon av messingstav}
+Måleuret viser ganske nøyaktige verdier, og er nok ikke en veldig stor kilde til usikkerhet i seg selv. Målingene kan bli litt mindre pålitelige hvis det underlaget tuppen av måleuret står ikke befinner seg i det horisontale plan. Dette hadde vi ikke helt kontroll på gjennom forsøket, men vi sjekket at det var korrekt før vi begynte å legge på masse. Det burde være tilstrekkelig.
+
+Et større problem som vi kom på noen dager etter å ha utført eksperimentet, var at vi ikke er sikre på at målingene vi gjorde for defleksjonen ble tatt på midten av stangen. Når vi kom på laben var alt utstyret allerede satt opp, og vi glemte rett og slett å undersøke denne faktoren nærmere. Problemet er at det er vanskeligere å finne en usikkerhet tilknyttet dette ettersom ligningen \eqref{eq:h}, som vi benyttet som grunnlag for å estimere elastisitetsmodulen, gjelder spesielt under denne antagelsen. 
+
+Det bør nevnes at det nok ikke er snakk om mer enn rundt \'en halv centimer forskyvning, ettersom dette er begrenset av at festet må gjennom et relativt lite hull. Dette hjelper likevel ikke så mye på å kvantifisere usikkerheten uten å gå mer i detalj når det gjelder utledningen av ligningen.
+
+\subsection{Dynamisk måling av elastisitetsmodulen}
+Det er mulig at måten vi hang opp stangen på kan ha påvirket svingefrekvensen litt. Vi tror likevel dette er en faktor som ikke spiller en veldig stor rolle ettersom opphenget påfører en kraft til messingstaven som er vinkelrett på bølgenes bevegelsesretning. Usikkerheten i estimatet av elastisitetsmodulen forbedres også mer ved å redusere usikkerheten for målingen av diameteren enn for frekvensen, så det er mindre interessant å undersøke hvordan målingen av stavens svingefrekvens kan forbedres.
+
+\subsection{Sammenligning av resultater}
+Ettersom absoluttverdien til differansen mellom estimatene av elastisitetsmodulen for de forskjellige verdiene var større enn usikkerheten så kan vi ikke med stor sannsynlighet si at differansen skyldes usikkerhet i målingene. Samtidig kan vi heller ikke si at det er stor sannsynlighet for at det ikke er måleusikkerhetene som fører til differansen ettersom absoluttverdien ikke er større enn det dobbelte av usikkerheten i differansen.
 
 
 \section{Konklusjon}
