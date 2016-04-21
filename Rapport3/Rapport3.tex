@@ -18,7 +18,7 @@
 \hyphenpenalty=750
 \captionsetup[table]{skip=10pt}
 
-%\addbibresource{solceller.bib}
+\addbibresource{solcellen.bib}
 
 \lstset{language=Matlab, commentstyle=\textcolor[rgb]{0.00,0.50,0.00}, keepspaces=true, columns=flexible, basicstyle=\footnotesize, keywordstyle=\color{blue}, showstringspaces=false, inputencoding=ansinew}
 
@@ -28,8 +28,8 @@
 \date{\today}
 
 \begin{document}
-
 \maketitle
+
 \begin{abstract}
 I dette prosjektet undersøkte vi egenskapene til solceller. Vi fant først en strøm-spenning-karakteristikk for en solcelle. Det viste seg at en gitt spenning over solcellen gav en gitt strøm gjennom cellen, uavhengig av hvor stor lastmotstanden i kretsen var. 
 
@@ -49,7 +49,9 @@ Solceller lar oss gjøre nettopp dette. Mellomledd er fortsatt til stede, men en
 \section{Teori}
 Ideelle motstander virker under Ohms lov, spenning er lik strøm multiplisert med motstand, $V=RI$. Denne forenklingen benytter vi i dette arbeidet. I tillegg benytter vi at effekt er spenning multiplisert med strøm, $P = VI$.
 
-For arbeidet med å finne maksimal effekt vi kan få ut fra to solceller under forskjellige koblinger og lysforhold benytter vi en forenkling for å slippe å finne strøm-spenning karakteristikken for alle forholdene.
+For arbeidet med å finne maksimal effekt vi kan få ut fra to solceller under forskjellige koblinger og lysforhold benytter vi en forenkling for å slippe å finne strøm-spenning-karakteristikken for alle forholdene.
+
+Alle figurer som ikke inneholder plott med punkter er hentet fra \cite{solcellen}, bortsett fra figur \ref{fig:solcelleoverflate}.
 
 \begin{figure}[!ht]
 	\includegraphics[width = 0.5\textwidth]{stromSpenningSolcelle.png}
@@ -68,6 +70,7 @@ Forholdet mellom de optimale effektene for to oppsett blir dermed
 	\frac{(P_\text{max})_1}{(P_\text{max})_2} \approx \frac{(V_\text{oc}I_\text{sc})_1}{(V_\text{oc}I_\text{sc})_2}
 	\label{eq:forhold}
 \end{equation}
+
 \section{Eksperimentelt}
 Mye av utstyret brukt til de forskjellige forsøkene var likt. Det generelle utstyret er derfor listet opp her.
 
@@ -86,7 +89,11 @@ Det generelle oppsettet var som i figur \ref{fig:oppsett}, hvor solarimeteret ku
 	\caption{Generelt oppsett for forsøkene}
 	\label{fig:oppsett}
 \end{figure}
-Strømmene gjennom solcellene finner vi ved Ohms lov og måling av spenning over dekademotstanden, slik at $I = V_L/R_L$. Dekademotstanden fungerer som lastmotstand, $R_L$, for solcellen, og $V_L$ er spenningen over denne lasten (se for eksempel figur \ref{fig:solcelleMedSpenning}). Dette gjorde vi i stedet for å måle strømmen direkte med et multimeter fordi solcellen ofte krever lavere lastmotstand enn den indre motstanden i multimeteret.
+Strømmene gjennom solcellene finner vi ved Ohms lov og måling av spenning over dekademotstanden, slik at $I = V_L/R_L$. Dekademotstanden fungerer som lastmotstand, $R_L$, for solcellen, og $V_L$ er spenningen over denne lasten (se for eksempel figur \ref{fig:solcelleMedSpenning}). Dette gjorde vi i stedet for å måle strømmen direkte med et multimeter fordi solcellen ofte krever lavere lastmotstand enn den indre motstanden i multimeteret. 
+
+Usikkerheten for dekademotstanden er oppgitt til $\pm0.1$\% for alle bryterne, bortsett fra den som går i steg på 1$\Omega$, som er oppgitt til å ha en usikkerhet på $\pm0.3$\%. Vi har i tillegg usikkerheter som knytter seg til resistansen i overganger og ledninger utenfor dekademotstandsboksen. Vi velger å i utgangspunktet benytte de verdiene vi leser av på dekademotstanden for utregninger, men diskuterer effekten av justering for spesielt små resistanser.
+
+Multimeterne var stilt inn på en lav målerate for alle målingene.
 \subsection{Solcellen som halvlederdiode}
 Vi finner strøm-spenning-karakteristikken til solcellen vår under belysning, med og uten påtrykt spenning over cellen. Dette gjør vi ved å måle strøm gjennom og spenning over solcellen ved forskjellige lastmotstandsverdier. 
 \subsubsection{Med påtrykt spenning}
@@ -129,7 +136,7 @@ I dette forsøket brukte vi i tillegg til det generelle utstyret, også følgend
 	\item Wratten 47B, blått filter
 	\item Wratten 70, rødt filter.
 \end{itemize}
-Solarimeterets sensitivitet var på $4.84\cdot10^{-6}$V/Wm$^{-2}$, og instrumentet brukes til å bestemme irradiansen til lys.
+Solarimeterets sensitivitet var på $4.84\cdot10^{-6}$V/Wm$^{-2}$, og instrumentet brukes til å bestemme irradiansen til lys. I 95\% av tilfellene ligger usikkerheten innenfor 3\% for solarimeteret vårt \cite{KippZonen}, og vi benytter derfor dette som usikkerheten vår.
 
 Vi byttet ut den ene solcellen på den optiske benken med solarimeteret. Vi fant den maksimale effekten som solcellen gav og sammenlignet dette med hvilken effekt vi fant med solarimeteret. 
 
@@ -144,6 +151,25 @@ Effekten som faller inn på solcellen er spenningen over solarimeteret multiplis
 \end{equation}
 
 \section{Resultater}
+Vi starter med å se på resultater for målt resistans i forhold til hva det står at resistansen er for dekademotstanden. Disse resultatene ser vi i tabell \ref{tab:dekade}.
+
+\begin{table}[!ht]
+\caption{Tabell for målinger av motstand gjort på dekademotstanden vår med et Fluke 45 multimeter}
+\label{tab:dekade}
+\begin{tabular}{cc}
+\toprule
+\toprule
+Dekademotstanden $[\Omega]$& Multimeteret $[\Omega]$\\
+\hline
+0.5 & 0.57 \\
+1 & 1.07\\
+2 & 2.08\\
+5 & 5.08\\
+10 & 10.104\\
+100 & 100.01\\
+\toprule
+\end{tabular}
+\end{table} 
 \subsection{Strøm-spenning-karakteristikk}
 Resultatene for solcellen som en halvleder diode er presentert i form av strøm-spenning-karakteristikker.
 \subsubsection{Med påtrykt spenning over solcellen}
@@ -179,7 +205,7 @@ Figur \ref{fig:resUtenSpenning} viser strøm-spenning-karakteristikk for solcell
 \end{figure}
 
 \subsection{Solcellens optimale belastning}
-Strøm-spenning-karakteristikken til den roterte solcellen er plottet i figur \ref{fig:currentVoltageRotation}, sammen med samme karakteristikk for solcellen under full belysning.
+Strøm-spenning-karakteristikken til den roterte solcellen er plottet i figur \ref{fig:currentVoltageRotation}, sammen med samme karakteristikk for solcellen under full belysning. 
 
 \begin{figure}[!ht]
 	\includegraphics[width = 0.5\textwidth]{matlab/LAB/currentVoltageRotated.eps}
@@ -187,7 +213,7 @@ Strøm-spenning-karakteristikken til den roterte solcellen er plottet i figur \r
 	\label{fig:currentVoltageRotation}
 \end{figure}
 
-Figur \ref{fig:effekt} viser sammenhengen mellom spenning og effekt for solcellen ved full og redusert belysning. Maksimal effekt fant vi ved 7$\Omega$ og 2.2$\Omega$, for henholdsvis redusert og full belysning.
+Figur \ref{fig:effekt} viser sammenhengen mellom spenning og effekt for solcellen ved full og redusert belysning. Maksimal effekt fant vi ved 5$\Omega$ og 2.2$\Omega$, for henholdsvis redusert og full belysning. Dette er hva vi stilte inn på dekademotstanden, og ikke hva verdien faktisk er. 
 \begin{figure}[!ht]
 	\includegraphics[width = 0.5\textwidth]{matlab/LAB/optimalBelastning.eps}
 	\caption{Effekt som funksjon av spenning for solcellen under full og redusert belysning.}
@@ -232,6 +258,7 @@ Omtrentlige tall fra figur \ref{fig:resUtenSpenning} gir at vi for \'en  belyst 
 \begin{equation}
 	\frac{P_\text{max, parallell}}{P_\text{max, enkelt}} = \frac{514.8\cdot386.2}{515\cdot190} = 2.03
 \end{equation}
+
 \subsection{Solcellens effektivitet}
 For å finne ut hvor stor effektivitet en solcelle har så må vi først vite arealet til cellen. Figur \ref{fig:solcelleoverflate} viser en skisse av overflaten til solcellen, og hvilke verdier vi målte for lengdene.
 \begin{figure}[!ht]
@@ -272,6 +299,25 @@ Virkningsgraden til solcellen blir dermed
 \begin{equation}
 	\eta = \frac{P_\text{max}}{P_\text{inn}} = \frac{0.068W}{0.735W} = 9.3\text{\%}
 \end{equation}
+Usikkerheten finner vi på følgende måte
+\begin{align}
+\frac{\Delta \eta}{\eta} &= \Delta\frac{P_\text{max}}{P_\text{min}} = \sqrt{\left(\frac{\Delta P_\text{max}}{P_\text{max}}\right)^2+\left(\frac{\Delta P_\text{min}}{P_\text{min}}\right)^2}\\
+\frac{\Delta P_\text{max}}{P_\text{max}} &= \frac{\Delta\frac{U^2}{R}}{\frac{U^2}{R}} = \sqrt{\left(\frac{\Delta U^2}{U^2}\right)^2+\left(\frac{\Delta R}{R}\right)^2}\\
+&= \sqrt{\left(2\frac{\Delta U}{U}\right)^2+\left(\frac{\Delta R}{R}\right)^2}\\
+\frac{\Delta P_\text{min}}{P_\text{min}} &= 0.03\\
+\frac{\Delta \eta}{\eta} &= \sqrt{{\left(2\frac{\Delta U}{U}\right)^2+\left(\frac{\Delta R}{R}\right)^2}+0.03^2}
+\end{align}
+Usikkerheten for spenningen er forsvinnende liten i forhold til det vi har for resistansen , på tross av at spenningen går som et andregradsledd. Vi finner dermed en estimert usikkerhet på
+\begin{align}
+	\Delta\eta &= \eta\sqrt{{\left(\frac{\Delta R}{R}\right)^2}+0.03^2}\\
+	&= 0.093\sqrt{0.1^2+0.03^2} \approx 1\text{\%}
+\end{align}
+der vi har satt en relativt høy usikkerhet for lastmotstanden siden den er så lav, og at koblinger og ledninger gir store relative feil. 
+Til slutt har vi dermed at 
+\begin{equation}
+	\eta = 9\pm1\text{\%}
+\end{equation}
+
 Videre betrakter vi samme oppsett, men filtrerer lyset fra kilden med to forskjellige fargefilter.
 \subsubsection{Blått fargefilter}
 Solarimeteret viste en spenning på på 0.012\text{mV}. Dette gir en innlyst effekt på 0.0243W, regnet på samme måte som over. Vi fant spenningskurven vist i figur \ref{fig:effektBlue} og avgjorde fra denne og dataene at den maksimale effekten var på 0.0016W. Vi får dermed en virkningsgrad på 
@@ -283,6 +329,10 @@ Solarimeteret viste en spenning på på 0.012\text{mV}. Dette gir en innlyst eff
 	\caption{Effekt som funksjon av lastmotstand for blått fargefilter.}
 	\label{fig:effektBlue}
 \end{figure}
+Vi bruker de samme antagelsene som for hvitt lys til å regne ut usikkerheten, men med en mye lavere usikkerheten for lastmotstanden. Vi antar at usikkerheten for denne er på 1\%, siden den er i størrelsesorden ti ganger større enn den for hvitt lys. Samme utregning gir dermed
+\begin{equation}
+	0.066\sqrt{0.01^2+0.03^2} \approx 0.2\text{\%}
+\end{equation}
 \subsubsection{Rødt fargefilter}
 Solarimeteret viste en spenning på på 0.047\text{mV}. Dette gir en innlyst effekt på 0.0952W, regnet på samme måte som over.
 \begin{figure}[!ht]
@@ -294,6 +344,11 @@ Ved å betrakte figur \ref{fig:effektRed} og dataene punktene plottet består av
 \begin{equation}
 	\eta = \frac{0.009\text{W}}{0.0952W} = 9.5\text{\%}
 \end{equation}
+
+Vi får en usikkerhet på 
+\begin{equation}
+	\eta = 0.095\sqrt{0.01^2+0.03^2} \approx 0.3\text{\%}
+\end{equation}
 \section{Diskusjon}
 \subsection{Strøm-spenning-karakteristikken}
 Vi kunne nok ha valgt enda bedre punkter for målingene våre med påtrykt spenning. Det viktige området viser seg å ligge mellom 0.4 og 0.5V. Dette området ble dekt bedre for målingene uten påtrykt spenning. 
@@ -303,13 +358,26 @@ Av figur \ref{fig:resUtenSpenning}, som viser plot for solcellen både med og ut
 \subsection{Solcellens optimale belastning}
 Vi ser fra resultatene at den optimale lastmotstanden til solcellen forandrer seg med belysningen, med tanke på å produsere mest mulig effekt. Det er dermed ikke optimalt å belaste solcellen med den samme resistansen hele tiden. En grei mulighet for å lage en reguleringskrets ville vært å la solcellen levere variabel strøm under konstant spenning. Fra figur \ref{fig:effekt} ser vi at maksimal effekt levert fra solcellen er ved ca. samme spenning for de to forskjellige belysningene. Figur \ref{fig:currentVoltageRotation} viser oss at redusert belysning gir oss drastiske forandringer i strømmen, mens spenningen forblir omtrent den samme. Fra samme figur ser vi også at det er problematisk å sette en konstant strøm for å oppnå maksimalt areal innenfor begge karakteristikkene, men at det går helt greit med konstant spenning.
 
+Vi har ikke regnet med usikkerhet i denne delen ettersom poenget med målingene var å få fram at solcellen trenger ulik lastmotstand for forskjellige lysforhold, og verdiene er så forskjellige at vi kan si dette med stor sikkerhet. Likevel kan det være interessant å merke seg de tre første punktene for den roterte solcellens strøm-spenning-karakteristikk, figur \ref{fig:currentVoltageRotation}. Vi observerer en overraskende dipp i strømmen. For disse punktene har strømmene størst absoluttverdi og motstanden i kretsen er dermed på sitt minste. Den relative forandringen i motstand ved å legge til motstanden i koblinger og ledninger blir derfor mye større enn til høyre i plottet. Når vi målte motstanden i kretsen for 0.5$\Omega$ så fikk vi 0.57$\Omega$, så det kunne være interessant å se hva vi får hvis vi for eksempel plotter samme plot på nytt men legger til 0.07$\Omega$ på motstanden for alle verdiene. Da får vi den justerte kurven i figur \ref{fig:justert}. Vi ser at dippen retter seg ut, og vi ser dermed sterke antydninger til en systematisk usikkerhet som gjør seg gjeldene ved lave motstander.  
+
+\begin{figure}[!ht]
+	\includegraphics[width = 0.5\textwidth]{matlab/LAB/justertRotert.eps}
+	\caption{Justert motstanden for den utregne strømmen for den roterte solcellen}
+	\label{fig:justert}
+\end{figure}
 \subsection{Kombinasjon av solceller}
 Fra resultatene våre finner vi at både parallell- og seriekobling vil gi en proporsjonal øking av effekt. For parallellkobling forsvinner den effekten som en solcelle gir hvis den tildekkes slik at den ikke mottar lys. Hvis solcellene derimot er koblet i serie så vil bortimot all effekten forsvinne dersom så lite som \'en av cellene dekkes til. Dette er fordi kretsen nærmest blir kortsluttet når solcellen ikke er belyst, slik at det ikke går strøm i kretsen.
+
+Heller ikke her er usikkerhetene særlig interessante ettersom effektene vi observerer er veldig tydelige, og passer godt med det som er forventet å få. Vi finner altså ut hvordan solceller kombinert i kretser fungerer, som var poenget med eksperimentet.
 
 \subsection{Solcellens effektivitet} 
 Vi fant at solcellen har en effektivitet på 9.3\% for lyset fra lysbildeframviseren. Hvis vi antar at effektiviteten er den samme for sollys, og at sola stråler med 950W/m$^2$, så blir effekten per kvadratmeter for solcellen på omtrent 88W.
 
-For farget lys fant vi at solcellen hadde en effektivitet på 6.6\% og 9.5\% for henholdsvis blått og rødt lys. Det er altså et poeng å dimensjonere solcellen for de bølgelengdene sollyset kommer til å treffe den med. 
+Vi fant også usikkerheter for disse tallene, men disse er ganske grove estimat. For eksempel skulle usikkerheten i forhold til hvor mange punkter vi benyttet for å bestemme $P_\text{max}$ også vært tatt med. Den nøyaktige usikkerheten i forhold til hva dekademotstanden viste i forhold til hva motstanden faktisk var på burde også vært behandlet i større grad. Likevel fant vi at for farget lys hadde solcellene effektivitet på 6.6\% og 9.5\% for henholdsvis blått og rødt lys, som er en såpass stor forskjell at det er et poeng å dimensjonere solcellen for de bølgelengdene sollyset kommer til å treffe den med. 
+
+Grunnen til at effektiviteten er forskjellig ved forskjellig bølgelengder ligger i kvantedynamikken. Sannsynligheten for å slå løs et elektron med et foton avhenger av hvilke bølgelengder fotonet har. Høyere effekt kan dermed oppnås ved å lage solceller med flere lag, der materialene i de forskjellige lagene tar opp lys mest effektivt ved forskjellige bølgelengder. 
+
+Det kan også tenkes at siden det lå et lag med glass foran solcellen, så vil noe av lyset reflekteres før solcellen treffes, og kanskje vil refleksjonsgraden variere litt med bølgelenge. Dette er nok en mindre effekt, men det kunne vært interessant å undersøke.
 
 \section{Konklusjon}
 Vi kan konkludere med at strømmen gjennom solcellen er avhengig av spenningen over den og ikke nødvendigvis bare lastmotstanden. 
@@ -322,7 +390,10 @@ Vi fant også at fullt belyste paneler vil føre til at et tillegg på en solcel
 
 Til slutt fant vi en effektivitet for solcellen ved hvitt, blått og rødt lys, og konkluderte med at solcellen var bedre på å omdanne rødt lys enn blått lys til strøm.
 
-%\printbibliography
+{\bf Personlig kommentar}
+Jeg synes oppgaveteksten kanskje burde revideres til å ha litt fokus på usikkerhet. Det hadde gjort det lettere å tenke på dette underveis i lab-arbeidet, som hadde hjulpet i forhold til å skrive rapporten.
+
+\printbibliography
 \clearpage
 \onecolumn
 \appendix
