@@ -34,10 +34,20 @@
 \listoftodos
 
 \begin{abstract}
+I denne rapporten undersøker vi to metoder for å finne elastisitetsmodulen til et materiale, en egenskap som gir oss ny informasjon i forhold til bruksområdet til materialet. Vi finner en elastisitetsmodulus 
 
 \end{abstract}
 
 \section{Introduksjon}
+Elastisiteten til materialer er en egenskap som er interessant i mange sammenhenger. Den elastisiteten vi undersøker i denne rapporten handler om egenskapen som forteller i hvilken grad materialet vårt oppfører seg når det påtrykkes en kraft, og hvordan det går tilbake til utgangspunktet når kraften fjernes. Vi ser bare på områder der materialet oppfører seg normalt, og ikke de ekstreme tilfelle der materialet deformeres så kraftig at det ikke beveger seg tilbake til utgangsposisjonen.
+
+Når vi har elastisitetsmodulen til et materiale, i tillegg til andre grunnleggende egenskaper, har vi informasjon som kan forteller oss noe nytt om bruksområdet. Elastisiteten er en essensiell egenskap som spiller en viktig rolle for mange applikasjoner. Alt fra bygging av skyskrapere til konstruksjon av kulepenner, og det som mindre er.
+
+I denne rapporten introduseres først teorien for de to forskjellige metodene som er benyttet for å estimere elastisitetsmodulen. Vi har benyttet defleksjon av stav og måling av materialets svingefrekvens for å estimere modulen. Videre presenteres hvilket utstyr som er benyttet, hvordan dette er satt opp og hva som er gjort for å utføre målingene. Resultatene presenteres før de er vurdert og en konklusjon trekkes til slutt. 
+
+
+
+
    
 \section{Teori}
 Vi ønsket å måle elastisitetsmodulen både ved å se på hvor mye en sylinderstav bøyde seg ved påtrykt kraft, og ved å undersøke hvilken grunnfrekvens staven stabiliserte seg på en stunde etter vi hadde påført en impuls for å sette den i vibrasjon.
@@ -112,7 +122,7 @@ Vi kan bytte ut tettheten i ligning \eqref{eq:dynEl} med formelen for tettheten 
 	E &= \frac{16Lf^2M}{\pi d^2}
 \end{align}
 
-der $M$ er massen til 
+der $M$ er massen til sylinderen. Dette gjelder for  
 
 \section{Eksperimentelt}
 {\bf Utstyr:}
@@ -132,7 +142,7 @@ Dynamisk måling av elastisitetsmodulen:
 \begin{itemize}
 	\item Mikrofon, Trust
 	\item Høytaler 
-	\item Frekvensgenerator \todo[inline]{Finn mer info}
+	\item Frekvensgenerator, Aim \& Thurlby Thandar Instruments TG1006
 	\item Plasthammer
 \end{itemize}
 
@@ -151,11 +161,11 @@ For den første metoden av bestemmelse av elastisitetsmodulen benyttet vi et sta
 Vi fant også et estimat for diameteren til staven ved en rekke målinger langs staven.
 
 \subsection{Dynamisk måling av elastisitetsmodulen}
-For å få messingstaven til å svinge hang vi den opp i det vektene som belastet staven i defleksjonsdelen av oppgaven var hengt opp med, før vi slo på endene av staven med en plasthammer i aksial retning. Dette skaper longitudinale bølger som dempes med tiden. Den bølgen som dempes saktest er den som har størst bølgelengde, og når vi har frekvensen til denne og bølgelengden finner vi hastigheten til lyden i messingen. Dette kan vi sammen med tettheten til staven benytte til estimere elastisitetsmodulen ved ligning \eqref{eq:dynamiskElastisitet}.
+For å få messingstaven til å svinge hang vi den opp i det vektene som belastet staven i defleksjonsdelen av oppgaven var hengt opp med, før vi slo på endene av staven med en plasthammer i aksial retning. Dette skaper longitudinale bølger som dempes med tiden. Den bølgen som dempes saktest er den som har størst bølgelengde, og når vi har frekvensen til denne og bølgelengden kan vi finne hastigheten til lyden i messingen. Dette kan vi, sammen med tettheten til staven, benytte til å estimere elastisitetsmodulen ved ligning \eqref{eq:dynamiskElastisitet}.
 
 Først fant vi den ønskede frekvensen ved å benytte en frekvensgenerator som stod på samtidig som vi hørte lyden fra den vibrerende messingstaven. Vi justerte først på frekvensgeneratorene til lydene hørtes ganske like ut før vi gjorde finjusteringer der vi prøvde å minimere frekvensen til svevelyden vi oppfattet.
 
-Vi gjennomførte også målinger med mikrofon som ble analysert med \textit{fast fourier transform} algoritmen.
+Vi gjennomførte også målinger med mikrofon som ble analysert med \textit{fast fourier transform} algoritmen. Vi gjorde et lydopptak på 10 sekunder, der vi begynte opptaket rett før vi slo på staven for å sette igang svingningene.
 
 \section{Resultater}
 Generelle resultater for messingstaven presenteres etter kalibreringen av vektene. Resultatene for de to forskjellige metodene å måle elastisiteten følger deretter, før resultatene sammenlignes.
@@ -233,10 +243,10 @@ Med balansevekten målte vi massen til messingstaven til å være 2447.9g.  Dett
 	M = 2447.6\pm0.5\text{g}
 \end{equation} 
 
-Usikkerheten for mikrometeret er angitt til å være 0.02mm, som er mye større enn standardfeilen funnet for målingene vi gjorde. Vi velger derfor å benytte 0.02mm som usikkerhet, slik at
+Usikkerheten for mikrometeret er angitt til å være 0.01mm, som er mye større enn standardfeilen funnet for målingene vi gjorde. Vi velger derfor å benytte 0.01mm som usikkerhet, slik at
 
 \begin{equation}
-	d = 16.00\pm0.02\text{mm}
+	d = 16.00\pm0.01\text{mm}
 \end{equation}
 
 \subsection{Defleksjon av messingstav}
@@ -285,9 +295,9 @@ Ved bruk av ligning \eqref{eq:elastisitetsmodulDefleksjon} estimerer vi dermed e
 Usikkerheten finner vi ved ligning \eqref{eq:feilDefleksjon}
 
 \begin{align}
-	s_E &= E\sqrt{\left(\frac{0.003}{1.459}\right)^2+\left(\frac{4\cdot0.02}{16.0}\right)^2+\left(\frac{3\cdot 2}{1339}\right)^2}\\
-	&= 561\text{MPa}\\
-	&\implies \underline{E = 104.6\pm0.6\text{GPa}}
+	s_E &= E\sqrt{\left(\frac{0.003}{1.459}\right)^2+\left(\frac{4\cdot0.01}{16.0}\right)^2+\left(\frac{3\cdot 2}{1339}\right)^2}\\
+	&= 332\text{MPa}\\
+	&\implies \underline{E = 104.6\pm0.3\text{GPa}}
 \end{align}
 
 Bruker vi ligning
@@ -306,10 +316,10 @@ For fourieranalysen fant vi en frekvens på 1213.2Hz. Målingen vi benyttet vart
 
 Når vi vet dette 
 
-Usikkerheten finner vi til å være $s_E = 0.133$GPa ved å bruke ligning \ref{eq:feilDynamisk}. Dette gir oss en elastisitetsmodul på
+Usikkerheten finner vi til å være $s_E = 0.07$GPa ved å bruke ligning \ref{eq:feilDynamisk}. Dette gir oss en elastisitetsmodul på
 
 \begin{equation}
-	E = 103.5\pm1\text{GPa}
+	E = 103.49\pm0.07\text{GPa}
 \end{equation}
 
 \subsection{Sammenligning av resultatene}
@@ -323,10 +333,10 @@ Usikkerheten for denne differansen er
 
 \begin{align}
 s_D &= D\sqrt{s_{E, \text{defleksjon}}^2+s_{E, \text{dynamisk}}^2}\\
-&= 0.58\text{GPa}
+&= 0.34\text{GPa}
 \end{align}
 
-Vi får altså at differansen $|D|>s_D$, men $|D|<2s_D$.
+Vi får altså at differansen $|D|>2s_D$.
 \section{Diskusjon}
 
 \subsection{Kalibrering av lodd}
@@ -337,7 +347,7 @@ Vi kunne fått mer nøyaktige målinger med et målebånd uten slark i festeledd
 
 Massen til messingstaven lå et godt stykke over det høyeste kalibreringspunktet vårt. Vi måtte derfor ekstrapolere i forhold til de verdiene vi hadde å kalibrere med. Dette fører til større usikkerheter enn om vi hadde interpolert, kanskje også større usikkerhet enn det som er benyttet.
 
-Målingene for diameteren er nok det som vil være vanskeligst å forbedre ettersom de allerede er gjort med et mikrometer, som er et ganske nøyaktig instrument for å måle lengde. Samtidig er diameteren en av de faktorene som fører til størst usikkerhet.
+Målingene for diameteren er nok det som vil være vanskeligst å forbedre ettersom de allerede er gjort med et mikrometer, som er et ganske nøyaktig instrument for å måle lengde. Samtidig er diameteren en av de faktorene som gir en ganske stor usikkerhet.
 
 \subsection{Defleksjon av messingstav}
 Måleuret viser ganske nøyaktige verdier, og er nok ikke en veldig stor kilde til usikkerhet i seg selv. Målingene kan bli litt mindre pålitelige hvis det underlaget tuppen av måleuret står ikke befinner seg i det horisontale plan. Dette hadde vi ikke helt kontroll på gjennom forsøket, men vi sjekket at det var korrekt før vi begynte å legge på masse. Det burde være tilstrekkelig.
@@ -347,13 +357,19 @@ Et større problem som vi kom på noen dager etter å ha utført eksperimentet, 
 Det bør nevnes at det nok ikke er snakk om mer enn rundt \'en halv centimer forskyvning, ettersom dette er begrenset av at festet må gjennom et relativt lite hull. Dette hjelper likevel ikke så mye på å kvantifisere usikkerheten uten å gå mer i detalj når det gjelder utledningen av ligningen.
 
 \subsection{Dynamisk måling av elastisitetsmodulen}
-Det er mulig at måten vi hang opp stangen på kan ha påvirket svingefrekvensen litt. Vi tror likevel dette er en faktor som ikke spiller en veldig stor rolle ettersom opphenget påfører en kraft til messingstaven som er vinkelrett på bølgenes bevegelsesretning. Usikkerheten i estimatet av elastisitetsmodulen forbedres også mer ved å redusere usikkerheten for målingen av diameteren enn for frekvensen, så det er mindre interessant å undersøke hvordan målingen av stavens svingefrekvens kan forbedres.
+Det er mulig at måten vi hang opp stangen på kan ha påvirket svingefrekvensen litt. Vi tror likevel dette er en faktor som ikke spiller en veldig stor rolle ettersom opphenget påfører en kraft til messingstaven som er vinkelrett på bølgenes bevegelsesretning. Usikkerheten i estimatet av elastisitetsmodulen forbedres også mer ved å redusere usikkerheten for målingen av diameteren enn for frekvensen, så det er mindre interessant å undersøke hvordan målingen av stavens svingefrekvens kan forbedres. Dette er selvfølgelig under antagelsen om at usikkerheten til frekvensen stemmer, men vi kunne nok ha benyttet en litt større usikkerhet grunnet at målingen var sterkt tidsvarierende i starten.
 
 \subsection{Sammenligning av resultater}
-Ettersom absoluttverdien til differansen mellom estimatene av elastisitetsmodulen for de forskjellige verdiene var større enn usikkerheten så kan vi ikke med stor sannsynlighet si at differansen skyldes usikkerhet i målingene. Samtidig kan vi heller ikke si at det er stor sannsynlighet for at det ikke er måleusikkerhetene som fører til differansen ettersom absoluttverdien ikke er større enn det dobbelte av usikkerheten i differansen.
+Ettersom absoluttverdien til differansen mellom estimatene av elastisitetsmodulen for de forskjellige verdiene var større enn det dobbelte av usikkerheten så kan vi med stor sannsynlighet si at differansen ikke skyldes usikkerhet i målingene. Det er altså stor sannsynlighet for at vi har å gjøre med en systematisk feil, grunnet feil oppsett av utstyret.
 
+Det største problemet er mest sannsynlig at vi ikke hadde helt kontroll på plasseringen av måleuret i forhold til at det skulle vært plassert midt mellom hvilepunktene på stangen for målingene av defleksjon for messingstaven. 
 
 \section{Konklusjon}
+Vi fant to verdier for samme elastisitetsmodul som hadde en forskjell på omtrent 1\%. Dette var mer enn dobbelt så mye som usikkerheten vi fant. Dette tyder på at de med stor sannsynlighet er gjort feil under målingene som ikke har med måleusikkerhet å gjøre. 
+
+For disse eksperimentene virker det som om plasseringen av måleuret, for måling av defleksjon, var det som førte til størst usikkerhet i forhold til oppsettet. Det kan dermed virke som om det er her den antatte systematiske feilen, som spiller den største rollen, ligger.
+
+Dette tatt i betraktning er det stor sannsynlighet for at elastisitetsmodulen estimert ved den dynamiske metoden er nærmest den riktige verdien. Dette forsterkes av at den estimerte usikkerheten for den dynamiske metoden også er en femtedel av den vi fant for defleksjonsmetoden. Vi kan dermed konkludere med at vårt beste estimat for elastisitetsmodulen er $E = 103.5\pm0.1\text{GPa}$.
 
 \printbibliography
 \clearpage
