@@ -1,0 +1,81 @@
+
+\documentclass[a4paper,11pt, twocolumn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[norsk]{babel}
+\usepackage{graphicx} %for å inkludere grafikk
+\usepackage{verbatim} %for å inkludere filer med tegn LaTeX ikke liker
+\usepackage{mathpazo}
+\usepackage{mathtools}
+\usepackage{csquotes}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{todonotes}
+\usepackage[backend=biber]{biblatex}
+\usepackage{caption} 
+\usepackage{parboxx}
+\hyphenpenalty=750
+\captionsetup[table]{skip=10pt}
+\addbibresource{brownian-motion.bib}
+
+\lstset{language=Matlab, commentstyle=\textcolor[rgb]{0.00,0.50,0.00}, keepspaces=true, columns=flexible, basicstyle=\footnotesize, keywordstyle=\color{blue}, showstringspaces=false, inputencoding=ansinew}
+
+\title{Brownske bevegelser \\ FYS2150}
+
+\author{Eivind Brox}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+	\todo[inline]{Skrive sammendrag}
+\end{abstract}
+
+\section{Introduksjon}
+Formålet med oppgaven er å undersøke nærmere fenomenet Brownske bevegelser og bli kjent med enkle former for bildeanalyse.
+\todo[inline]{Ha med noe om digitale kamarer?}
+\section{Teori}
+Grunnleggende for statistisk fysikk er ekvipartisjonsprinsippet. Dette forteller oss at enhver frihetsgrad i gjennomsnitt bidrar med en energi på $kT/2$ i et system i termisk likevekt, med en temperatur på $T$ grader. Med frihetsgrad mener vi her alle former for energi som kan beskrives med en funksjon som er kvadratisk i en koordinat- eller hastighetskomponent. Dette kan blant annet vises ved bruk av Boltzmann faktorer, vist for \'en frihetsgrad i~\cite[sek. 6.3]{Schroeder2000}. 
+\section{Eksperimentelt}
+Vi undersøkte først avbildningskvaliteten til mikroskopet vi benyttet i oppgaven. 
+\begin{itemize}
+	\item Olympus CX41 mikroskop
+	\item Teststykke med forskjellige mønster
+	\item Datamaskin med programmene IC Capture og Matlab installert
+\end{itemize}
+
+\subsection{Avbildningskvalitet}
+Det første vi gjorde var å teste avbildningkvaliteten til mikroskopet. Vi fikk hjelp til å plassere teststykket slik at det stod stabilt plassert der det skulle. Mikroskopet er trinokulært, noe som betyr at objektet vi undersøker gjennom mikroskopet kan betraktes med begge øyne, samtidig som lys slippes ut gjennom en tredje åpning. I den siste åpningen hadde vi montert et kamera, og kunne på denne måten også betrakte mikroskopobjektet på en dataskjerm. Kameraet ble operert ved hjelp av programmet IC Capture.
+
+
+\subsection{Firkantgrid og pikseldimensjoner}
+Når alt var klargjort og mikroskoplyset var skrudd på, så ønsket vi å undersøke hvor stor avstand \'en piksel spente over i $x$- og $y$-retning. Vi utførte disse punktene.
+
+\begin{itemize}
+	\item Valgte hvilket objektet vi skulle bruke, før vi benyttet mekanikken i mikroskopstativet til å finne fram til et kvadratisk grid på teststykket, og noterer verdier for dimensjonene på gridet.
+	\item Åpnet et histogram i programmet som viste antall piksler per intensitetsnivå, og et vindu for å justere på lukkerhastigheten.
+	\item Deretter stilte vi først på lyset i mikroskopet til det var behagelig å se i det med øynene, før vi justerte på lukkerhastigheten til kameraet og fokus til mikroskopet slik at toppene i histogrammet kom lengst mulig fra hverandre. Dette gjorde vi for å oppnå høyest mulig kontrast mellom linjene og de blanke områdene i gridet.
+	\item Vi tok et stillbilde som vi åpnet i Matlab for å finne $s_x$ og $s_y$. 
+\end{itemize}
+
+Dette gjorde vi både for 20X og 40X objektivene.
+
+\section{Resultater}
+\subsection{Avbildningskvalitet}
+\section{Diskusjon}
+\section{Konklusjon}
+
+\printbibliography{}
+\clearpage
+\onecolumn
+\appendix
+
+\section{Vedlegg}
+\end{document}
+
+
+
+
