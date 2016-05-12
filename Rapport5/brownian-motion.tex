@@ -51,7 +51,7 @@ Vi undersøkte først avbildningskvaliteten til mikroskopet vi benyttet i oppgav
 Det første vi gjorde var å teste avbildningkvaliteten til mikroskopet. Vi fikk hjelp til å plassere teststykket slik at det stod stabilt plassert der det skulle. Mikroskopet er trinokulært, noe som betyr at objektet vi undersøker gjennom mikroskopet kan betraktes med begge øyne, samtidig som lys slippes ut gjennom en tredje åpning. I den siste åpningen hadde vi montert et kamera, og kunne på denne måten også betrakte mikroskopobjektet på en dataskjerm. Kameraet ble operert ved hjelp av programmet IC Capture.
 
 
-\subsection{Firkantgrid og pikseldimensjoner}
+\subsubsection{Firkantgrid og pikseldimensjoner}
 Når alt var klargjort og mikroskoplyset var skrudd på, så ønsket vi å undersøke hvor stor avstand \'en piksel spente over i $x$- og $y$-retning. Vi utførte disse punktene.
 
 \begin{itemize}
@@ -63,9 +63,30 @@ Når alt var klargjort og mikroskoplyset var skrudd på, så ønsket vi å under
 
 Dette gjorde vi både for 20X og 40X objektivene.
 
+\subsubsection{Modulation Transfer Function}
+\begin{equation}
+	\text{MTF}(f) = \frac{I_{\max}(f)-I_{\min}(f)}{I_{\max}(f_{\min})-I_{\max}(f_{\min})}
+	\label{eq:MTF}
+\end{equation}
+
 \section{Resultater}
-\subsection{Avbildningskvalitet}
+Her presenteres resultatene i samme rekkefølge som det eksperimentelle er beskrevet.
+\subsection{Firkantgrid og pikseldimensjoner}
+Figur~\ref{fig:grid20x} viser bildet vi tok med 20X okularet.
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width = 0.5\textwidth]{Lab/bilde20x.jpg}
+	\caption{Grid med dimensjoner \ldots observert med kamera og 20X okular.}
+	\label{fig:grid20x}
+\end{figure}
 \section{Diskusjon}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width = 0.5\textwidth]{Lab/bilde2_gitter_40x.jpg}
+	\caption{Grid med dimensjoner \ldots observert med kamera og 40X okular.}
+	\label{fig:grid40x}
+\end{figure}
+
 \section{Konklusjon}
 
 \printbibliography{}
