@@ -38,7 +38,13 @@
 Formålet med oppgaven er å undersøke nærmere fenomenet Brownske bevegelser og bli kjent med enkle former for bildeanalyse.
 \todo[inline]{Ha med noe om digitale kamarer?}
 \section{Teori}
+Vi tar for oss litt om statistisk fysikk og avbildning med elektroniske kameraer. 
+\subsection{Statistisk fysikk}
 Grunnleggende for statistisk fysikk er ekvipartisjonsprinsippet. Dette forteller oss at enhver frihetsgrad i gjennomsnitt bidrar med en energi på $kT/2$ i et system i termisk likevekt, med en temperatur på $T$ grader. Med frihetsgrad mener vi her alle former for energi som kan beskrives med en funksjon som er kvadratisk i en koordinat- eller hastighetskomponent. Dette kan blant annet vises ved bruk av Boltzmann faktorer, vist for \'en frihetsgrad i~\cite[sek. 6.3]{Schroeder2000}. 
+
+\subsection{Avbildning med elektroniske kamera}
+Et elektronisk kamera fungerer på den måten at lys, som gjerne brytes gjennom et objektiv før det går gjennom et okular og treffer kamerats bildeplan, treffer en plate som består av mange små lyssensorer, laget av halvledermateriale. Når lys faller på dette halvledermaterialet frigjøres elektroner, og mengden som frigjøres er et mål på intensiteten lyset har. 
+
 \section{Eksperimentelt}
 Vi undersøkte først avbildningskvaliteten til mikroskopet vi benyttet i oppgaven. 
 \begin{itemize}
@@ -76,16 +82,30 @@ Figur~\ref{fig:grid20x} viser bildet vi tok med 20X okularet.
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width = 0.5\textwidth]{Lab/bilde20x.jpg}
-	\caption{Grid med dimensjoner \ldots observert med kamera og 20X okular.}
+	\caption{Grid observert med kamera gjennom mikroskopet med 20X okular.}
 	\label{fig:grid20x}
 \end{figure}
-\section{Diskusjon}
+
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width = 0.5\textwidth]{Lab/bilde2_gitter_40x.jpg}
-	\caption{Grid med dimensjoner \ldots observert med kamera og 40X okular.}
+	\includegraphics[width=0.5\textwidth]{Lab/gitter20x.eps}
+	\caption{Intensitetsplot}
+	\label{fig:intensitet20x}
+\end{figure}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width = 0.5\textwidth]{Lab/bilde40x.jpg}
+	\caption{Grid observert med kamera gjennom mikroskopet med 40X okular.}
 	\label{fig:grid40x}
 \end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width = 0.5\textwidth]{Lab/gitter40x.eps}
+	\caption{Intensitetsplot 40X.}
+	\label{fig:intensitet40x}
+\end{figure}
+\section{Diskusjon}
 
 \section{Konklusjon}
 
