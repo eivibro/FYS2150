@@ -13,8 +13,11 @@
 \usepackage{booktabs}
 \usepackage{todonotes}
 \usepackage[backend=biber]{biblatex}
-\usepackage{caption} 
+\usepackage[font=small]{caption} 
 \usepackage{parboxx}
+\usepackage{upgreek} %Ville ha fin \mu (\upmu)
+\usepackage{braket}
+\usepackage{multirow}
 \hyphenpenalty=750
 \captionsetup[table]{skip=10pt}
 \addbibresource{brownian-motion.bib}
@@ -32,6 +35,16 @@
 
 \begin{abstract}
 	\todo[inline]{Skrive sammendrag}
+	\begin{itemize}
+		\item Formål med oppgave
+		\item Litt om gjennomførelse
+		\item Kvantitative resultater?
+		\item In fact, Einstein and
+			Langevin used their respective methods to derive the same
+			result: that the root-mean-squared displacement of a Brownian
+			particle imagine, say, a perfume particle in a still room,
+			increases with the square root of the time
+	\end{itemize}
 \end{abstract}
 
 \section{Introduksjon}
@@ -40,16 +53,92 @@ Formålet med oppgaven er å undersøke nærmere fenomenet Brownske bevegelser o
 \section{Teori}
 Vi tar for oss litt om statistisk fysikk og avbildning med elektroniske kameraer. 
 \subsection{Statistisk fysikk}
-Grunnleggende for statistisk fysikk er ekvipartisjonsprinsippet. Dette forteller oss at enhver frihetsgrad i gjennomsnitt bidrar med en energi på $kT/2$ i et system i termisk likevekt, med en temperatur på $T$ grader. Med frihetsgrad mener vi her alle former for energi som kan beskrives med en funksjon som er kvadratisk i en koordinat- eller hastighetskomponent. Dette kan blant annet vises ved bruk av Boltzmann faktorer, vist for \'en frihetsgrad i~\cite[sek. 6.3]{Schroeder2000}. 
+Grunnleggende for statistisk fysikk er ekvipartisjonsprinsippet. Dette forteller oss at enhver frihetsgrad i gjennomsnitt bidrar med en energi på $kT/2$ i et system i termisk likevekt, med en temperatur på $T$ grader, der $k$ er Boltzmanns konstant. Med frihetsgrad mener vi her alle former for energi som kan beskrives med en funksjon som er kvadratisk i en koordinat- eller hastighetskomponent. Dette kan blant annet vises ved bruk av Boltzmannfaktorer, vist for \'en frihetsgrad i~\cite[sek. 6.3]{Schroeder2000}.
 
-\subsection{Avbildning med elektroniske kamera}
-Et elektronisk kamera fungerer på den måten at lys, som gjerne brytes gjennom et objektiv før det går gjennom et okular og treffer kamerats bildeplan, treffer en plate som består av mange små lyssensorer, laget av halvledermateriale. Når lys faller på dette halvledermaterialet frigjøres elektroner, og mengden som frigjøres er et mål på intensiteten lyset har. 
+\subsubsection{Langevin-Ligningen og brownske bevegelser}
+Langevin publiserte i 1908 en mer generell og lettfattelig måte å finne et resultat som Einstein tidligere hadde kommet fram til. Med justeringer er denne delen av teksten basert på oversettelsen av Langevins artikkel~\cite{LemonsGythiel1997} og oppgaveteksten \cite{brownske}.
 
+Langevin-ligningen beskriver det midlere kvadratet av partiklers bevegelse i en væske som følge av de kontinuerlige bevegelsene til molekylene væsken består av. Beveglsene til partiklene kaller vi brownske bevegelser, der partiklene typisk er større enn den midlere avstanden mellom nabomolekyler for de analytiske betraktningen i denne teksten. Benytter vi ekvipartisjonsprinsippet finner vi i x-retning at  
+
+\begin{equation}
+	m\braket{v_x^2} = kT
+	\label{eq:kinetic}
+\end{equation}
+
+der $\braket{v_x^2}$ er midlere verdi av kvadratet til partiklenes hastighet, og $m$ er massen til de enkelte partiklene. Braketnotasjonen brukes på samme måte for andre parametere. Benyttes Newtons andre lov og antaglsen om at de brownske bevegelsene bare avhenger av kraften molekylene i væsken påfører som følge av de raske, tilfeldige bevegelsene de har, $F_r$, og den viskøse dempningen fra væsken $F_d$, så får vi
+
+\begin{equation}
+	m\frac{d^2x}{dt^2}=F_r-F_d
+	\label{eq:newton2}
+\end{equation}
+
+Vi antar at bevegelsene til partiklene i væsken ikke gir turbulent strømning, slik at den viskøse dempningskraften kan beskrives av Stokes formel
+
+\begin{equation}
+	F_d = 6\pi\mu v_x r
+	\label{eq:stokes}
+\end{equation}
+
+der $\mu$ er viskositeten til væsken, og $r$ er radien til partiklene. 
+
+Setter vi inn for den viskøse dempningen i ligning~\eqref{eq:newton2} og multipliserer med posisjonen $x$, så ender vi opp med
+
+\begin{equation}
+	m\frac{d^2x}{dt^2}x={xF_r-6\pi\mu v_xr}	
+\end{equation}
+
+Kjerneregelen for de to deriverte leddene  gir videre at
+
+\begin{equation}
+	\frac{1}{2}m\left[ \frac{d^2x^2}{dt^2}	-2v_x^2 \right ] = xF_r - 3\pi\mu r\frac{dx^2}{dt}
+	\label{eq:umiddlet}
+\end{equation}
+
+Tar vi middelet over partiklene i ligning~\eqref{eq:umiddlet} så vil leddet $xF_r$ forsvinne ettersom det er tilfeldig og utlignes når vi har mange partikler. Resten av ligningen blir
+
+\begin{equation}
+	\frac{1}{2}\left[ m\frac{d^2\braket{x^2}}{dt^2}	 \right]-kT = -3\pi\mu r \frac{d\braket{x^2}}{dt^2}
+	\label{:eq:ensamble}
+\end{equation}
+
+Denne ligningen har løsningen
+
+\begin{equation}
+	\frac{d\braket{x^2}}{dt}=\frac{kT}{3\pi\mu r}+Ce^{6\pi\mu r t/m}
+	\label{eq:Langevin}
+\end{equation}
+
+og for $t>>m/6\pi\mu r\sim 10^{-8}$s neglisjerer vi det siste leddet slik at vi får 
+
+\begin{equation}
+	\frac{d\braket{x^2}}{dt}=\frac{kT}{3\pi\mu r}
+	\label{eq:LangevinEnkel}
+\end{equation}
+\subsection{Avbildning med elektroniske kamera og diffraksjonsbegrensninger i mikroskop}
+\label{sec:avbildning}
+Et elektronisk kamera fungerer på den måten at lys, som gjerne brytes gjennom et objektiv før det går gjennom et okular og treffer kamerats bildeplan, treffer en plate som består av mange små lyssensorer, laget av halvledermateriale. Når lys faller på dette halvledermaterialet frigjøres elektroner, og mengden som frigjøres er et mål på intensiteten lyset har. En slik lyssensor kalles ofte en piksel. 
+
+For eksperimentet denne teksten tar for seg ble det benyttet et monokrom-kamera, altså et kamera som bare skiller mellom gråtoner. Data fra brikkene lagres i matrisen $I_{ij}$, der $i$ og $j$ representerer de forskjellige pikslene lyset traff på bildebrikken i henholdsvis $x$- og $y$-retning.
+
+Dimensjonen til $I$ bestemmer den romlige oppløsningen til bildet som produseres. Større dimensjoner gir altså et bilde som klarer å skille romlige detaljer fra hverandre i større grad. I tillegg til høy oppløsning i rommet er det også interessant å ha god oppløsning i intensitet. Hvert element i $I$ inneholder nettopp et mål for intensiteten som traff den lyssensoren elementet er assosiert med. Det er vanlig for kamera å gi en oppløsning på 8-bits for intensiteten. Dette gir oss 256 forskjellige intensitetsnivå å benytte, inkludert null~\cite{brownske}.
+
+For vitenskaplig arbeid er det viktig å ha kontroll på de kvantitative størrelsene i eksperimenter. Spesielt interessant for avbildninger er å vite avstanden en piksel representerer i virkeligheten for det objektet vi observerer. Vi definerer konstanter $s_x$ og $s_y$, slik at $x_i= is_x$ og $y_j=js_y$. For kvadratiske piksler har vi dermed $s_x=s_y$.
+
+Vi finner disse konstantene ved å plassere noe vi kjenner størrelsene til i samme avstand som objektet vi skal betrakte skal plasseres i senere, ta bilde av dette, og telle antall piksler som benyttes for å dekke denne størrelsen. Mer spesifikt benytter vi i dette eksperimentet et teststykke med kjente størrelser på, som slipper gjennom eller blokkerer for lys. Vi tar for eksempel bilde av et grid, velger ut en linje i bildet vi plotter intensiteten langs, som funksjon av antall piksler, før vi observerer to ytterpunkter langs gridlinjene, som vi vet avstanden mellom, og teller pikslene mellom disse. Da har vi at 
+
+\begin{equation}
+	s=\frac{\text{avstand}}{\text{antall piksler}}
+\end{equation}
+
+Et eksempel på slike ytterpunkter er markert i figur~\ref{fig:intensitet20x}.
+
+Når vi har funnet $s$ så har vi et mål på hvilken romlige oppløsning vi er i stand til å fange opp uten andre begrensinger enn antall piksler vi har til rådighet. Det er interessant å betrakte begrensninger som følge av diffraksjonsfenomener i optikken vi benytter. I vårt tilfelle benyttet vi to forskjelligeobjektiv til et mikroskop. I følge oppgaveteksten~\cite{Schroeder2000} har vi at 20X og 40X objektivene vi bruker har en diffraksjonsbegrensning på henholdsvis $D_{20\text{x}}=0.7\upmu\text{m}$ og $D_{40\text{x}}=0.4\upmu\text{m}$ for grønt lys. Grønt lys ligger midt i det synlige spekteret, og det er dermed disse faktorene for diffraksjon vi benyttet oss av. 
 \section{Eksperimentelt}
 Vi undersøkte først avbildningskvaliteten til mikroskopet vi benyttet i oppgaven. 
 \begin{itemize}
 	\item Olympus CX41 mikroskop
 	\item Teststykke med forskjellige mønster
+	\item Objektglass med latexkuler, med ca. 1$\upmu$m diameter, i en løsning med destilert vann.
 	\item Datamaskin med programmene IC Capture og Matlab installert
 \end{itemize}
 
@@ -67,35 +156,72 @@ Når alt var klargjort og mikroskoplyset var skrudd på, så ønsket vi å under
 	\item Vi tok et stillbilde som vi åpnet i Matlab for å finne $s_x$ og $s_y$. 
 \end{itemize}
 
-Dette gjorde vi både for 20X og 40X objektivene.
+Dette gjorde vi både for 20X og 40X objektivene, men for forskjellige teststykker.
 
-\subsubsection{Modulation Transfer Function}
+\subsection{Modulation Transfer Function}
+For å bedre karakterisere avbildningsoppsettet vårt benytter vi \textit{modulation transfer function}, som matematisk er uttrykt på følgende måte
 \begin{equation}
-	\text{MTF}(f) = \frac{I_{\max}(f)-I_{\min}(f)}{I_{\max}(f_{\min})-I_{\max}(f_{\min})}
+	\text{MTF}(f) = \frac{I_{\max}(f)-I_{\min}(f)}{I_{\max}(f_{\min})+I_{\max}(f_{\min})}
 	\label{eq:MTF}
 \end{equation}
+(Se kommentarer om fortegn i konklusjonen)
 
+Her er $I_{\text{max}}(f)$ og $I_\text{min}(f)$ henholdsvis den maksimale og minimale intensiteten ved antall linjepar per millimeter (LP/mm), $f$. $f_\text{min}$ er det minimale antall linjer per mm vi har data for, og $I_\text{max}(f_\text{min})$ og $I_\text{min}(f_\text{min})$ er maksikmal og minimal intensitet for disse datane.
+
+Vi benyttet deler av teststykket vårt som inneholdt tettpakkede linjer, med forskjellig antall linjepar per millimeter. Følgende beskriver framgangsmåten for å finne MTF uavhenig av objektivet vi benytter.  
+\begin{itemize}
+	\item Først fant vi fram til den delen av teststykket som hadde færrest LP/mm. Det var $f_\text{min} = 240\text{LP/mm}$. Vi justerte lysstyrke, lukkerhastighet og fokus for å oppnå best mulig kontrast (brukte histogram som for firkantgrid). Vi tok et bilde og lagret dette.
+	\item Vi benyttet de samme instillingene for å ta bilde for $f = \{360, 480, 600\}$(LP/mm). 
+	\item Når bildene var tatt lastet vi de opp i Matlab, tok gjennomsnittet av hver kollonne, og fant maksimums- og minimumsverdiene ut fra den gjennstående radvektoren.
+\end{itemize}
 \section{Resultater}
-Her presenteres resultatene i samme rekkefølge som det eksperimentelle er beskrevet.
-\subsection{Firkantgrid og pikseldimensjoner}
-Figur~\ref{fig:grid20x} viser bildet vi tok med 20X okularet.
-\begin{figure}[!ht]
+Her presenteres resultatene i samme rekkefølge som det eksperimentelle er beskrevet.  \subsection{Firkantgrid og pikseldimensjoner}
+Figur~\ref{fig:grid20x} viser bildet vi tok av et grid med linjetykkelse på 10$\upmu$m og avstand mellom linjene på 0.10mm, med 20X objektivet. Figur~\ref{fig:intensitet20x} viser intensitetsplot fra utdrag av bildet i figur~\ref{fig:grid20x}, korresponderende til de fargede linjene.  \begin{figure}[!ht]
 	\centering
 	\includegraphics[width = 0.5\textwidth]{Lab/bilde20x.jpg}
-	\caption{Grid observert med kamera gjennom mikroskopet med 20X okular.}
+	\caption{Grid observert med kamera gjennom mikroskopet med 20X objektet. Linjene markerer utsnitt brukt for plotting av intensiteter som er vist i figur~\ref{fig:intensitet20x}}
 	\label{fig:grid20x}
 \end{figure}
 
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.5\textwidth]{Lab/gitter20x.eps}
-	\caption{Intensitetsplot}
+	\caption{Intensitetsplot der kurvene beskriver intensiteten som langs linjene i bildet i figur~\ref{fig:grid20x} Kryssene i figuren markerer punktene som er brukt til å bestemme lengde per piksel, $s$.}
 	\label{fig:intensitet20x}
 \end{figure}
+
+Fra dataene figur~\ref{fig:intensitet20x} bygger på fant vi avstanden mellom linjer langs $x$- og $y$-retning til å være
+
+\begin{equation}
+	\Delta x = \Delta y = 432
+	\label{eq:dxdy20x}
+\end{equation}
+
+slik at
+
+\begin{equation}
+	s_x=s_y \approx 2.3\upmu\text{m}
+	\label{eq:sxsy20x}
+\end{equation}
+
+Figur~\ref{fig:grid40x} og~\ref{fig:intensitet40x} tilsvarer henholdsvis figur~\ref{fig:grid20x} og~\ref{fig:intensitet20x} for 40X objektet og et teststykke med linjebredde på 5$\upmu$m og linjeavstand på 0.05mm. Samme framgangsmåte som over gav 
+
+\begin{equation}
+	\Delta x=\Delta y=430
+	\label{dxdy40x}
+\end{equation}
+
+slik at
+
+\begin{equation}
+	s_x = s_y \approx 0.1\upmu\text{m}
+	\label{eq:sxsy40x}
+\end{equation}
+
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width = 0.5\textwidth]{Lab/bilde40x.jpg}
-	\caption{Grid observert med kamera gjennom mikroskopet med 40X okular.}
+	\caption{Grid observert med kamera gjennom mikroskopet med 40X objektivet. Linjene markerer utsnitt brukt for plotting av intensiteter som er vist i figur~\ref{fig:intensitet40x}}
 	\label{fig:grid40x}
 \end{figure}
 
@@ -105,9 +231,71 @@ Figur~\ref{fig:grid20x} viser bildet vi tok med 20X okularet.
 	\caption{Intensitetsplot 40X.}
 	\label{fig:intensitet40x}
 \end{figure}
-\section{Diskusjon}
 
+Sammenligner vi med diffraksjonsbegrensingene beskrevet i seksjon~\ref{sec:avbildning} får vi
+
+\begin{equation}
+	\frac{D_{20\text{X}}}{s_x} = 0.30, \quad \frac{D_{40\text{X}}}{s_x} = 3.44
+	\label{eq:diffpersx}
+\end{equation} 
+
+\subsection{MTF ved tette linjer}
+Et typisk bilde tatt i denne oppgaven ser ut som det framstilt i figur~\ref{fig:mtfpic}.
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width = 0.5\textwidth]{Lab/MTF/MTF_40X_240LP.jpg}
+	\caption{Bilde av del av teststykke med $f=240$LP/mm, tatt med 40X objektivet.}
+	\label{fig:mtfpic}
+\end{figure}
+
+I stedet for å ta en horisontal strek gjennom et område, så ble det valgt å ta middelverdien til alle kollonnen i bildematrisen, og avgjøre maksimal- og minimalverdi for intensiteten for den gjennstående radvektoren.
+
+Vi fant intensitetsverdiene i tabell~\ref{tab:mtfintensitet}. 
+\begin{table}
+	\centering
+	\caption{Ekstremal intensiteter for bilder tatt med forskjellige objektiv og forskjellig antall linjepar per millimeter. Verdiene er basert på gjennomsnitt og rundet av til nærmeste heltall.}
+	\label{tab:mtfintensitet}
+	\begin{tabular}{cccc}
+		\toprule
+		\toprule
+		Objektiv & LP/mm & $I_\text{min}$ & $I_\text{max}$\\
+		\midrule
+		\multirow{4}{*}{20X} & 240 &191 & 96 \\
+		&360 &174 &103 \\
+		&480 &169 &114 \\
+		&600 &175 &132 \\
+		\midrule
+		\multirow{4}{*}{40X} & 240 &224 &101 \\
+		&360 &209 &109 \\
+		&480 &202 &122 \\
+		&600 &214 &147 \\
+		\toprule
+	\end{tabular}
+\end{table}
+
+Vi benyttet ligning~\eqref{eq:MTF} for å regne ut MTF-funksjonen for de punktene vi hadde målt. Plot av dette er presentert i figur~\ref{fig:MTF20X} og~\ref{fig:MTF40X} for henholdsvis 20X og 40X objektivene. 
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width = 0.5\textwidth]{Lab/MTF/MTF20X.eps}
+	\caption{MTF for 20X objektivet}
+	\label{fig:MTF20X}
+\end{figure}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width = 0.5\textwidth]{Lab/MTF/MTF40X.eps}
+	\caption{MTF for 40X objektivet}
+	\label{fig:MTF40X}
+\end{figure}
+
+\section{Diskusjon}
+\subsection{Firkantgrid og pikseldimensjoner}
+\todo[inline]{Diskutere diffraksjon}
 \section{Konklusjon}
+
+{\bf Personlige kommentarer:} Jeg hadde vanskligheter med å godta det utrykket som fantes for MTF-funksjonen i oppgaveteksten og valgte å bytte ut fortegnet i nevneren. Dette virker mer logisk ettersom det gir en verdi på 1 dersom minimumsintensiteten er 0. Dette gir et bedre absolutt mål på oppløsningen, der vi ikke trenger å benytte noe av våre egne data som referanse. Det er forøvrig også den versjonen jeg har benyttet som vanligvis er benyttet i litteraturen. 
+
+Ellers kunne det vært en fordel å koble opp mikroskopene til de raskeste datamaskinene på laben. Disse stod ubrukt mens andre eksperiment ble utført der de stod. Partikkelsporingen krever mye av datamaskinene, og de var til og med så trege at vi hadde problemer med å ta opp video i den frameraten vi skulle bruke (Vi måtte teste forskjellige komprimeringer og codecs).
 
 \printbibliography{}
 \clearpage
