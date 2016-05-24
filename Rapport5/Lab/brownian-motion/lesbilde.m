@@ -5,7 +5,7 @@ figure
 imagesc(I)
 colorbar
 
-threshold = 140;
+threshold = 60;
 Ibw = im2bw(I,threshold);
 figure(2)
 imagesc(Ibw)

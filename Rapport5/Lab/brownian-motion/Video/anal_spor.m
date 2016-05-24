@@ -3,57 +3,62 @@ numpart=max(tr(:,4));
 trny=[];
 trnum = [];
 
-%kontrollering av spor for � fjerne de partiklene som sitter fast
-%loop gjennom alle partiklene for � kontrollere sporene.
+%Controlling the tracs to remove stuck particles
+%Looping through all particles to control tracks.
+
 figure(2), clf
 hold on
 m=1;
 for n=1:numpart 
     I=find(tr(:,4)==n);
-%     %de tre linjene nedenfor gir muligheten til � sjekke spor manuelt
+%     %Below lines gives the opertunity for manually controling the tracs
 %     figure(1), plot(tr(I,1),tr(I,2))
-%      godta=input('Godta/Forkast sporet? g/f: ','s');
+%      godta=input('Accept/Decline the track? a/d: ','s');
 %     if godta=='g'
 %         trny=[trny;tr(I,:)];
 %         trnum(m)=n;
 %         m=m+1;
-%         figure(2),plot(tr(I,1),tr(I,2),'g') %plot godkjente spor i gr�nt
+%         figure(2),plot(tr(I,1),tr(I,2),'g') %accepted tracks in green
 %     else
 %         figure(2)
-%         plot(tr(I,1),tr(I,2),'r') % og ikke godkjente i r�dt
+%         plot(tr(I,1),tr(I,2),'r') % declined tracks in red
 %     end
-    % med de neste tre linjene tar man bare med partikler som har beveget
-    % seg en viss lengde i x- og y-retning (alternativ til den manuelle
-    % kontrollen)
-    grense = 10; %sett inn et passende kriterium her, for � fjerne partikler som sitter fast
+    %Only including the particles that move a certain length
+    grense = 10; %Add appropriate limit to remove stuck particles
     ddxx = max(tr(I,1))-min(tr(I,1));
     ddyy = max(tr(I,2))-min(tr(I,2));
     if ddxx > grense && ddyy > grense
-        figure(2), plot(tr(I,1),tr(I,2))
+        figure(2)%, plot(tr(I,1),tr(I,2))
         trny=[trny;tr(I,:)];
         trnum(m)=n;
         m=m+1;
-        plot(tr(I,1),tr(I,2),'g') %plot godkjente spor i gr�nt
+        plot(tr(I,1),tr(I,2),'g') %Accepted tracs in green
     else 
-        plot(tr(I,1),tr(I,2),'r') % og ikke godkjente i r�dt
+        plot(tr(I,1),tr(I,2),'r') % Declined tracs in red
     end
    
    %plot(trny(I,1))
 end
-figure(2),title 'Partikkelspor. Gr�nt spor: godkjent, r�dt: forkastet'
-hold off,axis equal
+figure(2), title 'Green: OK, Red: decline'
+hold off
+axis equal
+xlabel('piksler i x-retning')
+ylabel('piksler i y-retning')
 tr=trny;
 numpart=length(trnum);
 
-% kalkulere forflytningene
+set(gca, 'FontSize', 16)
+saveas(gcf, '5mintracks', 'epsc')
+
+% Calculating the movements
 m=max(tr(:,3));
 t=1:m;
 sumdx=zeros(m,1);
 sumdy=zeros(m,1);
 for n=1:numpart % loop gjennom alle partiklene
     I=find(tr(:,4)==trnum(n));
-    % finne hvor langt partikkelen har flyttet seg fra startposisjonen ved 
-    % hvert tidssteg
+    % Finding how far the particle has moved from the start position at
+    % each time step.
     dx=tr(I,1)-tr(I(1),1);
     dy=tr(I,2)-tr(I(1),2);
     sumdx=sumdx+dx.^2;
@@ -63,7 +68,7 @@ msdx=sumdx/numpart;
 msdy=sumdy/numpart;
 msdxy=(msdx+msdy);
 
-% Plotte resultater 
+% Plotting results
 figure(1)
 plot(msdx,'b')
 hold on
@@ -71,8 +76,8 @@ plot(msdy,'g')
 plot(msdxy,'r')
 hold off
 
-% finne stigningstall
-% tvinge l�sningen til � g� gjennom origo.
+% Finding the slopes
+% Forcing the solution through origo.
 px = t(:)\msdx(:);
 py = t(:)\msdy(:);
 pxy = t(:)\msdxy(:);
@@ -83,6 +88,8 @@ xlabel('antall tidssteg')
 ylabel('Midlere kvadratisk forflytning, piksler^2')
 % hold on, plot(t,polyval(px,t),'b'), plot(t,polyval(py,t),'g'), plot(t,polyval(pxy,t),'r'), hold off
 hold on, plot(t,px*t,'b'), plot(t,py*t,'g'), plot(t,pxy*t,'r'), hold off
-title('Midlere forflytning av Brownske partikler')
 axis tight
+
+set(gca, 'FontSize', 12)
+saveas(gcf, '5minmoving', 'epsc')
 

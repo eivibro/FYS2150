@@ -1,7 +1,7 @@
 
 \documentclass[a4paper,11pt, twocolumn]{article}
-\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
 \usepackage[norsk]{babel}
 \usepackage{graphicx} %for å inkludere grafikk
 \usepackage{verbatim} %for å inkludere filer med tegn LaTeX ikke liker
@@ -14,13 +14,14 @@
 \usepackage{todonotes}
 \usepackage[backend=biber]{biblatex}
 \usepackage[font=small]{caption} 
-\usepackage{parboxx}
+%\usepackage{parboxx}
 \usepackage{upgreek} %Ville ha fin \mu (\upmu)
 \usepackage{braket}
 \usepackage{multirow}
 \hyphenpenalty=750
 \captionsetup[table]{skip=10pt}
 \addbibresource{brownian-motion.bib}
+
 
 \lstset{language=Matlab, commentstyle=\textcolor[rgb]{0.00,0.50,0.00}, keepspaces=true, columns=flexible, basicstyle=\footnotesize, keywordstyle=\color{blue}, showstringspaces=false, inputencoding=ansinew}
 
@@ -34,21 +35,22 @@
 \maketitle
 
 \begin{abstract}
-	\todo[inline]{Skrive sammendrag}
-	\begin{itemize}
-		\item Formål med oppgave
-		\item Litt om gjennomførelse
-		\item Kvantitative resultater?
-		\item In fact, Einstein and
-			Langevin used their respective methods to derive the same
-			result: that the root-mean-squared displacement of a Brownian
-			particle imagine, say, a perfume particle in a still room,
-			increases with the square root of the time
-	\end{itemize}
+	I dette prosjektet ser vi nærmere på avbildningssystemer og brownske bevegelser. Vi forsøker å se nærmere på relasjonen mellom statistisk basert varmeteori og disse bevegelsene.
+	Formålet med arbeidet er å bli bedre kjent med avbildningssystemer og bruk av bildeanalyse i forbindelse med et fysisk fenomen.
+
+Vi startet med å ta bilder gjennom et mikroskop, av et teststykke. Vi finner at lengden per piksel er 0.23$\upmu$m og 0.12$\upmu$m ved henholdsvis bruk av 20X og 40X objektiv på mikroskopet. Dette gjør vi ved å sammenligne de kjente dimensjonene på teststykket med pikslene vi ser på digitalt.
+
+Vi finner også at begrensningen i forhold til diffraksjon er over tre ganger større en begrensingen for pikselstørrelsen. Det er altså ikke nødvendig med et digitalkamera med flere piklser for dette oppsettet.
+
+Vi karakteriserte også avbildningssystemet ved å benytte en \textit{modulation transfer function} (MTF). Vi fant at resultatene ble litt bedre for 40X objektivet enn 20X objektivet, og konkluderte med at forbedring var å forvente ettersom det er lettere å skille.
+
+Vi fant et estimat av diameteren til partikkelene til å være 1.4$\upmu$m. Den oppgitte verdien var 1$\upmu$m, altså en forskjell på 40\%
 \end{abstract}
 
 \section{Introduksjon}
-Formålet med oppgaven er å undersøke nærmere fenomenet Brownske bevegelser og bli kjent med enkle former for bildeanalyse.
+	På starten av 1900-tallet begynte virkelig den statistiske beskrivelsen som grunnlag for en molekylær-kinetisk varmeteori. I denne oppgaven ser vi nærmere på avbildningssystem før vi betrakter brownske bevegelser, små bevegelser til mikroskopiske partikler i en væske, som følge av deres kollisjoner med tilfeldig fluktuerende molekyler til væsken. Disse bevegelsene satte for alvor den molekylær-kinetiske varmeteorien på kartet.
+
+Formålet med oppgaven er å undersøke nærmere fenomenet brownske bevegelser og bli kjent med enkle former for bildeanalyse.
 \todo[inline]{Ha med noe om digitale kamarer?}
 \section{Teori}
 Vi tar for oss litt om statistisk fysikk og avbildning med elektroniske kameraer. 
@@ -151,13 +153,18 @@ Når alt var klargjort og mikroskoplyset var skrudd på, så ønsket vi å under
 
 \begin{itemize}
 	\item Valgte hvilket objektet vi skulle bruke, før vi benyttet mekanikken i mikroskopstativet til å finne fram til et kvadratisk grid på teststykket, og noterer verdier for dimensjonene på gridet.
-	\item Åpnet et histogram i programmet som viste antall piksler per intensitetsnivå, og et vindu for å justere på lukkerhastigheten.
+	\item Åpnet et histogram i programmet som viste antall piksler per intensitetsnivå, og et vindu for å justere på lukkerhastigheten. Se figur~\ref{fig:histogram} for nærmere beskrivelse av histogramet.
 	\item Deretter stilte vi først på lyset i mikroskopet til det var behagelig å se i det med øynene, før vi justerte på lukkerhastigheten til kameraet og fokus til mikroskopet slik at toppene i histogrammet kom lengst mulig fra hverandre. Dette gjorde vi for å oppnå høyest mulig kontrast mellom linjene og de blanke områdene i gridet.
 	\item Vi tok et stillbilde som vi åpnet i Matlab for å finne $s_x$ og $s_y$. 
 \end{itemize}
 
 Dette gjorde vi både for 20X og 40X objektivene, men for forskjellige teststykker.
-
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.45\textwidth]{histogram.jpg}
+	\caption{Typisk histogram som viser oversikt over hvor mange piksler som representerer de forskjellige intensitetesnivåene. Vi ønsker to så distinkte topper som mulig som er så langt fra hverandre som mulig for vårt formål. Dette gir oss størst mulig kontrast. Bilde hentet fra \cite{histogram}.}
+	\label{fig:histogram}
+\end{figure}
 \subsection{Modulation Transfer Function}
 For å bedre karakterisere avbildningsoppsettet vårt benytter vi \textit{modulation transfer function}, som matematisk er uttrykt på følgende måte
 \begin{equation}
@@ -174,6 +181,21 @@ Vi benyttet deler av teststykket vårt som inneholdt tettpakkede linjer, med for
 	\item Vi benyttet de samme instillingene for å ta bilde for $f = \{360, 480, 600\}$(LP/mm). 
 	\item Når bildene var tatt lastet vi de opp i Matlab, tok gjennomsnittet av hver kollonne, og fant maksimums- og minimumsverdiene ut fra den gjennstående radvektoren.
 \end{itemize}
+\subsection{Brownske bevegelser}
+\label{sek:EksBrownske}
+Etter å ha blitt kjent med avbildningssystemet vårt, var det nærmere undersøkelse av brownske bevegelser som stod for tur. Vi benyttet 20X objektivet for alle observasjonene i denne delen av oppgaven. Veileder på laben preparerte et objectglass med latexkuler med 1$\upmu$m diameter løst i destilert vann.
+
+Vi fant et fint område med partikler mens vi hadde påmontert mørkefeltenheten på mikroskopet. Mørkefelt vil si at vi påmonterte en konstruksjon mellom den direkte lyskilden til mikroskopet og objektet vi studerte. Dette gjør at lyset spres på en annen måte slik at det er refleksjonene fra partiklene vi ser i mikroskopet, og ikke fraværet av lys der partiklene er. Vidre gjorde vi følgende:
+\begin{itemize}
+	\item Tok bilde av partiklene både med og uten mørkefeltsbelysning. Vi brukte igjen histogrammet i IC Capture for å oppnå best mulig kontrast før bildene ble tatt.
+	\item Vi bestemmte midlere partikkelstørrelse i piksler og mikrometer. Vi benyttet mørkefeltbelysning for resten av bildene.
+	\item Med best mulig kontrast tok vi opp \'en video på 30 sekunder og \'en på 5 minutter.
+\end{itemize}
+
+Bildet vi tok med mørkefeltbelysning brukte vi til å estimere midlere partikkelstørrelse og grenseverdien for hvilke intensiteter som skulle regnes som partikler. Dette gjorde vi ved først å benytte {\bf imagesc(I), colorbar} for å finne tilnærmede verdier, der I er bildematrisen. Etter dette så vi på det binære bildet laget ved {\bf Imbw = im2bw(I,threshold/255)} med {\bf imagesc(Imbw)}. Vi testet flere verdier på denne måten for å best bestemme parameterene som skulle brukes.
+
+Disse parameterene ble brukt som et utgangspunkt for analyse av videone vi tok. Vi benyttet skriptene \textit{finn\_spor.m} og \textit{anal\_spor.m} for henholdsvis sporing av partiklene og analyse av sporene. Disse er å finne i vedlegg~\ref{app:finn} og~\ref{app:anal}.
+
 \section{Resultater}
 Her presenteres resultatene i samme rekkefølge som det eksperimentelle er beskrevet.  \subsection{Firkantgrid og pikseldimensjoner}
 Figur~\ref{fig:grid20x} viser bildet vi tok av et grid med linjetykkelse på 10$\upmu$m og avstand mellom linjene på 0.10mm, med 20X objektivet. Figur~\ref{fig:intensitet20x} viser intensitetsplot fra utdrag av bildet i figur~\ref{fig:grid20x}, korresponderende til de fargede linjene.  \begin{figure}[!ht]
@@ -200,7 +222,7 @@ Fra dataene figur~\ref{fig:intensitet20x} bygger på fant vi avstanden mellom li
 slik at
 
 \begin{equation}
-	s_x=s_y \approx 2.3\upmu\text{m}
+	s_x=s_y \approx 0.23\upmu\text{m}
 	\label{eq:sxsy20x}
 \end{equation}
 
@@ -214,7 +236,7 @@ Figur~\ref{fig:grid40x} og~\ref{fig:intensitet40x} tilsvarer henholdsvis figur~\
 slik at
 
 \begin{equation}
-	s_x = s_y \approx 0.1\upmu\text{m}
+	s_x = s_y \approx 0.12\upmu\text{m}
 	\label{eq:sxsy40x}
 \end{equation}
 
@@ -235,7 +257,7 @@ slik at
 Sammenligner vi med diffraksjonsbegrensingene beskrevet i seksjon~\ref{sec:avbildning} får vi
 
 \begin{equation}
-	\frac{D_{20\text{X}}}{s_x} = 0.30, \quad \frac{D_{40\text{X}}}{s_x} = 3.44
+	\frac{D_{20\text{X}}}{s_x} = 3.02, \quad \frac{D_{40\text{X}}}{s_x} = 3.44
 	\label{eq:diffpersx}
 \end{equation} 
 
@@ -273,29 +295,131 @@ Vi fant intensitetsverdiene i tabell~\ref{tab:mtfintensitet}.
 	\end{tabular}
 \end{table}
 
-Vi benyttet ligning~\eqref{eq:MTF} for å regne ut MTF-funksjonen for de punktene vi hadde målt. Plot av dette er presentert i figur~\ref{fig:MTF20X} og~\ref{fig:MTF40X} for henholdsvis 20X og 40X objektivene. 
+Vi benyttet ligning~\eqref{eq:MTF} for å regne ut MTF-funksjonen for de punktene vi hadde målt. Plot av dette er presentert i figur~\ref{fig:MTF}. 
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width = 0.5\textwidth]{Lab/MTF/MTF20X.eps}
+	\includegraphics[width = 0.5\textwidth]{Lab/MTF/MTF.eps}
 	\caption{MTF for 20X objektivet}
-	\label{fig:MTF20X}
+	\label{fig:MTF}
 \end{figure}
+
+\subsection{Brownske bevegelser}
+Ved bruk av metoden beskrevet i seksjon~\ref{sek:EksBrownske}, fant vi diameteren til latexkulene i piksler og mikrometer til å være henholdsvis 6 og 1.4$\upmu$m. Her så vi på partikler i binært plot med grenseverdi på 60.
+
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width = 0.5\textwidth]{Lab/MTF/MTF40X.eps}
-	\caption{MTF for 40X objektivet}
-	\label{fig:MTF40X}
+	\includegraphics[width = 0.5\textwidth]{Lab/brownian-motion/Video/30sektracks}
+	\caption{Spor til unike partikler funnet ved analysen av videoen på 30 sekunder. De røde sporene er forkastet ettersom tilhørende partikler virker å stå stille , mens de grønne sporene er tatt vare på. I denne analysen ble det benyttet en diameter på 10 piksler, en intensitetsgrense på 60 og en grense på at partiklene måtte ha beveg seg totalt 10 piksler eller mer for at sporene skulle bli godtatt.}
+	\label{fig:30sectracks}
 \end{figure}
 
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width = 0.5\textwidth]{Lab/brownian-motion/Video/30sekmoving}
+	\caption{Resultater fra analyse av videoen på 30 sekunder, der de midlere kvadratiske forflytningene og de tilhørende deriverte er plottet. De rette linjene er dataenes lineærtilpasning.}
+	\label{fig:30secMoving}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width = 0.5\textwidth]{Lab/brownian-motion/Video/5mintracks}
+	\caption{Spor funnet ved analysen av videoen på 5 minutter. I denne analysen ble det benyttet en diameter på 6 piksler, en intensitetsgrense på 15 og en grense på at partiklene måtte ha beveg seg totalt 10 piksler eller mer for at sporene skulle bli godtatt.}
+	\label{fig:5mintracks}
+\end{figure}
+
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width = 0.5\textwidth]{Lab/brownian-motion/Video/5minmoving}
+	\caption{Resultater fra analyse av videoen på 5 minutter, der de midlere kvadratiske forflytningene og de tilhørende deriverte er plottet. De rette linjene er dataenes lineærtilpasning.}
+	\label{fig:5minmoving}
+\end{figure}
+Figur~\ref{fig:30sectracks} og~\ref{fig:5mintracks} viser resulterende plot for partikkelsporene som vi kommer fram til ved å kjøre matlabskriptene våre, og figur~\ref{fig:30secMoving} og~\ref{fig:5minmoving} viser den midlere kvadratiske forflytningen til partiklene. 
+
+Vi ønsker å konvertere enhetene for den deriverte av den midlere kvadratiske forflytningen i $x$-retning slik at vi ikke ser på piksler, men fysisk lengde. For dette benytter vi verdiene vi fant for $s_x$ tidligere.
+
+For videoen på 30 sekunder får vi
+
+\begin{align}
+	\frac{d\braket{x^2}}{dt} &= 1.1288\cdot(0.23\cdot10^{-6}\text{m})^2\cdot\frac{15}{s}\\
+	&= 8.96\cdot10^{-13}\frac{\text{m}^2}{\text{s}}
+	\label{eq:dx230sek}
+\end{align}
+
+og for videoen på 5 minutter får vi
+\begin{align}
+	\frac{d\braket{x^2}}{dt} &= 1.2719\cdot(0.23\cdot10^{-6}\text{m})^2\cdot\frac{15}{s}\\
+	&= 1.01\cdot10^{-12}\frac{\text{m}^2}{\text{s}}
+	\label{eq:dx25min}
+\end{align}
+
+Vi målte ikke verdien til temperaturen i rommet på labdagen, ettersom vi ikke fant noe termometer, men antar 293.2K. For viskositeten benytter vi $\mu = 1.002\cdot10^{-3}$kg/ms~\cite{viscosity}.
+
+Vi kan nå regne ut et estimat for Boltzmanns konstant fra ligning~\eqref{eq:LangevinEnkel}. Vi får to forskjellige verdier
+
+\begin{gather}
+	k_\text{30s}  = \frac{d\braket{x^2}}{dt} \frac{3\pi\mu r}{T}\\
+	= 8.96\cdot10^{-13}\frac{\text{m}^2}{\text{s}}\cdot \frac{3\pi\cdot1.002\cdot 10^{-3}\frac{\text{kg}}{ms}\cdot 0.7  \text{m}}{293.2\text{K}\cdot10^{6}}\\
+	= \underline{2.02\cdot10^{-23}\frac{\text{kgm}^2}{\text{Ks}^2}}
+	\label{eq:boltzmann30sek}
+\end{gather}
+
+\begin{gather}
+	k_\text{5min}  = \frac{d\braket{x^2}}{dt} \frac{3\pi\mu r}{T}\\
+= 1.01\cdot10^{-12}\frac{\text{m}^2}{\text{s}}\cdot \frac{3\pi\cdot1.002\cdot 10^{-3}\frac{\text{kg}}{ms}\cdot 0.7\text{m}}{293.2\text{K}\cdot 10^6}\\
+	= \underline{2.28\cdot10^{-23}\frac{\text{kgm}^2}{\text{Ks}^2}}
+	\label{eq:boltzmann5min}
+\end{gather}
+
+Til sammenligning har vi at Boltzmanns konstant er oppgitt til $1.381\cdot10^{-23}\text{kgm}^2/\text{Ks}^2$~\cite[sek. 1.2]{Schroeder2000}. Det vil si at estimatet vårt som ligger nærmest er omtrent 50\% større enn den burde vært. 
 \section{Diskusjon}
-\subsection{Firkantgrid og pikseldimensjoner}
-\todo[inline]{Diskutere diffraksjon}
+Avbildningssystemets egenskaper diskuteres før resultatene for brownske bevegelser.
+\subsection{Firkantgrid}
+Vi fant verdier for antall piksler de blanke områdene spente over, og benyttet disse til å regne ut hvor lang en piksel var. Det blanke området på teststykket som vi benyttet til å finne piksellengden ved 20X objektivet var dobbelt så lang som det vi benyttet til å finne piksellengden for 40X objektivet. Det ville være logisk å anta at lengden i antall piksler ville være like lang for de to tilfellene. Dette stemte ikke helt med det vi kom fram til, men resultatene kunne vært bearbeidet mer nøye. Vi kunne for eksempel sett på et gjennomsnitt av mange punkter i stedet for bare å bruke to punkter. Det var heller ikke lett å finne to punkter som hadde nøyaktig samme intensitet. Samsvaret er likevel ganske bra og godt innenfor \'en prosent.
+
+Vi fant også ut at pikslene var kvadratiske ettersom lengdene var like i $x$- og $y$-retning. At disse var like for begge objektivene kan tyde på at selve forstørrelsen 40X objektivet gir ikke er nøyaktig det dobbelte av det 20X objektivet gir. 
+
+Forholdet mellom diffraksjonsoppløsningen og lengden per piksel finner vi til å være over tre for både 20X og 40X objektivet. Dette betyr at vi ikke har bruk for høyere oppløsning for det digitale kameraet ettersom diffraksjonsbegrensningen allerede overskygger denne.
+
+\subsection{MTF ved tette linjer}
+Studerer vi plottene av MTF for 20X og 40X objetivene, presentert i figur~\ref{fig:MTF}, så får vi som forventet at MTF synker med økning i antall linjer per millimeter. Dette er logisk ettersom det blir vanskligere å skille mellom linjer som er nærmere hverandre. For samme linjetetthet får vi at 40X objektet yter bedre enn 20X objektet. Dette er ikke så overraskende ettersom forstørrelsen er dobbelt så stor. Det burde kanskje forventes at forbedringen ville være mer markant, men på den annen side er det vanskligere å lage gode objektiver med stor forstørrelse.  
+
+Det at valget falt på å bruke et gjennomsnitt av vær enkelt kolonne for så å hent ut maksimums og minimumsverdi for disse gjennomsnittene for hvert enkelt bilde vil mest sannsynlig føre til en lavere MTF, ettersom det var urenheter på de fleste av områdene på teststykkene. Det vurderes likevel at disse urenhetene stort sett spente over relativt små areal, og at det derfor fordrer bruk av et slikt gjennomsnitt.
+
+\subsection{Brownske Bevegelser}
+Det første vi gjorde var å vurdere bildene tatt med og uten mørkefeltsbelysning. Vi kom raskt fram til at mørkefeltsbelysning gav oss en bedre kontrast, og bestemte oss for å benytte denne typen belysning for videoene vi skulle ta av partiklene.
+
+Vi fant estimerte diameteren til latexkulene til å være 1.4$\upmu$m, noe som avviker med 40\% fra oppgitte 1$\upmu$m. Relativt er dette et ganske stort avvik, men det kunne fort ha blitt endel større ved å velge et annet antall piksler som diameter på partiklene. Bestemmelse av antall piksler diametern skal bestå av er gjort med en ganske unøyaktig metode, basert på øyemål, og endel synsing. Dette kommer man ikke utenom, fordi det er vanskelig å bestemme akkurat hvilken intensitet som tilsvarer kanten av partikkelen. Dette vil også variere fra partikkel til partikkel.
+
+For partikkelsporingen ser vi at resultatene er mest konsistente for videon som varte i 30 sekunder. Dette virker kanskje  konterintuitivt, ettersom det er logisk at en lengere video, som gir mer informasjon, burde gi bedre statistikk. Problemet ligger i måten partikle spores på. Algoritmen ønsker å bare følge induviduelle partikler. Dette gjør at det blir vanskelig å følge partikler som ved et tidspunkt befinner seg utenfor bildet, og partikler som kolliderer med hverandre og overlapper hverandre. Når vi kjører analyse på en lang video er dette tilfeller som har intruffet for de fleste partiklene. Dermed får vi bare seks spor å analysere for videoen på 5 minutter, og dette etter å ha kjørt algoritmen for forskjellige betingelser for diameter og skillet mellom partikkel og bakrunn, og valgt de som gav flest spor. 
+Hvis vi forkaster verdien vi regnet ut for Boltzmanns konstant fra sporene vi fant gjennom analysen av den 5 minutter lange videoen, siden vi bare fant 6 spor, så kan vi fokusere på den 30 sekunder lange videoen. Vi fant en relativt avvikende verdi i forhold til den som regnes som riktig. Vi fikk omtrent 50\% mer. Dette er nok ikke en veldig god måte å bestemme Boltzmanns konstant på. Det burde i hvertfall vært basert på mer nøyaktige betrakninger og mange flere videoer. Likevel faller metoden litt kort med tanke på at det er veldig vanskelig å bestemme den nøyaktige diameteren til partiklene. Hvis vi benytter den oppgitte verdien til diameteren så kommer vi litt nærmere Boltzmanns konstant, og metoden mister ett ledd i forhold til unøuyaktighet.
+
+Det er også vanskelig å tallfeste unøyaktighetene og dermed også hvor god metoden er til å bestemme Boltzmanns konstant.
 \section{Konklusjon}
+Vi kommer fram til at hver piksel for bildene vi tar tilsvarer ca. 0.23$\upmu$m og 0.12$\upmu$m for henholdsvis 20X og 40X objektivene. Dette gjaldt både for $x$- og $y$-retning, og vi kunne dermed anta at pikslene våre var kvadratiske. 
 
-{\bf Personlige kommentarer:} Jeg hadde vanskligheter med å godta det utrykket som fantes for MTF-funksjonen i oppgaveteksten og valgte å bytte ut fortegnet i nevneren. Dette virker mer logisk ettersom det gir en verdi på 1 dersom minimumsintensiteten er 0. Dette gir et bedre absolutt mål på oppløsningen, der vi ikke trenger å benytte noe av våre egne data som referanse. Det er forøvrig også den versjonen jeg har benyttet som vanligvis er benyttet i litteraturen. 
+Vidre fant vi at diffraksjonsoppløsningen delt på lengden per piksel var 3.02 og 3.44 for henholdsvis 20X og 40X objektivene. Fra dette kan vi konkludere med at diffraksjonsbegrensningene overgår begrensningnen i oppløsningen til det elektroniske kameraet. Det er altså ikke noe poeng å trakte etter noe høyere oppløsning for digitalkameraet. Høyere oppløsning oppnås dermed bare ved å øke diameteren til linsa i objektivet, slik at diffraksjonsbegrensingen blir mindre.
 
-Ellers kunne det vært en fordel å koble opp mikroskopene til de raskeste datamaskinene på laben. Disse stod ubrukt mens andre eksperiment ble utført der de stod. Partikkelsporingen krever mye av datamaskinene, og de var til og med så trege at vi hadde problemer med å ta opp video i den frameraten vi skulle bruke (Vi måtte teste forskjellige komprimeringer og codecs).
+Vi benyttet også en mer presis måte å karakterisere avbildningssystemet på ved hjelp av MTF. Vi kom fram til at evnen til å skille detaljer fra hverandre sank med avstanden mellom detaljene, som er å forvente. Vi fant også at 40X objektivet skilte detaljer fra hverandre bedre enn 20X objektivet. 
+
+For de brownske bevegelsene fant vi at det var fordelaktig å analysere en 30 sekunders video kontra en 5 minutters video i forhold til å sitte igjen med flest partikkelspor. Dette var fordi en mye større del av partiklene forsvant fra analysen som følge av at sporingsalgoritmen ikke klarte å skille partikler fra hverandre når de overlappet eller falt utenfor kamerabildet, for videoen på 5 minutter.
+
+Kvantitativet estimerte vi Boltzmanns konstant til å være $2.02\cdot10^{-23}\frac{\text{kgm}^2}{\text{Ks}^2}$. Dette er omtrent 50\% mer enn den virkelige verdien. Vi konkluderte dermed med at dette ikke er en veldig egnet metode for å bestemme Boltzmanns konstant.
+
+
+\subsection{Personlige kommentarer} 
+Jeg hadde vanskligheter med å godta det utrykket som fantes for MTF-funksjonen i oppgaveteksten og valgte å bytte ut fortegnet i nevneren. Dette virker mer logisk ettersom det gir en verdi på 1 dersom minimumsintensiteten er 0. Dette gir et bedre absolutt mål på oppløsningen. Det er forøvrig også den versjonen jeg har benyttet som vanligvis er benyttet i litteraturen. 
+
+Ellers kunne det vært en fordel å koble opp mikroskopene til de raskeste datamaskinene på laben. Disse stod ubrukt mens andre eksperiment ble utført der de stod. Partikkelsporingen krever mye av datamaskinene, og de var til og med så trege at vi hadde problemer med å ta opp video i den frameraten vi skulle bruke (Vi måtte teste forskjellige komprimeringer og codecs). Senere så viste det seg at det ikke var så lett å få {\bf VideoRead()} til å fungere på ubuntu, og når jeg fikk linket biblotekene jeg trengte viste det seg at det formatet vi hadde valgt på videoen ikke samarbeidet veldig godt med linux og matlab (uio sin redhat installasjon og min egen ubuntu). Halvparten av pikslene i $y$-retning ble kuttet slik at det etter analysen virket som om partiklene beveget seg mye lengere i $y$-retning enn $x$-retning.
+
+Jeg endte opp med å bruke en relativt treg matlab gjennom remote desktop \textit{win.uio.no} og \url{kiosk.uio.no}. Dette førte til at jeg ikke fikk testet like mange parametere for sporing av partikler som jeg ønsket.a
+
+Når pc'ene som ble brukt på laben var såpass terege, så føler jeg at det burde vært mer klarhet i hvilke formater som er å anbefale og kanskje litt informasjon om problemer man kan støte på. Nå vet ikke jeg om mange har møtt på lignende problemer, men kanskje verdt å ha en liten notis om disse problemene til neste kull. Sikkert stor sannsynlighet for at vi var litt uheldige i valg av format.
+
+Ellers var det veldig lærerikt å jobbe med rapporten, og temaet var veldig interessant.
+
 
 \printbibliography{}
 \clearpage
@@ -303,8 +427,11 @@ Ellers kunne det vært en fordel å koble opp mikroskopene til de raskeste datam
 \appendix
 
 \section{Vedlegg}
+Her er koden som er brukt lagt ved. Denne tilsvarer for det meste koden som ligger på fagsidene, men små justeringer er foretatt.
+\subsection{finn\_spor.m}
+\label{app:finn}
+\lstinputlisting{Lab/brownian-motion/Video/finn_spor.m}
+\subsection{anal\_spor.m}
+\label{app:anal}
+\lstinputlisting{Lab/brownian-motion/Video/anal_spor.m}
 \end{document}
-
-
-
-

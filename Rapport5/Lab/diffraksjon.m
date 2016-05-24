@@ -1,5 +1,5 @@
 clear
-
+%Kommentar med æ, ø og å
 sxy20X = 0.1/432;
 sxy40X = 0.05/431;
 

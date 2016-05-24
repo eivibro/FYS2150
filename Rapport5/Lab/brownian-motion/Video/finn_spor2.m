@@ -1,5 +1,5 @@
 % Lasting av bilder
-filename = 'video0011.avi';
+filename = 'partikkel_20X_15fps.avi';
 %sjekk om filen ligger i Matlab search path:
 if exist('partikkel_20X_15fps.avi','file')
     movieobj = VideoReader(filename); % lager et <1x1 mmreader> object
@@ -14,23 +14,23 @@ else %les inn manuelt
 end
 
 % Info fra movieobj
-nFrames = movieobj.NumberOfFrames; % f�r tak i antall frames 
-width = movieobj.Width; % f�r tak i px bredden
-height = movieobj.Height; % f�r tak i px h�yden
+nFrames = movieobj.NumberOfFrames; % får tak i antall frames 
+width = movieobj.Width; % får tak i px bredden
+height = movieobj.Height; % får tak i px høyden
 frames=read(movieobj,1);
 a=double(frames(:,:,2,1));
 figure(1)
 imagesc(a), colorbar;
-dim_part_c=input('Zoom inn p� noen av partiklene i bildet og angi en typisk diameter: ','s');
+dim_part_c=input('Zoom inn på noen av partiklene i bildet og angi en typisk diameter: ','s');
 dim_part=str2num(dim_part_c);
-%diameteren til partikkelen b�r v�re et partall, hvis ikke gir centrd()
+%diameteren til partikkelen bør være et partall, hvis ikke gir centrd()
 %mange feilmeldinger. Sjekk om dim_part er odd:
 if rem(dim_part,2)
-    dim_part = dim_part+1; % n� er dim_part er partall
+    dim_part = dim_part+1; % nå er dim_part er partall
 end
 b=bpass(a,1,dim_part);
 imagesc(b), colorbar;
-threshold_c=input('Zoom inn p� noen av partiklene i bildet og angi en intensitetsverdi "threshold" for � skille partikler fra bakgrunn: ','s');
+threshold_c=input('Zoom inn på noen av partiklene i bildet og angi en intensitetsverdi "threshold" for å skille partikler fra bakgrunn: ','s');
 threshold=str2num(threshold_c);
 
 poslist=[]; %Initialiserer posisjonslisten 
@@ -38,7 +38,7 @@ poslist=[]; %Initialiserer posisjonslisten
 m=1;
 n=1;
 % Samler opp statistikk
-h = waitbar(0,'Finner partikler'); %dette tar litt tid, s� her er noe � se p� imens...
+h = waitbar(0,'Finner partikler'); %dette tar litt tid, så her er noe å se på imens...
 for k=1:nFrames
   
     frames=read(movieobj,k);
@@ -46,7 +46,7 @@ for k=1:nFrames
     b=bpass(a,1,dim_part);
     pk = pkfnd(b,threshold,dim_part/2);
     cnt = cntrd(b,pk,dim_part/2);  % finner midtpunktet til hver partikkel
-    % (ignorer feilmeldingen dere f�r her)
+    % (ignorer feilmeldingen dere får her)
     
 %     %Test
 %     figure(k),imagesc(b),hold on,plot(cnt(:,1),cnt(:,2),'go'),hold off
@@ -57,7 +57,7 @@ for k=1:nFrames
     
     m=m+np;
     n=n+1;
-    waitbar(k/nFrames,h,['Finner partikler. ' num2str(floor(100*k/nFrames)) '% fullf�rt'])
+    waitbar(k/nFrames,h,['Finner partikler. ' num2str(floor(100*k/nFrames)) '% fullført'])
 end
 close(h)
 
@@ -78,5 +78,5 @@ for i=1:trackmatrix(end)
     
 end
 
-save('trackmatrix_test','trackmatrix_test')
-save('trackmatrix_new_test','trackmatrix_new_test')
+save('trackmatrix','trackmatrix')
+save('trackmatrix_new','trackmatrix_new')

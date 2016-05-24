@@ -22,7 +22,7 @@ im = frame2im(f);
 imwrite(im, 'bilde20x.jpg')
 
 %Gridparametere
-spacing = 1e-3;
+spacing = 0.1e-3;
 linewidth = 10e-6;
 
 %Determining the sx and sy
