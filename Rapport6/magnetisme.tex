@@ -1,0 +1,157 @@
+
+\documentclass[a4paper,11pt, twocolumn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[norsk]{babel}
+\usepackage{graphicx} %for å inkludere grafikk
+\usepackage{verbatim} %for å inkludere filer med tegn LaTeX ikke liker
+\usepackage{mathpazo}
+\usepackage{mathtools}
+\usepackage{csquotes}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{todonotes}
+\usepackage[backend=biber]{biblatex}
+\usepackage{caption} 
+\usepackage{parboxx}
+\usetikzlibrary{decorations.markings}
+\hyphenpenalty=750
+\captionsetup[table]{skip=10pt}
+\addbibresource{magnetisering.bib}
+
+\lstset{language=Matlab, commentstyle=\textcolor[rgb]{0.00,0.50,0.00}, keepspaces=true, columns=flexible, basicstyle=\footnotesize, keywordstyle=\color{blue}, showstringspaces=false, inputencoding=ansinew}
+
+\title{Magnetisme\\ FYS2150}
+
+\author{Eivind Brox}
+\date{\today}
+
+\begin{document}
+\tikzset{->-/.style={decoration={
+  markings, 
+  mark=at position #1 with {\arrow[scale=3]{stealth reversed}}},  postaction={decorate}}}
+\maketitle
+
+\tikzset{-<-/.style={decoration={
+  markings, 
+  mark=at position #1 with {\arrow[scale=3]{>}}},  postaction={decorate}}}
+\maketitle
+
+
+\begin{abstract}
+\end{abstract}
+
+\section{Introduksjon}
+Det er fire partielle ligninger som ligger til grunn for den klassiske elektromagnetiske teorien. Matematisk er Maxwells ligninger, som de blir kalt, fullt symmetriske i forhold til magnetiske og elektriske fenomener. I virkeligheten finner vi likevel små forskjeller som kommer av at det finnes elektriske, men ikke magnetiske monopoler.
+
+Magnetfelt dannes av elektriske ladninger i bevegelse. Disse mikroskopiske bevegelsene danner grunnlaget for lukkede magnetfeltlinjer som vi kan observere effekten av i det makroskopiske perspektiv.
+\section{Teori}
+En tidlig form av Maxwells ligninger ble publisert mellom 1861 og 1862, og idag skrives de gjerne på differential form~\cite[kap. 9.3.3]{griffithsED}
+i
+\begin{align}
+	&\nabla\cdot\mathbf{E}= \frac{\rho}{\epsilon_0}
+	\label{eq:max1}\\
+	&\nabla\cdot\mathbf{B} = 0
+	\label{eq:max2}\\
+	&\nabla\times\mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t}
+	\label{eq:max3}\\
+	&\nabla\times\mathbf{B} = \mu_0\mathbf{J}+\mu_0\epsilon_0\frac{\partial\mathbf{E}}{\partial t}
+	\label{eq:max4}
+\end{align}
+
+Her er $\mathbf{E}$ og $\mathbf{B}$ henholdsvis det elektriske og det magnetiske vektorfeltet, $\mu_0$ er den magnetiske permieabiliteten og $\epsilon_0$ er den elektiske permititiviteten $\rho$ er ladningstetthet i vakuum. Strømtetthetten $\mathbf{J}$ er definert slik at 
+\begin{equation}
+	I = \int_\Omega \mathbf{J}\cdot d\mathbf{a}
+	\label{eq:currentDensity}
+\end{equation}
+
+der $I$ er den totale strømmen gjennom en lukket flate $\Omega$ med den infinitesimale flateelementvektoren $d\mathbf{a}$ normalt på flatens tangentplan, pekende i motsatt retning av krumningsradiens sentrum. 
+\subsection{Magnetfelt gjennom spole}
+Betrakter vi ligning~\eqref{eq:max4} og antar at det elektriske feltet ikke endrer seg med tid, så sitter vi igjen med 
+\begin{equation}
+	\nabla\times\mathbf{B} = \mu_0\mathbf{J}
+	\label{eq:independentOfTime}
+\end{equation}
+Vi kan nå benytte Stokes teorem til å gjøre om integralet slik at
+\begin{align}
+	\int_\Omega (\nabla\times\mathbf{B})\cdot d\mathbf{a} = \oint_\mathcal{C}\mathbf{B}\cdot d\mathbf{r}=\mu_0\int_\Omega \mathbf{J} \cdot d\mathbf{a} 
+ 	\label{}
+\end{align}
+der $d\mathbf{r}$ er den infenitesimale tangentvektoren til kurven $\mathcal{C}$. 
+
+Benytter vi ligning~\eqref{eq:currentDensity} så sitter vi igjen med 
+
+\begin{align}
+	\oint_\mathcal{C}\mathbf{B}\cdot d\mathbf{r}=\mu_0 I_\text{omfavnet}
+	\label{eq:etterStokes}
+\end{align}
+der $I_\text{omfavnet}$ er den totalle strømmen som går gjennom flaten omsluttet av den lukkede kurven $\mathcal{C}$.
+
+Vi ser nå på en spole, et tilfelle som er skissert i figur~\ref{fig:spole}. Det magnetiske feltet er tilnærmet null utenfor spolen, og strømmen som går gjennom flaten omsluttet av den lukkede kurven er antall vindinger, $N$, multiplisert med strømmen vi har gjennom spolen.
+
+Siden vi bare har bidrag til det magnetiske feltet langs symmetriaksen til spolen, så reduseres integralet til enkel multiplikasjon. Vi sitter igjen med
+\begin{equation}
+	BL = \mu_0IN \implies B = \frac{\mu_0 I N}{L}
+	\label{eq:magSpole}
+\end{equation}
+
+\begin{figure}[!ht]
+	\centering
+\begin{tikzpicture}
+    % Define a formula for the coil.
+    % This is what the numbers mean:
+    % 0.3 ... how far the rings are apart
+    % 0.4 ... how much from the side the rings are seen (try 0 and the same as the radius)
+    % 1.5 ... radius of the rings
+    \def\coil#1{
+        {0.3 * (2*#1 + \t) + 0.4*sin(\t * pi r))},
+        {1.5 * cos(\t * pi r)}
+        }
+
+    % Draw the part of the coil behind the rectangle
+    \foreach \n in {0,1,...,10} {
+       \draw[domain={0:1},smooth,variable=\t,samples=15]
+            plot (\coil{\n}); 
+        }
+
+    % Draw the rectangle
+	\draw[-<-=0.80, dashed](-0.5,-2) rectangle (7,0);
+	\node (curve) at (3.5, -2.5) {$\mathcal{C}$};
+
+    % Draw the part of the coil in front of the rectangle
+\draw[->-=0.3, domain={1:2},smooth,variable=\t,samples=15,
+              preaction={draw,white,line width=3pt}     % remove if undesired
+      ] node at (-0.3, -0.5)  {$I$}
+            plot (\coil{0});
+    \foreach \n in {1,2,...,10} {
+        \draw[domain={1:2},smooth,variable=\t,samples=15,
+              preaction={draw,white,line width=3pt}     % remove if undesired
+             ]
+            plot (\coil{\n});
+        }
+	\draw[very thick, ->] (2.5,0) -- (4.5,0);
+	\node (field) at (3.9, 0.3) {$\mathbf{B}$};
+	\node (surface) at (6, -1.7) {$\Omega$};
+\end{tikzpicture}
+
+\caption{Figur som viser spole og valgt integrasjonskurve for ligning~\ref{eq:etterStokes}. Integrasjonskurven ligger langs symmetriaksen til spolen.} 
+	\label{fig:spole}
+\end{figure}
+\section{Eksperimentelt}
+\subsection{Diamagnetisme}
+\subsection{Ferromagnetrisme}
+\section{Resultater}
+\section{Diskusjon}
+
+\printbibliography
+\clearpage
+\onecolumn
+\appendix
+
+\section{Vedlegg}
+\end{document}
+
+
+
+
