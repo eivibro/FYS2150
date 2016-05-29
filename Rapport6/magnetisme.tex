@@ -9,6 +9,7 @@
 \usepackage{mathtools}
 \usepackage{csquotes}
 \usepackage{tikz}
+\usepackage{circuitikz}
 \usepackage{listings}
 \usepackage{booktabs}
 \usepackage{todonotes}
@@ -28,15 +29,10 @@
 \date{\today}
 
 \begin{document}
-\tikzset{->-/.style={decoration={
-  markings, 
-  mark=at position #1 with {\arrow[scale=3]{stealth reversed}}},  postaction={decorate}}}
-\maketitle
+\tikzset{->-/.style={decoration={markings, mark=at position #1 with {\arrow[scale=3]{stealth reversed}}},  postaction={decorate}}}\maketitle
 
-\tikzset{-<-/.style={decoration={
-  markings, 
-  mark=at position #1 with {\arrow[scale=3]{>}}},  postaction={decorate}}}
-\maketitle
+\tikzset{-<-/.style={decoration={markings, mark=at position #1 with {\arrow[scale=3]{>}}},  postaction={decorate}}}\maketitle
+
 
 
 \begin{abstract}
@@ -45,8 +41,23 @@
 \section{Introduksjon}
 Det er fire partielle ligninger som ligger til grunn for den klassiske elektromagnetiske teorien. Matematisk er Maxwells ligninger, som de blir kalt, fullt symmetriske i forhold til magnetiske og elektriske fenomener. I virkeligheten finner vi likevel små forskjeller som kommer av at det finnes elektriske, men ikke magnetiske monopoler.
 
-Magnetfelt dannes av elektriske ladninger i bevegelse. Disse mikroskopiske bevegelsene danner grunnlaget for lukkede magnetfeltlinjer som vi kan observere effekten av i det makroskopiske perspektiv.
+Magnetfelt dannes av elektriske ladninger i bevegelse. Disse mikroskopiske bevegelsene danner grunnlaget for lukkede magnetfeltlinjer som vi kan observere effekten av fra det makroskopiske perspektiv. 
+
+En nyttig del av elektromagnetismen er å karakterisere de magnetiske egenskapene til forsjellige materialer. Elektronets spinn spiller en sentral rolle i forklaringen av de magnetiske egenskapene til mange materialer. Vi skiller mellom banespinn og egenspinn. Banespinn er en egenskap elektroner har når de er bundet til atomkjerne, og den fører til et bidrag til atomets totale magnetiske moment. Egenspinn, en velkjent egenskap i kvantemekanikken, fører til at elektronet i seg selv fungerer som en svakt magnetisk dipol.
+
+Vi skiller mellom tre hovedformer for magnetiske materialer. Disse har egenskaper som avhenger av om banespinnene innad i atomene kansellerer hverandre eller ikke. I denne teksten introduseres først disse forskellige formene for magnetisk materiale. Etter dette følger endel teori som blir nyttig i forhold til eksperimentene som er skissert i seksjonen etter.
+
+\todo[inline]{Gjøre ferdig oversikt}
+
 \section{Teori}
+\subsection{Diamagnetisme}
+De \textit{diamagnetiske} materialene består av atomer der elektronenes spinn kanselleres. Dette er det best vanlige ettersom elektroner i par helst har motsatt rettet spinn. Dette materialet er altså ikke magnetisk i seg selv. Påfører vi materialet et magnetisk felt vil det det derimot sette opp et lite magnetisk felt som er rettet slik at det setter opp en \textit{Lorentzkraft} som er rettet slik at frorandringene i det magnetiske feltetet i materiale motsettes. Vi sier at diamagnetiske materialer har negativ suceptibilitet, $\chi <0$, og grunnet kraften som settes opp når de føres inn i et magnetfelt, så blir de presset ut av feltet.
+
+Denne egenskapen gjelder for alle atomer, men siden den diamagnetiske effekten er svært liten vil den i enkelte tilfeller utkonkurreres av andre effekter. Slike effekter ser vi nærmer på i neste seksjon.
+
+\subsection{Para- og ferromagnetisme}
+
+\subsection{Maxwells ligninger}
 En tidlig form av Maxwells ligninger ble publisert mellom 1861 og 1862, og idag skrives de gjerne på differential form~\cite[kap. 9.3.3]{griffithsED}
 i
 \begin{align}
@@ -76,7 +87,7 @@ Betrakter vi ligning~\eqref{eq:max4} og antar at det elektriske feltet ikke endr
 Vi kan nå benytte Stokes teorem til å gjøre om integralet slik at
 \begin{align}
 	\int_\Omega (\nabla\times\mathbf{B})\cdot d\mathbf{a} = \oint_\mathcal{C}\mathbf{B}\cdot d\mathbf{r}=\mu_0\int_\Omega \mathbf{J} \cdot d\mathbf{a} 
- 	\label{}
+	\label{}
 \end{align}
 der $d\mathbf{r}$ er den infenitesimale tangentvektoren til kurven $\mathcal{C}$. 
 
@@ -98,50 +109,272 @@ Siden vi bare har bidrag til det magnetiske feltet langs symmetriaksen til spole
 
 \begin{figure}[!ht]
 	\centering
-\begin{tikzpicture}
+	\begin{tikzpicture}
     % Define a formula for the coil.
     % This is what the numbers mean:
     % 0.3 ... how far the rings are apart
     % 0.4 ... how much from the side the rings are seen (try 0 and the same as the radius)
     % 1.5 ... radius of the rings
-    \def\coil#1{
-        {0.3 * (2*#1 + \t) + 0.4*sin(\t * pi r))},
-        {1.5 * cos(\t * pi r)}
-        }
+		\def\coil#1{
+			{0.3 * (2*#1 + \t) + 0.4*sin(\t * pi r))},
+			{1.5 * cos(\t * pi r)}
+		}
 
     % Draw the part of the coil behind the rectangle
-    \foreach \n in {0,1,...,10} {
-       \draw[domain={0:1},smooth,variable=\t,samples=15]
-            plot (\coil{\n}); 
-        }
+		\foreach \n in {0,1,...,10} {
+			\draw[domain={0:1},smooth,variable=\t,samples=15]
+			plot (\coil{\n}); 
+		}
 
     % Draw the rectangle
-	\draw[-<-=0.80, dashed](-0.5,-2) rectangle (7,0);
-	\node (curve) at (3.5, -2.5) {$\mathcal{C}$};
+		\draw[-<-=0.80, dashed](-0.5,-2) rectangle (7,0);
+		\node (curve) at (3.5, -2.5) {$\mathcal{C}$};
 
     % Draw the part of the coil in front of the rectangle
-\draw[->-=0.3, domain={1:2},smooth,variable=\t,samples=15,
-              preaction={draw,white,line width=3pt}     % remove if undesired
-      ] node at (-0.3, -0.5)  {$I$}
-            plot (\coil{0});
-    \foreach \n in {1,2,...,10} {
-        \draw[domain={1:2},smooth,variable=\t,samples=15,
-              preaction={draw,white,line width=3pt}     % remove if undesired
-             ]
-            plot (\coil{\n});
-        }
-	\draw[very thick, ->] (2.5,0) -- (4.5,0);
-	\node (field) at (3.9, 0.3) {$\mathbf{B}$};
-	\node (surface) at (6, -1.7) {$\Omega$};
-\end{tikzpicture}
+		\draw[->-=0.3, domain={1:2},smooth,variable=\t,samples=15,
+			preaction={draw,white,line width=3pt}     % remove if undesired
+		] node at (-0.3, -0.5)  {$I$}
+		plot (\coil{0});
+		\foreach \n in {1,2,...,10} {
+			\draw[domain={1:2},smooth,variable=\t,samples=15,
+				preaction={draw,white,line width=3pt}     % remove if undesired
+			]
+			plot (\coil{\n});
+		}
+		\draw[very thick, ->] (2.5,0) -- (4.5,0);
+		\node (field) at (3.9, 0.3) {$\mathbf{B}$};
+		\node (surface) at (6, -1.7) {$\Omega$};
+	\end{tikzpicture}
 
-\caption{Figur som viser spole og valgt integrasjonskurve for ligning~\ref{eq:etterStokes}. Integrasjonskurven ligger langs symmetriaksen til spolen.} 
+	\caption{Figur som viser spole og valgt integrasjonskurve for ligning~\ref{eq:etterStokes}. Integrasjonskurven ligger langs symmetriaksen til spolen.} 
 	\label{fig:spole}
 \end{figure}
+
 \section{Eksperimentelt}
 \subsection{Diamagnetisme}
+For diamagnetiske materialer kan det vises~\cite{oppgavesett} at kraften som virker på en sylindrisk formet materialprøve plassert i et inhomogent magnetfelt, som illustrert i figur~\ref{fig:diaoppsett} 
+\begin{equation}
+	F_z = -\frac{\chi}{2\mu_0}\mathcal{A}(B_1^2-B_2^2)
+	\label{eq:dia}
+\end{equation}
+
+hvor $\mathcal{A}$ er tverrsnittet til materialprøven, $B_1$ er magnetfeltet midt i magnetfeltet og $B_2$ er magnetfeltet på toppen av prøven, begge i $x$-retning.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.5\textwidth]{diaoppsett.png}
+	\caption{Oppsett for å undersøke egenskapende til vismut. Det grå rektangelet forestiller vismutprøven, og de to trekanten og linjen som binder de sammen med snoren som henger til vismutprøven illustrerer en vekt. Den stiplede linjen er symmetriaksen til de to spolene til høyre og venster for bunnen av vismutprøven. Figuren er hentet fra~\cite{fys1120}.}
+	\label{fig:diaoppsett}
+\end{figure}
+Siden materialprøven vi benyttet i dette eksperimentet var relativt lang, så kan vi anta at $B_1>>B_2$ slik at 
+\begin{equation}
+	F_z = -\frac{\chi}{2\mu_0}\mathcal{A}B_1^2
+	\label{eq:diaForenklet}
+\end{equation}
+Vi benyttet følgende utstyr:
+\begin{itemize}
+	\item Vismutprøve
+	\item Delta elektronika (SM3004-D), strømforsyning
+	\item Teslameter (4060.50)
+	\item Scout Pro, vekt
+	\item Legostang
+	\item To spoler som satte opp et elektromagnetisk felt seg i mellom.
+	\item Skyvlære
+\end{itemize}
+Figur~\ref{fig:diaoppsett} viser en skjematisk framstilling av oppsettet for dette eksperimentet.
+
+Vi målte først magnetfeltet langs spolenes symmetriakse, $B_1$, for forskjellige verdier påtrykt av stømforsyningen. Dette gjorde vi uten vismutprøven plassert i magnetfeltet, for å komme til riktig med teslameteret. Vi betemte deretter dimensjonene på vismutprøven før vi plasserte en legostang på vekten vår og hang vismutprøven i en tråd etter den ene enden, slik at den ble plassert i magnetfeltet som illustrert i figur~\ref{fig:diaoppsett}. Vi målte så hva vekten vår viste, og hva magnetfeltet var rundt toppen, $B_2$, av prøven.
 \subsection{Ferromagnetrisme}
+Vi benyttet følgende utstyr for å undersøke magnetfeltet inne i en spole ved forskjellige betingelser:
+\begin{itemize}
+	\item Delta elektronik ES030-5 strømforsyning, lokalnummer: 03605
+	\item Fluke 75 multimeter, serienummer: 43650731
+	\item Magnetic Flux Density Unit (MFDU), lokalnummer: 612002
+	\item Fluke 8840A Multimeter, lokalnummer: 6552
+\end{itemize}
+Oppsettet for spolen og utstyret som målte magnetfeltstyrken er presentert skjematisk i henholdsvis figur~\ref{fig:magnetfeltstyrke} og~\ref{fig:spole}. Proben plasseres der vi ønsker å undersøke hva magnetfeltet er, og verdien leses av på mutlimeteret.
+\begin{figure}[!ht]
+	\centering
+	\begin{circuitikz}\draw
+		(2,0) node[ground] {}	
+		(0,0) to[I=5A, -] (0,3) to[L, l=] (2,3)
+		(2,3)--(2,0) 
+		(0,0) to[ammeter, -*] (2,0)
+		{[anchor=south east] (2,0) node {}};
+		\draw node (spole) at (1,3.5) {N = 244, L = 275mm};
+	\end{circuitikz}
+	\caption{Krets for den oppkoblede spolen. Strømforsyningen er Delta elektronika ES030-5, og multimeteret vi benytter for å måle strømmen er Fluke 75.}
+	\label{fig:spolekrets}
+\end{figure}
+\begin{figure}[!ht]
+	\centering
+	\begin{tikzpicture}
+		\draw (0,0) rectangle (2,1.5);
+		\draw (1.8, 1.2) circle (0.1);
+		\draw (1.8, 0.7) circle (0.1);
+		\draw[fill=black] (1.8, 0.3) circle (0.1);
+		\draw (1.8, 0.3)--(1, 0.3);
+		\draw (1,0.3)--(1,-1);
+		\draw (0.8,-1)rectangle(1.2,-1.5);
+		\draw node at (1, -1.8) {probe};
+		\draw node at (1,1.2) {\footnotesize output};
+		\draw node at (1,0.7) {\footnotesize 1V fsd};
+		\draw node at (1, 1.7) {MFDU};
+		\draw (1.8,1.2) -- (3, 1.2);
+		\draw (1.8,0.7) -- (3, 0.7);
+		\draw (2.8, 1.5) rectangle (5,0.4);
+		\draw (3,0.7) circle (0.1);
+		\draw (3,1.2) circle (0.1);
+		\draw node at (3.9, 1.7) {Fluke 8840A};
+		\draw (3.5,0.7) circle (0.1);
+		\draw (3.5,1.2) circle (0.1);
+		\draw node at (4, 1.2) {\footnotesize Hi};
+		\draw node at (4, 0.7) {\footnotesize Lo};
+	\end{tikzpicture}
+	\caption{Oppsett for måling av magnetfeltstyrken. En probe er koblet inn i måleren for magnetisk flukstetthet (MFDU). For å lese av målingne bruker vi Fluke 8840A multimeter.}
+	\label{fig:magnetfeltstyrke}
+\end{figure}
 \section{Resultater}
+
+\subsection{Diamagnetisme}
+Tabell~\ref{tab:diameterVismut} viser målingene vi gjorde av diameteren til vismutstaven, gjennomsnittet og standardfeilen til disse målingene. Vi velger å bruke standardfeilen som usikkerheten i diameteren. Vi sitter da igjen med en diameter på $d = 10.2\pm0.1$mm.
+\begin{table}[!ht]
+	\centering
+	\caption{Målinger og statistiske verdier for diameteren til vismutprøven.}
+	\begin{tabular}{cc}
+		\toprule
+		\toprule
+		& d[mm]\\
+		\toprule
+		&10.42\\ 
+		&10.05\\
+		&10.01\\
+		&10.38\\
+		&10.23\\
+		\toprule
+		{\textit mean()}& 10.22\\
+		$\sigma_m$ & 0.08\\
+		\toprule
+	\end{tabular}
+	\label{tab:diameterVismut}
+\end{table}
+Usikkerheten i lengdenmålingen til vismutstangen estimerte vi til å være rundt \'en millimeter. Målingen vi gjorde gir oss da en lengde på $l = 10.1\pm0.1$cm.
+\begin{table}
+	\centering	
+	\caption{Målinger av massen til vismut og legostangen, magnetfeltetet på toppen og bunnen av vismutstangen og strømmen påtrykt av strømforsyningen.}
+	\begin{tabular}{cccc}
+		\toprule
+		\toprule
+		$I$ [A] & vekt [g] & $B_2$[mT] & $B_1$[mT]\\
+		\toprule
+		0.0&	141.63&	1.4&	28 \\ 
+		0.2&	141.63&	1.5&	119\\
+		0.4&	141.63&	1.8&	204\\
+		0.6&	141.59&	2.3&	286\\
+		0.8&	141.57&	2.7&	362\\
+		1.0&	141.53&	2.9&	433\\
+		1.2&	141.48&	3.2&	498\\
+		1.4&	141.43&	3.4&	555\\
+		1.6&	141.38&	3.5&	608\\
+		1.8&	141.35&	3.5&	653\\
+		2.0&	141.32&	3.6&	690\\
+		2.2&	141.29&	3.8&	722\\
+		2.4&	141.26&	3.7&	748\\
+		\toprule
+	\end{tabular}
+	\label{tab:measurements}
+\end{table}
+Vi målte magnetfeltet på toppen og bunnen av vismutstangen, og vekten til vismut- og legostangen, som funksjon av den påtrykte strømmen gjennom spolene. Resultatene er listet i tabell~\ref{tab:measurements}.
+
+Et plot av kraften som virker på vismutstangen, grunnet det påtrykte magnetfeltet, som funksjon av kvadratet til magnetfeltet ved bunnen av stangen, finnes i figur~\ref{fig:lintilpass}. Denne figuren viser de eksperimentelle verdiene og en lineær tilpassing av disse. Utgangspunktet for kraften er målingene av massen til legostangen og vismutprøven. For å regne om til kraft satte vi tyngdens aksellerasjon til å være $g=9.82\text{m/s}^2$, og lot kraften være vekten trukket fra den maksimale vekten og multiplisert med tyngdens aksellerasjon.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width = 0.5\textwidth]{matlab/tilpasning.eps}
+	\caption{Kraft som funksjon av kvadratet av magnetfeltets styrke. Eksperimentelle verdier markert med sirkler, og lineær tilpasning markert med stiplet linje.}
+	\label{fig:lintilpass}
+\end{figure}
+Det interessante nå er ligningen for kraften. Denne har formen
+\begin{equation}
+	F_z = CB_1^2
+	\label{eq:linear}
+\end{equation}
+hvor $C=-\chi\mathcal{A}/(2\mu_0)$ fra ligning~\eqref{eq:diaForenklet}.
+
+Fra den lineære tilpassingen finner vi at $C = 0.0068\pm0.0002$N/T$^2$. Tverrsnittet av en sylinder er som kjent arealet av en sirkel, slik at
+\begin{equation}
+	\mathcal{A} = \frac{\pi d^2}{4}=\frac{\pi (10.2\cdot10^-3\text{m})^2}{4}=8.2\cdot10^{-5}\text{m}^2
+	\label{eq:area}
+\end{equation}
+
+Vi har at $\mu_0=4\pi\cdot10^{-7}\text{N/A}^2$. Dette gir oss at 
+\begin{equation}
+	\chi = -\frac{2\mu_0 C}{\mathcal{A}}
+	\label{<++>}
+\end{equation}<++>
+\subsection{Ferromagnetrisme}
+\begin{figure}[!ht]
+	\centering
+	\begin{tikzpicture}
+		\foreach \x in {1, 3.5, 6}{
+			\foreach \y in {0, 3}{
+				\draw (\x,\y+2) arc (180:360:0.5cm and -0.2cm);
+				\draw (\x,\y+2) arc (180:360:0.5cm and 0.2cm);
+				\draw (\x,\y) arc (180:360:0.5cm and 0.2cm);
+				\draw [dashed] (\x,\y) arc (180:360:0.5cm and -0.2cm);
+				\draw [thick,-] (\x,\y) -- (\x,\y+2);
+				\draw [thick,-] (\x+1,\y) -- (\x+1,\y+2);
+			}
+		}			
+
+		\draw [fill=black] (1.5, 4.0) circle (0.1);
+		\draw [fill=black] (1.5, 4.3) circle (0.1);
+		\draw [fill=black] (1.5, 4.6) circle (0.1);
+		\draw node at (0.5,4.6) {\footnotesize 4.3mT};
+		\draw node at (0.5,4.3) {\footnotesize 5.1mT};
+		\draw node at (0.5,4.0) {\footnotesize5.4mT};
+
+		%Jernstang vertikal
+		\draw (3.9, 4.25) arc(180:360:0.1 and -0.05);
+		\draw (3.9, 4.25) arc(180:360:0.1 and 0.05);
+		\draw (3.9, 3.75) arc(180:360:0.1 and 0.05);
+		\draw (3.9,3.75)--(3.9,4.25);
+		\draw (4.1,3.75)--(4.1,4.25);
+		\draw [fill=black] (4., 4.3) circle (0.03);
+		\draw node at (2.8, 4.3) {\footnotesize 21.3mT};
+
+		%Jernstang horisontal
+		\draw (6.25, 4.1) arc(360:0:0.05 and -0.1);
+		\draw (6.75, 4.2) arc (270:90:-0.05 and -0.1);
+		\draw (6.2, 4.2) -- (6.75, 4.2);
+		\draw (6.2, 4.0) -- (6.75, 4.0);
+		\draw [fill=black] (6.5, 4.25) circle (0.03);
+		\draw node at (5.2, 4.2) {\footnotesize 7.2mT};
+
+		%Disk horisontal
+		\draw (1.2,1.1) arc (180:360:0.3 and -0.1);
+		\draw (1.2,1.1) arc (180:360:0.3 and 0.1);
+		\draw (1.2,1.0) arc (180:360:0.3 and 0.1);
+		\draw (1.2,1.0) -- (1.2, 1.1);
+		\draw (1.8,1.0) -- (1.8,1.1);
+		\draw [fill=black] (1.5, 1.1) circle (0.03);
+		\draw node at (0.5, 1.1) {\footnotesize 5.7mT};
+
+		%Disk vertikal
+		\draw (4.0, 1) circle (0.3);
+		\draw [fill=black] (4.0, 1.3) circle (0.03);
+		\draw node at (2.8, 1.1) {\footnotesize 15.4mT};
+		%Kule
+		\draw (6.5, 1) circle (0.3);
+		\draw (6.2, 1) arc (180:360:0.3 and 0.1);	
+		\draw [dotted] (6.2, 1) arc (180:360:0.3 and -0.1);	
+		\draw [fill=black] (6.5, 1.3) circle (0.03);
+		\draw node at (5.2, 1.1) {\footnotesize 13.5mT};
+	\end{tikzpicture}
+	\caption{Resultater for målingene på innsiden av spolen med forskjellig formede objekter av ferromagnetisk materiale. Plasseingen av enden av proben for målingene er indikert med sorte prikker.}
+	\label{fig:renSpole}
+\end{figure}
+
 \section{Diskusjon}
 
 \printbibliography
