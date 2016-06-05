@@ -13,7 +13,7 @@ standard_error_diameter = std_D/sqrt(length(diameter));
 
 %Force vs. magnetic field
 g = 9.82;
-B1_squared = (measurements(:,3)*1e-3).^2;
+B1_squared = ((measurements(:,3)*1e-3).^2-(measurements(:,2)*1e-3).^2);
 vekt = measurements(:,1);
 kraft = g*(max(vekt)-vekt)*1e-3;
 %kraft = g*vekt*1e-3;

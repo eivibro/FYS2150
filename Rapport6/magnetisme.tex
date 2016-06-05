@@ -13,6 +13,7 @@
 \usepackage{listings}
 \usepackage{booktabs}
 \usepackage{todonotes}
+\usepackage{upgreek}
 \usepackage[backend=biber]{biblatex}
 \usepackage[font =small,it]{caption} 
 \usepackage{parboxx}
@@ -21,7 +22,6 @@
 \hyphenpenalty=750
 \captionsetup[table]{skip=10pt}
 \addbibresource{magnetisering.bib}
-
 \lstset{language=Matlab, commentstyle=\textcolor[rgb]{0.00,0.50,0.00}, keepspaces=true, columns=flexible, basicstyle=\footnotesize, keywordstyle=\color{blue}, showstringspaces=false, inputencoding=ansinew}
 
 \title{Magnetisme\\ FYS2150}
@@ -105,7 +105,7 @@ Noen materialer med uparrede elektroner oppfører seg på omtrent samme måte so
 
 \subsubsection{B- og H-felt}
 I mange tilfeller er det nyttig å benytte forskjellige former for magnetiske felt. $B$-feltet er summen av alle de magnetiske effektene og kalles ofte for \textit{magnetisk flukstetthet}. Magnetiseringen er som beskrevet over, og $\mathbf{H}$-feltet er resultatet av frie ladninger i bevegelse. 
-I vakuum har vi $\mathbf{B}_0 = \mu_0 \mathbf{H}$, mens for materialer med uparrede elektroner får vi
+I vakuum har vi $\mathbf{B_0} = \mu_0 \mathbf{H_0}$, mens for materialer med uparrede elektroner får vi
 
 \begin{equation}
 	\mathbf{H}=\frac{\mathbf{B}}{\mu_o}-\mathbf{M}
@@ -182,7 +182,7 @@ der $A = (1-D)^{-1}$ og $D$ er enten $D_\parallel$ eller $D_\perp$.
 
 Selv om vi ikke kan regne ut magnetfeltet teoretisk, så kan vi slå fast at begrensningen $B_0<B<B_0/D$ gjelder.
 
-For en kule har vi at $D_\parallel=D_\perp=1/3$ slik at $B_\perp = B_\parallel <3B_0$. Når $f\rightarrow\infty$ tilsvarer ellisoiden en uendelig lang stang. For dette tilfellet har vi $D_\perp\rightarrow 1/2, \quad D_\parallel\rightarrow 0$. For $f<<1$ ligner en ellipsoide på en sylindrisk skive og $D_\parallel\rightarrow 1, \quad D_\perp\rightarrow 0$.
+For en kule har vi at $D_\parallel=D_\perp=1/3$ slik at $B_\perp = B_\parallel <3B_0$. Når $f\rightarrow\infty$ tilsvarer ellisoiden en uendelig lang stang. For dette tilfellet har vi $D_\perp\rightarrow 1/2, \quad D_\parallel\rightarrow 0$. Dette betyr at $B<2B_0$ for en stang plassert vinkelrett på det påtrykte feltet, mens en stang plassert parallelt med feltet har et magnetfelt som er ubegrenset når lengden går mot uendelig. For $f<<1$ ligner en ellipsoide på en sylindrisk skive og $D_\parallel\rightarrow 1, \quad D_\perp\rightarrow 0$. For tilfellet der sylinderen står vinkelrett på magnetfeltet har vi samme type begrensning som for en stav som går parallelt med magnetfeltet. Tilfellet der skiven står parallelt med magnetfeltet er mer interessant. Begrensningen går mot $B<B_0<B$, som burde tolkes som at det totale magnetfeltet går mot det påtrykte ettersom ellipsoiden blir uendelig tynn i spolens symmetriakseretning.
 %Den magnetiske suceptibiliteten blir dermed en ikke-lineær funksjon av den magnetiske flukstettheten $\mathbf B$
 %\begin{equation}
 %	\chi = \frac{M}{H}=\frac{B-B_0}{B_0-BD}
@@ -317,10 +317,25 @@ Vi benyttet følgende utstyr.
 	\item Primærspole, vindinger $N = 344$, lengde $L = 335$mm 
 	\item Sekundærspole, vindinge r$n = 130$ , diameter $d = 6.5$mm 
 	\item Spenningsintegrator
-	%\item Linjal, Lyra 3112/50
 \end{itemize}
 
-Oppsettet med de forskjellige komponentene er vist i figur~\ref{fig:faradayEks}.
+Oppsettet med de forskjellige komponentene er vist i figur~\ref{fig:faradayEks}. 
+
+Spenningsintegratoren har en kalibreringskonstant på $0.98\upmu$Wb, og ble stilt inn med en dempningskonstant på $D$=10. Vi benyttet start og sluttstrømmer fra $\pm4$A og ned til $\pm0.5$A i 0.5A steg. For hver runde gikk vi et par ganger mellom maksimal og minimal strømmen vi var på, for at det ikke skulle henge igjen noe magnetisering i materialet. Vi avgjorde når vi hadde gjort dette nok ved å betrakte en kurve på en dataskjerm som viste magnetiseringen som funksjon av det påtrykte magnetfeltet. Når kurven ble lukket når vi beveget strømmen fra maksimal verdi til minimal og tilbake, så var det klart for å ta målingene med integratoren.
+
+Integratoren integrerer spenningen opp over tiden
+
+\begin{equation}
+	\Delta S = \kappa^{-1}\int\limits_{t_0}^t \varepsilon d\tau
+	\label{eq:spenningsint}
+\end{equation}
+der $\Delta S$ er det tallet integratoren viser, og $t_0$ og $t$ er henholdsvis start- og sluttiden. $\kappa$ er kalibreringskonstanten, som i vårt tilfelle blir kalibreringskonstanten oppgitt på integratoren multiplisert med dempningen integratoren er stilt inn på, slik at $\kappa=9.8\upmu$Wb.
+
+Fra integrasjon av ligning~\eqref{eq:max3} får vi 
+\begin{equation}
+	\Delta B = \frac{\kappa\Delta S}{n\mathcal{A}}
+	\label{eq:magfluks}
+\end{equation}
 \begin{figure}[!ht]
 	\centering
 	\begin{circuitikz}
@@ -376,12 +391,45 @@ Oppsettet med de forskjellige komponentene er vist i figur~\ref{fig:faradayEks}.
 		%Datamaskin
 		\draw (3, -3) rectangle (6, -2);
 		\draw node at (4.5, -2.5) {\centering Datamaskin};
-
 	\end{circuitikz}
-	\caption{Eksperimentelt oppsett for måling av magnetisk fluks ved Faradays lov. Sekundærspolen er kobbertråd surret rundt en jernstand. Denne legges inni primærspolen.}
+	\caption{Eksperimentelt oppsett for måling av magnetisk fluks ved Faradays lov. Sekundærspolen er kobbertråd surret rundt en jernstang. Denne legges inni primærspolen.}
 	\label{fig:faradayEks}
 \end{figure}
 \subsection{Faradayeffekten}
+Figur~\ref{fig:faradayoppsett} viser det eksperimentelle oppsettet for måling av faradayeffekten. Vi benyttet følgende utstyr:
+
+\begin{itemize}
+	\item Phywe strømforsyning
+	\item To polarisasjonsfilter
+	\item To spoler som satte opp et magnetfelt 	
+	\item Optisk benk
+	\item Lyskilde
+	\item Lysfilter som slapp gjennom 440nm, 580nm og 595nm lys
+	\item Flintglass-sylinder med lengde $L = 30.0$mm.
+\end{itemize}
+Vi satte polarisasjonsfilter 1 på 0$^\circ$. Vi stilte deretter inn vinkelen til polarisasjonsfilter 2 slik at vi så så lite som mulig gjennom det. Dette gjorde vi for strømmverdier fra -3A til 3A i steg på halve, bortsett fra at vi unnlot å måle for $\pm0.5$A. Vi gjentok for de tre filterene vi hadde tilgjengelig.
+
+Strømmen vi justerte på ble sendt gjennom to spoler slik at det ble satt opp et magnetfelt som gikk omtrent langs med flintglass-sylinderen. Vi fikk oppgitt at snittet til magnetfeltetets flukstetthet var på to tredjedeler av hva det var i midten. Verdien i midten var oppgitt som verdiene som er presentert i tabell~\ref{tab:fluksstyrke}.
+
+\begin{table}
+	\centering
+	\caption{Verdiene for magnetfeltets flukstetthet i midten av flintglasset. Magnetfeltets flukstetthet er tilsvarende, men negativ, for negative strømmer.}
+	\begin{tabular}{cc}
+		\toprule
+		\toprule
+		$I$[A] & $B$[mT] \\
+		\toprule
+		0.0 & 0\\
+		1.0 & 62\\
+		1.5 & 95\\
+		2.0 & 125\\
+		2.5 & 153\\
+		3.0 & 179\\
+		\toprule
+	\end{tabular}
+	\label{tab:fluksstyrke}
+\end{table}
+
 \begin{figure}[!ht]
 	\begin{tikzpicture}
 		\draw[line join=round,fill=black!50] (0.5,0) arc (-30:30:1 and 2) arc (150:210:1 and 2) ;
@@ -495,6 +543,7 @@ Hvis vi ser bort fra usikkerheten i lineærtilpasningen og bruker at usikkerhete
 	\label{eq:chiResult}
 \end{equation}
 Det er vanlig at andre kilder oppgir susceptibiliteten til vismut som $-1.66\cdot 10^{-4}$.
+
 Hvis vi lineærtilpasser med resultatene for målingene uten å kvadrere magnetfeltet, får vi en relativ forskjell mellom målingene og tilpassingen som er større enn hvis vi kvadrerer. Den relative forskjellen mellom resultater og tilpassing er presentert i figur~\ref{fig:relativForskjell}. De tilhørende RMS-verdiene for avviket fra de målte til de tilpassede kreftene er $7.35\cdot 10^{-9}\text{N}^2$ og $1.30\cdot 10^{-7}\text{N}^2$, for henholdsvis magnetfelt kvadrert og ikke kvadrert.
 
 \begin{figure}[!ht]
@@ -504,6 +553,8 @@ Hvis vi lineærtilpasser med resultatene for målingene uten å kvadrere magnetf
 	\label{fig:relativForskjell}
 \end{figure}
 \subsection{Ferromagnetrisme}
+Vi utførte to forsøk i forhold til ferromagnetisme. Vi ser først på resultatene for målinger av den magnetiske flukstettheten inne i en spole, med forskjellige materialer plassert inne i spolen, målt med et Teslameter. Deretter presenteres resultatene for forsøk gjort der Faradays lov er utnyttet for å finne den magnetiske flukstettheten.
+\subsubsection{Effekten av materialer i spole}
 Måleresultatene utført med Hall-sonden er presentert i figur~\ref{fig:konfigurasjonerHall}.
 \begin{figure}[!ht]
 	\centering
@@ -568,7 +619,57 @@ Måleresultatene utført med Hall-sonden er presentert i figur~\ref{fig:konfigur
 \end{figure}
 Når vi målte magnetfeltet med flaskebunnstativet plassert inne i spolen målte vi en verdi på 5.3mT.
 
+\subsubsection{Magnetisk fluks ved Faradays lov}
+For en uendelig lang stang går $D_\parallel$ mot 0. Ligning~\eqref{eq:1} brukt sammen med at $\mathbf{B_0} = \mu_0\mathbf{H_0}$ fører til at  
+\begin{equation}
+	M = \frac{B/\mu_0-H_0}{1-D_\parallel}\stackrel{D_\parallel\rightarrow 0}{=} B/\mu_0-H_0
+	\label{eq:mag}
+\end{equation}
+
+\begin{table}
+	\caption{Resultater for integrator}
+	\label{tab:integrator}
+	\centering
+	\begin{tabular}{ccc}
+		\toprule
+		\toprule
+		$I_\text{start}$[A] & $I_\text{slutt}$[A] & integrator $[\upmu$Wb]\\
+		\toprule
+		4.001&	-4.003&	-1273\\
+		3.975&	-4.003&	-1275\\
+		3.502&	-3.504&	-1213\\
+		3.008&	-2.991&	-1122\\
+		2.505&	-2.500&	-982 \\
+		2.004&	-2.004&	-792 \\
+		1.500&	-1.502&	-518 \\
+		1.001&	-1.000&	-231 \\
+		0.504&	-0.504&	-66  \\
+		\toprule
+	\end{tabular}
+\end{table}
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width = 0.5\textwidth]{matlab/bavi.eps}
+	\caption{Magnetisk flukstetthet som funksjon av strømmen gjennom primærspolen. Sirklene indikerer resultater regnet ut fra de målte verdiene.}
+	\label{fig:bavi}
+\end{figure}
+$H_0$ finner vi ved å benytte ligning~\eqref{eq:magfield} slik at
+\begin{equation}
+	H_0 = \frac{NI}{L}
+	\label{eq:H0}
+\end{equation}
+Vi ser den magnetiske flukstettheten, $B$, gjennom sekundærspolen som funksjon av strømmen gjennom primærspolen, plottet i figur~\ref{fig:bavi}. 
+
+Figur~\ref{fig:maksmag} viser et plot av magnetiseringen til jernstangen i sekundærspolen, mens den er påtrykt et ytre magnetfelt $H_0$. 
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.5\textwidth]{matlab/magnetisering.eps}
+	\caption{Magnetiseringen ved de målte punktene, regnet ut fra de målte verdiene med ligning~\eqref{eq:mag}, plottet mot utregnede verdier for $H_0$ med ligning~\eqref{eq:H0}.}
+	\label{fig:maksmag}
+\end{figure}
+
 \subsection{Faraday-effekten}
+Resultatene for målingene av polarisasjonsvinkelen som funksjon av strømstyrken for de forskjellige fargefilterene er presentert i tabell~\ref{tab:verdet}.
 \begin{table}
 	\centering
 	\caption{Tabell som viser dreiningsvinkelen for polarisasjonsfilter 2 i figur~\ref{fig:faradayoppsett}.}
@@ -591,17 +692,64 @@ Når vi målte magnetfeltet med flaskebunnstativet plassert inne i spolen målte
 		3.0&	5.2&	5.6&	4.8 \\
 		\toprule
 	\end{tabular}
-	\label{tab:<+label+>}
-\end{table}<++>
+	\label{tab:verdet}
+\end{table}
+Ved å utføre en lineærtilpassing av data som utnytter ligning~\eqref{eq:verdet} finner vi verdiene for verdetkonstanten som er presentert i tabell~\ref{tab:verdetkonstanten}. 
+
+\begin{table}
+	\centering
+	\caption{Beregnet verdi for verdetkonstantene for de forskjellige bølgelengdene.}
+	\begin{tabular}{cc}
+		\toprule
+		\toprule
+		$\lambda$[nm] & $V(\lambda)$[grader/(Tm)]\\
+		\toprule
+		440 & 1295.3\\
+		580 & 1411.2\\
+		595 & 1205.7\\
+		\toprule
+	\end{tabular}
+	\label{tab:verdetkonstanten}
+\end{table}
 \section{Diskusjon}
+\subsection{Diamagnetisme}
+Vi fant en verdi for susceptibiliteten til vismut som ikke stemte veldig godt overens med det som er vanlig å oppgi i litteraturen. Vi måtte faktisk trekke fra nesten det dobbelte av usikkerheten som ble beregnet for å få verdien fra litteraturen. 
+
+Det er litt vanskelig å avgjøre hvor denne feilen ligger. Vismutprøven viste seg å ha litt variabelt tverrsnitt, men variasjoner i diameteren førte til en relativt lav usikkerhet. Det er derfor naturlig å eliminere denne faktoren i jakten på feilen.
+
+Usikkerheten i den lineære tilpassingen ble neglisjert for å kunne bruke et enklere utrykk for usikkerheten, som inkluderte usikkerheten i målingen av den magnetiske flukstettheten. Den totale usikkerheten ble også regnet ut med et annet utrykk der usikkerheten i stigningstallet til den lineære tilpassingen ble inkludert. Her ble derimot usikkerheten i tverrsnittet til vismutprøven neglisjert, og vi endte opp med en mye lavere usikkerhet.
+
+Det som tilsynelatende hadde mest og si for den beregnede susceptibiliteten var variasjoner i massen. Sammenligninger med verdier andre grupper hadde fått viste en mindre forandring i massen fra laveste til høyeste påtrykte magnetfeltstyrke. Dette kan jo kanskje forklares med at vismutprøven deres var plassert lengere fra posisjonen der magnetfeltet var på sitt sterkeste, men på den annen side fikk de en verdi som lå nærmere den som var forventet.
+
+En annen kilde til usikkerhet var neglisjeringen av verdien til magnetfeltet ved den øvre enden av vismutprøven. Forskjellene mellom denne og den verdien som var på bunnen var ganske stor, og økende ved økende strøm. Når leddene i tillegg skulle kvadreres ble forskjellen så stor at neglisjeringen påvirker resultatet i mye mindre grad enn mange av de andre kildene til usikkerhet.
+
+I forhold til hvordan lineærtilpassingen ble fåretatt viste det seg best å sammenligne kvadratet av magnetfeltets flukstetthet. Dette kom tydelig fram både av plottet av den realtive forskjellen mellom de målte verdiene og de som framkom av lineørtilpassingen, og rms-verdiene av samme datasett.
+\subsection{Ferromagnetrisme}
+\subsubsection{Effekten av materialer i spole}
+Vi har relativt lite å sammenligne de målte verdiene våre med, ettersom vi ikke har noen enkel analytisk modell for hvordan et magnetfelt oppfører seg når vi putter ferromagnetiske materialer inn i det. Vi kan bare se på objektene våre som tilnærmede ellipsoider, og selv dette gav oss bare visse begrensninger vi kunne teste. 
+
+Det eneste tilfellet vi har en spesifikk teoretisk utregnet verdi for er spolen uten noe inni. Denne ble regnet ut under angagelsen at spolen befant seg i vakuum, og vi fant 5.57mT som verdi. Avviket til den målte verdien på 5.4mT er dermed bare på rundt 3\%. Dette må sies å være et greit samsvar ettersom luft ikke er vakuum, og feltet i spolen viste seg å ikke være homogent. Målingen av feltstyrken var altså vanskelig å få til, ettersom varisajonene var sterkt avhengig av posisjon, og det var vanskelig å plasere måleproben i en veldefinert posisjon.
+
+For en jernstang plassert parallelt med magnetfeltet fikk vi en måling på 21.3mT. Dette er definitivt innenfor vår nærmest ubegrensede begrensning. Dette er altså ikke et veldig interessant tilfelle, annet enn observasjonen om at det er en lang stang plassert parallelt med det påtrykte magnetfeltet som later til å gi størst forsterkning av det totale magnetfeltet, for de formene av jern vi så på.
+
+En jernstang plassert på tvers av magnetfeltet gav en måling på 7.2mT, som var innenfor den estimerte begrensningen på $B<2B_0 = 2\cdot5.3$mT. Grunnen til at vi her bruker 5.3mT som det ytre påtrykte feltet, er at det var det vi målte når vi hadde flaskebunnstativet som de forskjellige objektene av jern stod på, inne i spolen.
+
+Målingen for en kule kom også innenfor den estimerte begrensningen $B=13.5\text{mT}<3\cdot B_0=3\cdot 5.3$mT. Mer interessant er kanskje tilfellet for en skive plassert med symmetriaksen langs magnetfeltet. Denne tilfredstiller ikke begrensningene om at $B=B_0$. Dette er imidlertid ikke veldig rart ettersom skiven hadde en endelig tykkelse. På denne måten kan vi nesten se på den som en stang. Skiven plassert på tvers av magnetfeltet gav oss verdier som tilfredsstilte den lite spesifikke betinelsen, som lignet på den vi hadde for en stangen vår plassert langs magnetfeltet.
+
+Vi finner altså at målingene stemmer med begrensningene vi har fra teorien, dersom vi benytter litt sunn fornuft i tilfellet med en skive plassert med symmetriaken langs det påtrykte magnetfeltet.
+\subsubsection{Magnetisk fluks ved Faradays lov}
+Betrakter vi figur~\ref{fig:maksmag} ser vi ikke det vi ville ha forventet å se som sammenheng mellom magnetiseringen og hva det påtrykte magnetfeltet ville vært i primærspolen uten sekundærspolen inni. Dette er selfølgelig fordi denne figuren bare tar for seg ytterpunkter for hvert strømforløp, og vi får dermed ikke den jevene, lukkede hysteresekurven som vi forventer å finne når vi går runden fra \'en strøm til den samme, bare negativ, og tilbake. Denne hysteresekurven har vi faktisk ikke muligheten til å finne når vi bare har tatt for oss ytterpunkter. En interpolasjon mellom disse ytterpunktene gir oss at magnetiseringen havner ganske nærme null for tilfeller der det ikke er påtrykt ytre magnetfelt. Sammenhengen er mer komplisert enn som så ettersom vi har jern som kjerne av sekundærspolen. Jern er ferromagnetisk med egenskapen til å opprettholde en gjennomsnittlig magnetisk orientering, selv utenfor påtrykte magnetfelt. Når vi bare tar med ytterpunktene forsvinner mye av informasjonen. 
+
+Vi sitter likevel igjen med det integratoren gav oss. Dette gir i det minste informasjon om at kurvene mellom de to ytterpunktene er forskjellige alt ettersom hvilken retning man går, men det er vanskelig å si akkurat hva magnetiseringen til jernstangen vil være når det påtrykte magnetfeltet fjernes. 
+
 
 \printbibliography
-\clearpage
 \onecolumn
 \appendix
 
 %\section{Vedlegg}
 
+\subsection{Faradayeffekten}
 \section{Magnetfelt gjennom spole}
 \label{app:magspole}
 Betrakter vi ligning~\eqref{eq:max4} og antar at det elektriske feltet ikke endrer seg med tid, så sitter vi igjen med 
