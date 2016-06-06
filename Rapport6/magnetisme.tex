@@ -37,6 +37,22 @@
 
 
 \begin{abstract}
+	I denne rapporten ser vi på elektromagnetisme, magnetiske materialer og sammenhengen mellom magnetisme og lys.
+
+	Vi undersøker egenskapene til vismut ved å måle kreftene som virker på en prøve i et magnetfelt. Vi finner en susceptibilitet på $-(2.08\pm0.21)\cdot10^{-4}$, men konkluderer med at usikkerheten nok er for liten, og at det kan være grunnet unøyaktigheter i målingen av kreftene som virker på prøven.
+
+	Det benyttes en lineærtilpassing for å finne susceptibiliteten. Til dette benyttes $B$-feltet kvadrert sammen med kreftene som virker på prøven. Det viser seg at RMS-verdien for denne metoden blir omtrent 20 ganger lavere enn om verdien ikke hadde blitt kvadrert.
+
+	Oppførselen til magnetfelt som tilføres ferromagnetiske objekter undersøkes ved å måle magnetfeltets flukstetthet, $B$-feltet, med en kule, stav og skive plassert i en spole som setter opp et magnetfelt. Etter å ha målt $B$-feltet uten objekter inni spolen til å være 5.4mT omtrent i midten, finner vi ut at feltet er relativt sterkt inhomogent. Vi setter stativet som skal holde jernobjektene i spolen og måler en verdi på 5.3mT. Forskjellen kan skyldes feltets inhomogene natur. Teoretisk fant vi at verdien i vakuum er 5.57mT. Overensstemmelsen er altså relativt god, spesielt med tanke på inhomogeniteten.
+
+	For sammenligning av de verdiene vi måler for $B$-feltet og teoretiske verdier, benytter vi begrensninger funnet fra analytisk teori for rotasjonssymmetriske ellipsoider i magnetfelt. Disse begrensningene er svært lite spesifikke, men vi finner i hvert fall at de oppfylles hvis vi benytter litt sunn fornuft. 
+
+	Vi benytter Faradays lov for å måle $B$-feltet på en ny måte. Vi lar en spenningsintegrator integrere opp spenningen over en sekundærspole med en jernkjerne som ligger inni en primærspole, mens vi justerer på strømmen i den. Vi benytter forskjellige start og sluttstrømmer, og forsøker å få en lukket hysteresekurve før vi gjør målingene våre. Vi bruker verdiene for strømmen vi noterer oss og spenningsintegralet til å estimere $B$-feltet. Vi finner at det er i størrelsesorden et par hundre ganger kraftigere $B$-felt når sekundærspolen med jernkjerne er plassert inni primærspolen enn feltet er uten noe inni primærspolen.
+
+	Fra målingene våre estimerte vi også magnetiseringen til jernstangen inni spolen. Vi fant at vi mistet litt informasjon med å ta opp data for hele strømforløpet, bare ytterpunktene. Vi får likevel ut nyttig informasjon. 
+
+Til tar vi en titt på faradayeffekten, et magneto-optisk fenomen som fører til at lys skifter polarisasjonsretning gjennom et magnetfelt. Vi finner en \textit{Verdet-konstant} for 440nm, 580nm og 595nm lys på henholdsvis 1295$\pm 28^\circ$/Tm, 1411$\pm18^\circ$/Tm og 1207$\pm20^\circ$/Tm. Usikkerheten som er beregnet tar for seg lineærtilpassingen, og neglisjerer $B$-feltets usikkerhet, som er den antatt største kilden til usikkerhet.
+
 \end{abstract}
 
 \section{Introduksjon}
@@ -44,16 +60,15 @@ Det er fire partielle ligninger som ligger til grunn for den klassiske elektroma
 
 Magnetfelt dannes av elektriske ladninger i bevegelse. Disse mikroskopiske bevegelsene danner grunnlaget for lukkede magnetfeltlinjer som vi kan observere effekten av fra det makroskopiske perspektiv. 
 
-En nyttig del av elektromagnetismen er å karakterisere de magnetiske egenskapene til forsjellige materialer. Elektronets spinn spiller en sentral rolle i forklaringen av de magnetiske egenskapene til mange materialer. Vi skiller mellom banespinn og egenspinn. Banespinn er en egenskap elektroner har når de er bundet til atomkjerne, og den fører til et bidrag til atomets totale magnetiske moment. Egenspinn, en velkjent egenskap i kvantemekanikken, fører til at elektronet i seg selv fungerer som en svakt magnetisk dipol.
+En nyttig del av elektromagnetismen er å karakterisere de magnetiske egenskapene til forskjellige materialer. Elektronets spinn spiller en sentral rolle i forklaringen av de magnetiske egenskapene til mange materialer. Vi skiller mellom banespinn og egenspinn. Banespinn er en egenskap elektroner har når de er bundet til atomkjerne, og den fører til et bidrag til atomets totale magnetiske moment. Egenspinn, en velkjent egenskap i kvantemekanikken, fører til at elektronet i seg selv fungerer som en svakt magnetisk dipol.
 
-Vi skiller mellom tre hovedformer for magnetiske materialer. Disse har egenskaper som avhenger av om banespinnene innad i atomene kansellerer hverandre eller ikke. I denne teksten introduseres først disse forskellige formene for magnetisk materiale. Etter dette følger endel teori som blir nyttig i forhold til eksperimentene som er skissert i seksjonen etter.
+Vi skiller mellom tre hovedformer for magnetiske materialer. Disse har egenskaper som avhenger av om banespinnene innad i atomene kansellerer hverandre eller ikke. I denne teksten introduseres først disse forskjellige formene for magnetisk materiale. Etter dette følger endel teori som blir nyttig i forhold til eksperimentene som er skissert i seksjonen etter. Etter at eksperimentene er skissert presenteres de viktigste funnene i resultatdelen før diskusjon rundt resultatene rundes av med en konklusjon.
 
-\todo[inline]{Gjøre ferdig oversikt}
 
 \section{Teori}
 Det meste av teorien er et forsøk på å forkorte og ta med det essensielle fra oppgaveteksten~\cite{oppgavesett}, i forhold til eksperimentene som ble utført.
 \subsection{Maxwells ligninger}
-En tidlig form av Maxwells ligninger ble publisert mellom 1861 og 1862, og idag skrives de gjerne på differential form~\cite[kap. 9.3.3]{griffithsED}
+En tidlig form av Maxwells ligninger ble publisert mellom 1861 og 1862, og idag skrives de gjerne på differensial form~\cite[kap. 9.3.3]{griffithsED}
 i
 \begin{align}
 	&\nabla\cdot\mathbf{E}= \frac{\rho}{\epsilon_0}
@@ -66,20 +81,20 @@ i
 	\label{eq:max4}
 \end{align}
 
-Her er $\mathbf{E}$ og $\mathbf{B}$ henholdsvis det elektriske og det magnetiske vektorfeltet, $\mu_0$ er den magnetiske permieabiliteten og $\epsilon_0$ er den elektiske permititiviteten $\rho$ er ladningstetthet i vakuum. Strømtetthetten $\mathbf{J}$ er definert slik at 
+Her er $\mathbf{E}$ og $\mathbf{B}$ henholdsvis det elektriske og det magnetiske vektorfeltet, $\mu_0$ er den magnetiske permeabiliteten og $\epsilon_0$ er den elektriske permittiviteten $\rho$ er ladningstetthet i vakuum. Strømtettheten $\mathbf{J}$ er definert slik at 
 \begin{equation}
 	I = \int_\Omega \mathbf{J}\cdot d\mathbf{a}
 	\label{eq:currentDensity}
 \end{equation}
 
-der $I$ er den totale strømmen gjennom en lukket flate $\Omega$ med den infinitesimale flateelementvektoren $d\mathbf{a}$ normalt på flatens tangentplan, pekende i motsatt retning av krumningsradiens sentrum. 
+der $I$ er den totale strømmen gjennom en lukket flate $\Omega$ med den infinitesimale flateelementvektoren $d\mathbf{a}$ normalt på flatens tangentplan, pekende i motsatt retning av krumningsradiusens sentrum. 
 \subsection{Diamagnetisme}
-De \textit{diamagnetiske} materialene består av atomer der elektronenes spinn kanselleres. Dette er det mest vanlige ettersom elektroner i par helst har motsatt rettet spinn. Dette materialet er altså ikke magnetisk i seg selv. Påfører vi materialet et magnetisk felt vil det det derimot sette opp et lite magnetisk felt som er rettet slik at det setter opp en \textit{Lorentzkraft} som er rettet slik at frorandringene i det magnetiske feltetet i materiale motsettes. Vi sier at diamagnetiske materialer har negativ suceptibilitet, $\chi <0$, og grunnet kraften som settes opp når de føres inn i et magnetfelt, så blir de presset ut av feltet.
+De \textit{diamagnetiske} materialene består av atomer der elektronenes spinn kanselleres. Dette er det mest vanlige ettersom elektroner i par helst har motsatt rettet spinn. Dette materialet er altså ikke magnetisk i seg selv. Påfører vi materialet et magnetisk felt vil det det derimot sette opp et lite magnetisk felt som er rettet slik at det setter opp en \textit{Lorentzkraft} som er rettet slik at forandringene i det magnetiske feltet i materiale motsettes. Vi sier at diamagnetiske materialer har negativ susceptibilitet, $\chi <0$, og grunnet kraften som settes opp når de føres inn i et magnetfelt, så blir de presset ut av feltet.
 
 Denne egenskapen gjelder for alle atomer, men siden den diamagnetiske effekten er svært liten vil den i enkelte tilfeller utkonkurreres av andre effekter. Slike effekter ser vi nærmer på i neste seksjon.
 
 \subsection{Para- og ferromagnetisme}
-Motsetningen til diamagnetiske materialer finner vi i materialer der elektroner opptrer uparrede. I disse tilfellene får atomene et netto spinn og dermed et netto magnetisk moment, ${\boldsymbol \mu}$, slik at hvert atom fungerer som en liten stavmagnet. Dersom atomene i stoffet ikke er orientert tilfeldig vil vi kunne observere magnetfelt utenfor materialet.
+Motsetningen til diamagnetiske materialer finner vi i materialer der elektroner opptrer uparede. I disse tilfellene får atomene et netto spinn og dermed et netto magnetisk moment, ${\boldsymbol \mu}$, slik at hvert atom fungerer som en liten stavmagnet. Dersom atomene i stoffet ikke er orientert tilfeldig vil vi kunne observere magnetfelt utenfor materialet.
 
 Magnetiseringen til et materiale definerer vi som
 \begin{equation}
@@ -94,18 +109,18 @@ hvor totalt magnetisk moment for materialet er integralet til magnetiseringen ov
 	\label{eq:totalMoment}
 \end{equation}
 
-Innefor kategorien av materialer med uparrede elektroner finner vi blant annet de som bare er magnetisert når de påtrykkes ytre magnetfelt. De magnetiserte atomene vil minimere sin energi, og retter seg derfor etter det påtrykte magnetfeltet. Magnetiseringen er proporsjonal med det påtrykte feltet, og vi skriver 
+Innenfor kategorien av materialer med uparede elektroner finner vi blant annet de som bare er magnetisert når de påtrykkes ytre magnetfelt. De magnetiserte atomene vil minimere sin energi, og retter seg derfor etter det påtrykte magnetfeltet. Magnetiseringen er proporsjonal med det påtrykte feltet, og vi skriver 
 \begin{equation}
 	\mathbf{M} = \chi\mathbf{H}
 	\label{eq:proposjonalitetPara}
 \end{equation}
-der $\mathbf{H}$ er det påtrykte magnetfeltet. Den magnetiske suceptibiliteten, $\chi$, for paramagnetiske materialer, som disse materialene kalles, ligger i området $0<\chi<<1$. Den ekstra magnetiseringen som framkommer ved å tilføre et paramagnetisk materiale i et ytre magnetfelt gjør det naturlig å betrakte disse materialene som små magnetfeltforsterkere.
+der $\mathbf{H}$ er det påtrykte magnetfeltet. Den magnetiske susceptibiliteten, $\chi$, for paramagnetiske materialer, som disse materialene kalles, ligger i området $0<\chi<<1$. Den ekstra magnetiseringen som framkommer ved å tilføre et paramagnetisk materiale i et ytre magnetfelt gjør det naturlig å betrakte disse materialene som små magnetfeltforsterkere.
 
-Noen materialer med uparrede elektroner oppfører seg på omtrent samme måte som paramagnetiske materialer, men har en mye større evne til å forsterke det påtrykte magnetfeltet. Disse materialene kalles \textit{ferromagnetiske}, og de inbyrdes atomene har så sterke vekselvirkninger, at etter å ha vært utsatt for et midlertidig magnetfelt, så kan orienterigen til atomene fortsatt være slik at materialets magnetisering også viser seg utenfor materialet. 
+Noen materialer med uparede elektroner oppfører seg på omtrent samme måte som paramagnetiske materialer, men har en mye større evne til å forsterke det påtrykte magnetfeltet. Disse materialene kalles \textit{ferromagnetiske}, og de innbyrdes atomene har så sterke vekselvirkninger, at etter å ha vært utsatt for et midlertidig magnetfelt, så kan orienteringen til atomene fortsatt være slik at materialets magnetisering også viser seg utenfor materialet. 
 
 \subsubsection{B- og H-felt}
 I mange tilfeller er det nyttig å benytte forskjellige former for magnetiske felt. $B$-feltet er summen av alle de magnetiske effektene og kalles ofte for \textit{magnetisk flukstetthet}. Magnetiseringen er som beskrevet over, og $\mathbf{H}$-feltet er resultatet av frie ladninger i bevegelse. 
-I vakuum har vi $\mathbf{B_0} = \mu_0 \mathbf{H_0}$, mens for materialer med uparrede elektroner får vi
+I vakuum har vi $\mathbf{B_0} = \mu_0 \mathbf{H_0}$, mens for materialer med uparede elektroner får vi
 
 \begin{equation}
 	\mathbf{H}=\frac{\mathbf{B}}{\mu_o}-\mathbf{M}
@@ -113,7 +128,7 @@ I vakuum har vi $\mathbf{B_0} = \mu_0 \mathbf{H_0}$, mens for materialer med upa
 \end{equation}
 
 \subsubsection{Avmagnetiseringsfelt}
-Hvis vi betrakter et tilfelle med et materiale uten strømmer i et stasjonært elerktrisk felt, så vil kombinasjonen av ligning~\ref{eq:max4} og~\ref{eq:Hfelt} gi oss
+Hvis vi betrakter et tilfelle med et materiale uten strømmer i et stasjonært elektrisk felt, så vil kombinasjonen av ligning~\ref{eq:max4} og~\ref{eq:Hfelt} gi oss
 
 \begin{equation}
 	\nabla\times\mathbf{H} = 0
@@ -544,7 +559,7 @@ Hvis vi ser bort fra usikkerheten i lineærtilpasningen og bruker at usikkerhete
 \end{equation}
 Det er vanlig at andre kilder oppgir susceptibiliteten til vismut som $-1.66\cdot 10^{-4}$.
 
-Hvis vi lineærtilpasser med resultatene for målingene uten å kvadrere magnetfeltet, får vi en relativ forskjell mellom målingene og tilpassingen som er større enn hvis vi kvadrerer. Den relative forskjellen mellom resultater og tilpassing er presentert i figur~\ref{fig:relativForskjell}. De tilhørende RMS-verdiene for avviket fra de målte til de tilpassede kreftene er $7.35\cdot 10^{-9}\text{N}^2$ og $1.30\cdot 10^{-7}\text{N}^2$, for henholdsvis magnetfelt kvadrert og ikke kvadrert.
+Hvis vi lineærtilpasser med resultatene for målingene uten å kvadrere magnetfeltet, får vi en relativ forskjell mellom målingene og tilpassingen som er større enn hvis vi kvadrerer. Den relative forskjellen mellom resultater og tilpassing er presentert i figur~\ref{fig:relativForskjell}. De tilhørende RMS-verdiene for avviket fra de målte til de tilpassede kreftene er $7.35\cdot 10^{-9}$ og $1.30\cdot 10^{-7}$, for henholdsvis magnetfelt kvadrert og ikke kvadrert.
 
 \begin{figure}[!ht]
 	\centering
@@ -650,7 +665,7 @@ For en uendelig lang stang går $D_\parallel$ mot 0. Ligning~\eqref{eq:1} brukt 
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width = 0.5\textwidth]{matlab/bavi.eps}
-	\caption{Magnetisk flukstetthet som funksjon av strømmen gjennom primærspolen. Sirklene indikerer resultater regnet ut fra de målte verdiene.}
+	\caption{Magnetisk flukstetthet som funksjon av strømmen gjennom primærspolen. Sirklene indikerer resultater regnet ut fra de målte verdiene. Vi har benyttet at $B = \Delta B/2$ på grunn av symmetrien om $I=0$.}
 	\label{fig:bavi}
 \end{figure}
 $H_0$ finner vi ved å benytte ligning~\eqref{eq:magfield} slik at
@@ -667,7 +682,7 @@ Figur~\ref{fig:maksmag} viser et plot av magnetiseringen til jernstangen i sekun
 	\caption{Magnetiseringen ved de målte punktene, regnet ut fra de målte verdiene med ligning~\eqref{eq:mag}, plottet mot utregnede verdier for $H_0$ med ligning~\eqref{eq:H0}.}
 	\label{fig:maksmag}
 \end{figure}
-
+Vi kan også regne ut magnetfeltets flukstetthet uten sekundærspolen inni primærspolen. Det viser seg at forsterkningen til magnetfeltet er i størrselsesorden et par hundre når vi har sekundærspolen med gjernspole inni primærspolen.
 \subsection{Faraday-effekten}
 Resultatene for målingene av polarisasjonsvinkelen som funksjon av strømstyrken for de forskjellige fargefilterene er presentert i tabell~\ref{tab:verdet}.
 \begin{table}
@@ -698,15 +713,15 @@ Ved å utføre en lineærtilpassing av data som utnytter ligning~\eqref{eq:verde
 
 \begin{table}
 	\centering
-	\caption{Beregnet verdi for verdetkonstantene for de forskjellige bølgelengdene.}
+	\caption{Beregnet verdi for verdetkonstantene for de forskjellige bølgelengdene. Usikkerheten er bare basert på usikkerheten i lineærtilpassingen.}
 	\begin{tabular}{cc}
 		\toprule
 		\toprule
 		$\lambda$[nm] & $V(\lambda)$[grader/(Tm)]\\
 		\toprule
-		440 & 1295.3\\
-		580 & 1411.2\\
-		595 & 1205.7\\
+		440 & 1295$\pm 28$\\
+		580 & 1411$\pm 18$\\
+		595 & 1207$\pm 20$\\
 		\toprule
 	\end{tabular}
 	\label{tab:verdetkonstanten}
@@ -743,13 +758,31 @@ Betrakter vi figur~\ref{fig:maksmag} ser vi ikke det vi ville ha forventet å se
 Vi sitter likevel igjen med det integratoren gav oss. Dette gir i det minste informasjon om at kurvene mellom de to ytterpunktene er forskjellige alt ettersom hvilken retning man går, men det er vanskelig å si akkurat hva magnetiseringen til jernstangen vil være når det påtrykte magnetfeltet fjernes. 
 
 
+\subsection{Faradayeffekten}
+Vi finner verdier for Verdetkonstanten, og dens usikkerhet basert på usikkerheten i lineærtilpassingen. Vi har i tillegg andre kilder til usikkerhet, der kanskje usikkerheten i verdien til magnetfeltets flukstetthet er størst. Usikkerheten i bestemmelse av polarisasjonsvinkelen er nok litt større enn usikkerheten i verdien for lengden av flintglasset. 
+
+Ettersom det er vanskelig å gi et godt estimat for usikkerheten til magnetfeltet er det vanskelig å bestemme et godt estimat for den totale usikkerheten. Vi nøyde oss dermed med å presentere usikkerheten i forbindelse med lineærtilpassingen, som nærmer seg 2\%. 
+
+\section{Konklusjon}
+Vi fant en verdi for susceptibiliteten til vismut på $-(2.08\pm0.21)\cdot10^{-4}$. Usikkerheten viste seg å være for lav, men det ble ikke nøstet opp i akkurat hva som var årsaken til dette. Den kanskje mest naturlige forklaringen kan være unøyaktighet i målingen av kreftene som virker på vismutprøven. Det ble konkludert med at neglisjering av magnetfeltetes flukstetthet på toppen av vismutprøven, variasjoner i prøvens tverrsnitt og neglisjering av lineærtilpassingens usikkerhet mest sannsynlig ikke var årsaken til den for lave usikkerheten.
+
+Vi kom også fram til at lineærtilpassingen av datasettet vårt fungerte mye bedre for kvadrerte verdier av magnetfeltets flukstetthet enn de lineære verdiene. RMS-verdiene for avviket mellom tilpassingen og data for og uten kvadrert flukstetthet, viste seg å være nesten 20 ganger bedre for den kvadrerte versjonen. 
+
+For eksperimentet med forskjellige jernobjekter inni en spole fant vi ganske god overenstemmelse med de begrensninge vi fant teoretisk. Dette var likevel lite imponerende ettersom de teoretiske begrensningene var svært uspesifikke. Det mest konkrete funnet var at målingen vår i en tom spole på 5.4mT samsvarte godt med den teoretisk estimerte verdien på 5.57mT. Vi fant også at det kunne virke som om stativet vi plasserte objektene våre på påvirket magnetfeltet vårt litt, ettersom vi målte 0.1mT mindre med dette tilstedet. Dette kan ha med plassering av måleproben også, ettersom det viste seg at magnetfeltet i spolen var et godt stykke fra homogent.
+
+Mer kvalitativt fant vi at den beste måten å forsterke magnetfeltet på var å ha formen til en stang på det ferromagnetiske materialet som ble plassert i magnetfeltet, og plassere symmetriaksen dens langs magnetfeltet.
+
+For målingene av den magnetiske flukstettheten ved hjelp av Faradays lov fant vi en sammenheng mellom tettheten og strømmen vi sendte gjennom primærspolen. Vi fant også at forsterkningen ved å ha sekundærspolen med jernkjerne inni primærspolen var i størrelsesorden et par hundre ganger.
+
+Vi regnet også ut magnetiseringen til jernstangen som funksjon av det påtrykte magnetfeltet fra dataene våre. Vi kan kokludere med at vi mister litt informasjon når vi bare registrerer ytterpunkter for hysteresekurven vår, og integrerer opp spenningnen over tiden. Likevel sitter vi igjen med mye brukbar informasjon, som forteller oss hva magnetiseringen til jernstangen blir og at jernstangen faktisk er ferromagnetisk. 
+
+Til slutt finner vi verdiene for Verdetkonstanten ved tre forskjellige bølgelengder; 440nm, 580nm og 595nm. For disse bølgelengdene blir verdetkonstanten henholdsvis 1295$\pm 28^\circ$/Tm, 1411$\pm18^\circ$/Tm og 1207$\pm20^\circ$/Tm. Usikkerhetene tar bare hensyn til usikkerheten i lineærtilpassingen, men det konkluderes med at den usikkerheten som med stor sannsynlighet er størst, nemmelig magnetfeltets flukstetthet, er vanskelig å sette tall på.
 \printbibliography
 \onecolumn
 \appendix
 
 %\section{Vedlegg}
 
-\subsection{Faradayeffekten}
 \section{Magnetfelt gjennom spole}
 \label{app:magspole}
 Betrakter vi ligning~\eqref{eq:max4} og antar at det elektriske feltet ikke endrer seg med tid, så sitter vi igjen med 

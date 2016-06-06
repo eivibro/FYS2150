@@ -17,6 +17,7 @@ hold on
 plot(B_middel, theta440_lin(B_middel), '--r')
 hold off
 verdet440 = m440/L;
+dVerdet440m = dm440/L;
 
 theta580 = faradayMeasure(:,3);
 [m580, c580, dm580, dc580] = uncertaintyLinearFitting(B_middel, theta580);
@@ -27,6 +28,7 @@ hold on
 plot(B_middel, theta580_lin(B_middel), '--r')
 hold off
 verdet580 = m580/L;
+dVerdet580m = dm580/L;
 
 theta595 = faradayMeasure(:,4);
 [m595, c595, dm595, dc595] = uncertaintyLinearFitting(B_middel, theta595);
@@ -36,7 +38,7 @@ plot(B_middel, theta595)
 hold on
 plot(B_middel, theta595_lin(B_middel), '--r')
 verdet595 = m595/L;
-dVerdet595 = dm595/L;
+dVerdet595m = dm595/L;
 hold off
 
 lambda = [440, 580, 595];

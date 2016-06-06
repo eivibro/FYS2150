@@ -30,6 +30,7 @@ set(gca, 'FontSize', 18)
 B2permu = [-B/mu_0; 0; flipud(B/mu_0)];
 I2 = [integrator(:,2); 0; flipud(I)];
 H0 = I2*N/L;
+B0 = H0*mu_0;
 M = B2permu-H0;
 figure(2)
 plot(H0, M, '-ob')
@@ -37,4 +38,6 @@ ylabel('M fra målte verdier [A/m]')
 xlabel('H_0 fra utregnede verdier [A/m]')
 
 set(gca, 'FontSize', 16)
-saveas(gcf, 'magnetisering', 'epsc')
+figure(2)
+plot(B./B0(1:8))
+%saveas(gcf, 'magnetisering', 'epsc')
