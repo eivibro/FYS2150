@@ -151,7 +151,7 @@ Disse ligningene beskriver blant annet at $\mathbf H$-feltet utenfor en kule er 
 
 
 
-Det er vanskelig å finne analytiske løsninger i forhold til sammenhengen mellom magnetiseringen $\mathbf M$ og avmagnetiseringen $\mathbf H_d$ for ferromagnetiske materialer. For ellisoider finnes det likevel en slik løsning. 
+Det er vanskelig å finne analytiske løsninger i forhold til sammenhengen mellom magnetiseringen $\mathbf M$ og avmagnetiseringen $\mathbf H_d$ for ferromagnetiske materialer. For ellipsoider finnes det likevel en slik løsning. 
 
 Det viser seg at avmagnetiseringen i en gitt retning i kartesiske koordinater, $i = x,y,z$, beskrives ved 
 \begin{equation}
@@ -159,7 +159,7 @@ Det viser seg at avmagnetiseringen i en gitt retning i kartesiske koordinater, $
 	\label{eq:Hi}
 \end{equation}
 
-der avmagnetiseringsfaktoren, $D_i$, kan bereges analytisk fra parametrene som beskriver ellisoiden.
+der avmagnetiseringsfaktoren, $D_i$, kan beregnes analytisk fra parametrene som beskriver ellipsoiden.
 Rotasjonssymmetriske ellipsoider kan karakteriseres ved dens eksentrisitet. Vi har at 
 
 \begin{equation}
@@ -181,11 +181,11 @@ Betegnelsene $\parallel$ og $\perp$ betyr henholdsvis parallelt og ortogonalt me
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width = 0.5\textwidth]{ellipsoide.png}
-	\caption{Figur som beskriver parameterene til rotasjonssymmetriske ellipsoider, og viser noen eksempler på forskjellige ellipsoider. Figuren er hentet fra~\cite{oppgavesett}.}
+	\caption{Figur som beskriver parametrene til rotasjonssymmetriske ellipsoider, og viser noen eksempler på forskjellige ellipsoider. Figuren er hentet fra~\cite{oppgavesett}.}
 	\label{fig:ellipsoide}
 \end{figure}
 
-På tross av at vi ikke kan måle magnetisering og $\mathbf H$-felt direktei på innsiden av matrialet, så kan vi med teorien vi har sett på til nå, estimere $\mathbf H$ og $\mathbf M$ som lineære funksjoner av $\mathbf B$. Dette er nyttig ettersom Gauss lov forteller oss at den magnetiske flukstettheten $\mathbf B$ ikke endrer seg gjennom overflaten til materialet. Altså trenger vi ikke måleinstrument på innsiden av materialet. 
+På tross av at vi ikke kan måle magnetisering og $\mathbf H$-felt direkte på innsiden av materialet, så kan vi med teorien vi har sett på til nå, estimere $\mathbf H$ og $\mathbf M$ som lineære funksjoner av $\mathbf B$. Dette er nyttig ettersom Gauss lov forteller oss at den magnetiske flukstettheten $\mathbf B$ ikke endrer seg gjennom overflaten til materialet. Altså trenger vi ikke måleinstrument på innsiden av materialet. 
 
 \begin{align}
 	\mu_0 M &= A\Delta B = A(B_0-B)\\
@@ -197,15 +197,15 @@ der $A = (1-D)^{-1}$ og $D$ er enten $D_\parallel$ eller $D_\perp$.
 
 Selv om vi ikke kan regne ut magnetfeltet teoretisk, så kan vi slå fast at begrensningen $B_0<B<B_0/D$ gjelder.
 
-For en kule har vi at $D_\parallel=D_\perp=1/3$ slik at $B_\perp = B_\parallel <3B_0$. Når $f\rightarrow\infty$ tilsvarer ellisoiden en uendelig lang stang. For dette tilfellet har vi $D_\perp\rightarrow 1/2, \quad D_\parallel\rightarrow 0$. Dette betyr at $B<2B_0$ for en stang plassert vinkelrett på det påtrykte feltet, mens en stang plassert parallelt med feltet har et magnetfelt som er ubegrenset når lengden går mot uendelig. For $f<<1$ ligner en ellipsoide på en sylindrisk skive og $D_\parallel\rightarrow 1, \quad D_\perp\rightarrow 0$. For tilfellet der sylinderen står vinkelrett på magnetfeltet har vi samme type begrensning som for en stav som går parallelt med magnetfeltet. Tilfellet der skiven står parallelt med magnetfeltet er mer interessant. Begrensningen går mot $B<B_0<B$, som burde tolkes som at det totale magnetfeltet går mot det påtrykte ettersom ellipsoiden blir uendelig tynn i spolens symmetriakseretning.
-%Den magnetiske suceptibiliteten blir dermed en ikke-lineær funksjon av den magnetiske flukstettheten $\mathbf B$
+For en kule har vi at $D_\parallel=D_\perp=1/3$ slik at $B_\perp = B_\parallel <3B_0$. Når $f\rightarrow\infty$ tilsvarer ellipsoiden en uendelig lang stang. For dette tilfellet har vi $D_\perp\rightarrow 1/2, \quad D_\parallel\rightarrow 0$. Dette betyr at $B<2B_0$ for en stang plassert vinkelrett på det påtrykte feltet, mens en stang plassert parallelt med feltet har et magnetfelt som er ubegrenset når lengden går mot uendelig. For $f<<1$ ligner en ellipsoide på en sylindrisk skive og $D_\parallel\rightarrow 1, \quad D_\perp\rightarrow 0$. For tilfellet der sylinderen står vinkelrett på magnetfeltet har vi samme type begrensning som for en stav som går parallelt med magnetfeltet. Tilfellet der skiven står parallelt med magnetfeltet er mer interessant. Begrensningen går mot $B<B_0<B$, som burde tolkes som at det totale magnetfeltet går mot det påtrykte ettersom ellipsoiden blir uendelig tynn i spolens symmetriakseretning.
+%Den magnetiske susceptibiliteten blir dermed en ikke-lineær funksjon av den magnetiske flukstettheten $\mathbf B$
 %\begin{equation}
 %	\chi = \frac{M}{H}=\frac{B-B_0}{B_0-BD}
 %	\label{eq:suceptFerro}
 %\end{equation}
 
 \subsection{Faradayeffekten}
-Faradayeffekten er en magneto-optisk effekt som linker lys til elektromagnetiskem. Når lys beveger seg gjennom en krystall endrer polarisasjonen til lyset seg med styrken til et påtrykt magnetfelt.
+Faradayeffekten er en magneto-optisk effekt som linker lys til elektromagnetisme. Når lys beveger seg gjennom en krystall endrer polarisasjonen til lyset seg med styrken til et påtrykt magnetfelt.
 
 I dette eksperimentet så vi på lys som gikk gjennom en flintglass-sylinder langs symmetriaksen. Vi påtrykte et magnetfelt over sylinderen med samme retning som symmetriaksen.
 
@@ -219,7 +219,7 @@ Det viser seg at polarisasjonsvinkelen til lyset endrer seg som
 hvor $V$ er \textit{Verdet-konstanten}, sterkt avhengig av bølgelengden $\lambda$, men uavhengig av magnetfeltet $B$ og lengden til sylinderen $L$. \textit{Verdet-konstanten} er dermed bare en konstant for konstante bølgelengder.
 \section{Eksperimentelt}
 \subsection{Diamagnetisme}
-For diamagnetiske materialer kan det vises~\cite{oppgavesett} at kraften som virker på en sylindrisk formet materialprøve plassert i et inhomogent magnetfelt, som illustrert i figur~\ref{fig:diaoppsett}, erbeskrevet av 
+For diamagnetiske materialer kan det vises~\cite{oppgavesett} at kraften som virker på en sylindrisk formet materialprøve plassert i et inhomogent magnetfelt, som illustrert i figur~\ref{fig:diaoppsett}, er beskrevet av 
 \begin{equation}
 	F_z = -\frac{\chi}{2\mu_0}\mathcal{A}(B_1^2-B_2^2)
 	\label{eq:dia}
@@ -230,7 +230,7 @@ hvor $\mathcal{A}$ er tverrsnittet til materialprøven, $B_1$ er magnetfeltet mi
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.5\textwidth]{diaoppsett.png}
-	\caption{Oppsett for å undersøke egenskapende til vismut. Det grå rektangelet forestiller vismutprøven, og de to trekanten og linjen som binder de sammen med snoren som henger til vismutprøven illustrerer en vekt. Den stiplede linjen er symmetriaksen til de to spolene til høyre og venster for bunnen av vismutprøven. Figuren er hentet fra~\cite{fys1120}.}
+	\caption{Oppsett for å undersøke egenskapene til vismut. Det grå rektangelet forestiller vismutprøven, og de to trekanten og linjen som binder de sammen med snoren som henger til vismutprøven illustrerer en vekt. Den stiplede linjen er symmetriaksen til de to spolene til høyre og venstre for bunnen av vismutprøven. Figuren er hentet fra~\cite{fys1120}.}
 	\label{fig:diaoppsett}
 \end{figure}
 Siden materialprøven vi benyttet i dette eksperimentet var relativt lang, så kan vi anta at $B_1>>B_2$ slik at 
@@ -250,8 +250,8 @@ Vi benyttet følgende utstyr:
 \end{itemize}
 Figur~\ref{fig:diaoppsett} viser en skjematisk framstilling av oppsettet for dette eksperimentet.
 
-Vi målte først magnetfeltet langs spolenes symmetriakse, $B_1$, for forskjellige verdier påtrykt av stømforsyningen. Dette gjorde vi uten vismutprøven plassert i magnetfeltet, for å lettere plassere teslameteret riktig. Vi betemte deretter dimensjonene på vismutprøven før vi plasserte en legostang på vekten vår, med 100g loddet plassert oppå, og hang vismutprøven i en tråd etter den ene enden, slik at den ble plassert i magnetfeltet som illustrert i figur~\ref{fig:diaoppsett}. Vi målte så hva vekten vår viste, og hva magnetfeltet var rundt toppen, $B_2$, av prøven, for de forskjellige påtrykte strømmene.
-\subsection{Ferromagnetrisme}
+Vi målte først magnetfeltet langs spolens symmetriakse, $B_1$, for forskjellige verdier påtrykt av strømforsyningen. Dette gjorde vi uten vismutprøven plassert i magnetfeltet, for å lettere plassere teslameteret riktig. Vi bestemte deretter dimensjonene på vismutprøven før vi plasserte en legostang på vekten vår, med 100g loddet plassert oppå, og hang vismutprøven i en tråd etter den ene enden, slik at den ble plassert i magnetfeltet som illustrert i figur~\ref{fig:diaoppsett}. Vi målte så hva vekten vår viste, og hva magnetfeltet var rundt toppen, $B_2$, av prøven, for de forskjellige påtrykte strømmene.
+\subsection{Ferromagnetisme}
 
 \subsubsection{Effekten av materiale i spole}
 Vi benyttet følgende utstyr for å undersøke magnetfeltet inne i en spole ved forskjellige betingelser:
@@ -264,7 +264,7 @@ Vi benyttet følgende utstyr for å undersøke magnetfeltet inne i en spole ved 
 	\item Skive, sylinder og kule av jern
 	\item Flaskebunn brukt som stativ til jernklumpene
 \end{itemize}
-Oppsettet for spolen og utstyret som målte magnetfeltstyrken er presentert skjematisk i henholdsvis figur~\ref{fig:magnetfeltstyrke} og~\ref{fig:spole}. Proben plasseres der vi ønsker å undersøke hva magnetfeltet er, og verdien leses av på mutlimeteret.
+Oppsettet for spolen og utstyret som målte magnetfeltstyrken er presentert skjematisk i figur~\ref{fig:magnetfeltstyrke} og~\ref{fig:spolekrets}. Proben plasseres der vi ønsker å undersøke hva magnetfeltet er, og verdien leses av på mutlimeteret.
 
 
 \begin{figure}[!ht]
@@ -305,10 +305,10 @@ Oppsettet for spolen og utstyret som målte magnetfeltstyrken er presentert skje
 		\draw node at (4, 1.2) {\footnotesize Hi};
 		\draw node at (4, 0.7) {\footnotesize Lo};
 	\end{tikzpicture}
-	\caption{Oppsett for måling av magnetfeltstyrken. En probe er koblet inn i måleren for magnetisk flukstetthet (MFDU). For å lese av målingne bruker vi Fluke 8840A multimeter.}
+	\caption{Oppsett for måling av magnetfeltstyrken. En probe er koblet inn i måleren for magnetisk flukstetthet (MFDU). For å lese av målingene bruker vi Fluke 8840A multimeter.}
 	\label{fig:magnetfeltstyrke}
 \end{figure}
-Vi målte magnetfeltet inne i spolen mens den var tom. Vi målte også magnetfeltet med bare flaskebunnstativet på innsiden, før vi gjorde målinger med de forkjellige jernklumpene i spolen, konfigurert slik at de var rettet normalt på eller parallelt med magnetfeltet i spolen. Figur~\ref{fig:konfigurasjonerHall} viser de forskjellige konfigurasjonene i tillegg til de verdiene vi målte.
+Vi målte magnetfeltet inne i spolen mens den var tom. Vi målte også magnetfeltet med bare flaskebunnstativet på innsiden, før vi gjorde målinger med de forskjellige jernklumpene i spolen, konfigurert slik at de var rettet normalt på eller parallelt med magnetfeltet i spolen. Figur~\ref{fig:konfigurasjonerHall} viser de forskjellige konfigurasjonene i tillegg til de verdiene vi målte.
 
 De forskjellige jernklumpene ble forsøkt plassert i sentrum av spolen, og måleproben ble plassert på toppen av jernklumpen.
 
@@ -330,13 +330,13 @@ Vi benyttet følgende utstyr.
 	\item 2X PasPort Voltage-Current sensor
 	\item datamaskin
 	\item Primærspole, vindinger $N = 344$, lengde $L = 335$mm 
-	\item Sekundærspole, vindinge r$n = 130$ , diameter $d = 6.5$mm 
+	\item Sekundærspole, vindinger $n = 130$ , diameter $d = 6.5$mm 
 	\item Spenningsintegrator
 \end{itemize}
 
 Oppsettet med de forskjellige komponentene er vist i figur~\ref{fig:faradayEks}. 
 
-Spenningsintegratoren har en kalibreringskonstant på $0.98\upmu$Wb, og ble stilt inn med en dempningskonstant på $D$=10. Vi benyttet start og sluttstrømmer fra $\pm4$A og ned til $\pm0.5$A i 0.5A steg. For hver runde gikk vi et par ganger mellom maksimal og minimal strømmen vi var på, for at det ikke skulle henge igjen noe magnetisering i materialet. Vi avgjorde når vi hadde gjort dette nok ved å betrakte en kurve på en dataskjerm som viste magnetiseringen som funksjon av det påtrykte magnetfeltet. Når kurven ble lukket når vi beveget strømmen fra maksimal verdi til minimal og tilbake, så var det klart for å ta målingene med integratoren.
+Spenningsintegratoren har en kalibreringskonstant på $0.98\upmu$Wb, og ble stilt inn med en dempingskonstant på $D$=10. Vi benyttet start og sluttstrømmer fra $\pm4$A og ned til $\pm0.5$A i 0.5A steg. For hver runde gikk vi et par ganger mellom maksimal og minimal strømmen vi var på, for at det ikke skulle henge igjen noe magnetisering i materialet. Vi avgjorde når vi hadde gjort dette nok ved å betrakte en kurve på en dataskjerm som viste magnetiseringen som funksjon av det påtrykte magnetfeltet. Når kurven ble lukket når vi beveget strømmen fra maksimal verdi til minimal og tilbake, så var det klart for å ta målingene med integratoren.
 
 Integratoren integrerer spenningen opp over tiden
 
@@ -344,7 +344,7 @@ Integratoren integrerer spenningen opp over tiden
 	\Delta S = \kappa^{-1}\int\limits_{t_0}^t \varepsilon d\tau
 	\label{eq:spenningsint}
 \end{equation}
-der $\Delta S$ er det tallet integratoren viser, og $t_0$ og $t$ er henholdsvis start- og sluttiden. $\kappa$ er kalibreringskonstanten, som i vårt tilfelle blir kalibreringskonstanten oppgitt på integratoren multiplisert med dempningen integratoren er stilt inn på, slik at $\kappa=9.8\upmu$Wb.
+der $\Delta S$ er det tallet integratoren viser, og $t_0$ og $t$ er henholdsvis start- og slutt-tiden. $\kappa$ er kalibreringskonstanten, som i vårt tilfelle blir kalibreringskonstanten oppgitt på integratoren multiplisert med dempningen integratoren er stilt inn på, slik at $\kappa=9.8\upmu$Wb.
 
 Fra integrasjon av ligning~\eqref{eq:max3} får vi 
 \begin{equation}
@@ -764,19 +764,19 @@ Vi finner verdier for Verdetkonstanten, og dens usikkerhet basert på usikkerhet
 Ettersom det er vanskelig å gi et godt estimat for usikkerheten til magnetfeltet er det vanskelig å bestemme et godt estimat for den totale usikkerheten. Vi nøyde oss dermed med å presentere usikkerheten i forbindelse med lineærtilpassingen, som nærmer seg 2\%. 
 
 \section{Konklusjon}
-Vi fant en verdi for susceptibiliteten til vismut på $-(2.08\pm0.21)\cdot10^{-4}$. Usikkerheten viste seg å være for lav, men det ble ikke nøstet opp i akkurat hva som var årsaken til dette. Den kanskje mest naturlige forklaringen kan være unøyaktighet i målingen av kreftene som virker på vismutprøven. Det ble konkludert med at neglisjering av magnetfeltetes flukstetthet på toppen av vismutprøven, variasjoner i prøvens tverrsnitt og neglisjering av lineærtilpassingens usikkerhet mest sannsynlig ikke var årsaken til den for lave usikkerheten.
+Vi fant en verdi for susceptibiliteten til vismut på $-(2.08\pm0.21)\cdot10^{-4}$. Usikkerheten viste seg å være for lav, men det ble ikke nøstet opp i akkurat hva som var årsaken til dette. Den kanskje mest naturlige forklaringen kan være unøyaktighet i målingen av kreftene som virker på vismutprøven. Det ble konkludert med at neglisjering av magnetfeltets flukstetthet på toppen av vismutprøven, variasjoner i prøvens tverrsnitt og neglisjering av lineærtilpassingens usikkerhet mest sannsynlig ikke var årsaken til den for lave usikkerheten.
 
 Vi kom også fram til at lineærtilpassingen av datasettet vårt fungerte mye bedre for kvadrerte verdier av magnetfeltets flukstetthet enn de lineære verdiene. RMS-verdiene for avviket mellom tilpassingen og data for og uten kvadrert flukstetthet, viste seg å være nesten 20 ganger bedre for den kvadrerte versjonen. 
 
-For eksperimentet med forskjellige jernobjekter inni en spole fant vi ganske god overenstemmelse med de begrensninge vi fant teoretisk. Dette var likevel lite imponerende ettersom de teoretiske begrensningene var svært uspesifikke. Det mest konkrete funnet var at målingen vår i en tom spole på 5.4mT samsvarte godt med den teoretisk estimerte verdien på 5.57mT. Vi fant også at det kunne virke som om stativet vi plasserte objektene våre på påvirket magnetfeltet vårt litt, ettersom vi målte 0.1mT mindre med dette tilstedet. Dette kan ha med plassering av måleproben også, ettersom det viste seg at magnetfeltet i spolen var et godt stykke fra homogent.
+For eksperimentet med forskjellige jernobjekter inni en spole fant vi ganske god overensstemmelse med de begrensningene vi fant teoretisk. Dette var likevel lite imponerende ettersom de teoretiske begrensningene var svært lite spesifikke. Det mest konkrete funnet var at målingen vår i en tom spole på 5.4mT samsvarte godt med den teoretisk estimerte verdien på 5.57mT. Vi fant også at det kunne virke som om stativet vi plasserte objektene våre på påvirket magnetfeltet vårt litt, ettersom vi målte 0.1mT mindre med dette tilstede. Dette kan ha med plassering av måleproben også, ettersom det viste seg at magnetfeltet i spolen var et godt stykke fra homogent.
 
 Mer kvalitativt fant vi at den beste måten å forsterke magnetfeltet på var å ha formen til en stang på det ferromagnetiske materialet som ble plassert i magnetfeltet, og plassere symmetriaksen dens langs magnetfeltet.
 
 For målingene av den magnetiske flukstettheten ved hjelp av Faradays lov fant vi en sammenheng mellom tettheten og strømmen vi sendte gjennom primærspolen. Vi fant også at forsterkningen ved å ha sekundærspolen med jernkjerne inni primærspolen var i størrelsesorden et par hundre ganger.
 
-Vi regnet også ut magnetiseringen til jernstangen som funksjon av det påtrykte magnetfeltet fra dataene våre. Vi kan kokludere med at vi mister litt informasjon når vi bare registrerer ytterpunkter for hysteresekurven vår, og integrerer opp spenningnen over tiden. Likevel sitter vi igjen med mye brukbar informasjon, som forteller oss hva magnetiseringen til jernstangen blir og at jernstangen faktisk er ferromagnetisk. 
+Vi regnet også ut magnetiseringen til jernstangen som funksjon av det påtrykte magnetfeltet fra dataene våre. Vi kan konkludere med at vi mister litt informasjon når vi bare registrerer ytterpunkter for hysteresekurven vår, og integrerer opp spenningen over tiden. Likevel sitter vi igjen med mye brukbar informasjon, som forteller oss hva magnetiseringen til jernstangen blir og at jernstangen faktisk er ferromagnetisk. 
 
-Til slutt finner vi verdiene for Verdetkonstanten ved tre forskjellige bølgelengder; 440nm, 580nm og 595nm. For disse bølgelengdene blir verdetkonstanten henholdsvis 1295$\pm 28^\circ$/Tm, 1411$\pm18^\circ$/Tm og 1207$\pm20^\circ$/Tm. Usikkerhetene tar bare hensyn til usikkerheten i lineærtilpassingen, men det konkluderes med at den usikkerheten som med stor sannsynlighet er størst, nemmelig magnetfeltets flukstetthet, er vanskelig å sette tall på.
+Til slutt finner vi verdiene for \textit{Verdet-konstanten} ved tre forskjellige bølgelengder; 440nm, 580nm og 595nm. For disse bølgelengdene blir \textit{Verdet-konstanten} henholdsvis 1295$\pm 28^\circ$/Tm, 1411$\pm18^\circ$/Tm og 1207$\pm20^\circ$/Tm. Usikkerhetene tar bare hensyn til usikkerheten i lineærtilpassingen, men det konkluderes med at den usikkerheten som med stor sannsynlighet er størst, nemlig magnetfeltets flukstetthet, er vanskelig å sette tall på.
 \printbibliography
 \onecolumn
 \appendix
@@ -795,7 +795,7 @@ Vi kan nå benytte Stokes teorem til å gjøre om integralet slik at
 	\int_\Omega (\nabla\times\mathbf{B})\cdot d\mathbf{a} = \oint_\mathcal{C}\mathbf{B}\cdot d\mathbf{r}=\mu_0\int_\Omega \mathbf{J} \cdot d\mathbf{a} 
 	\label{}
 \end{align}
-der $d\mathbf{r}$ er den infenitesimale tangentvektoren til kurven $\mathcal{C}$. 
+der $d\mathbf{r}$ er den infinitesimale tangentvektoren til kurven $\mathcal{C}$. 
 
 Benytter vi ligning~\eqref{eq:currentDensity} så sitter vi igjen med 
 
@@ -803,7 +803,7 @@ Benytter vi ligning~\eqref{eq:currentDensity} så sitter vi igjen med
 	\oint_\mathcal{C}\mathbf{B}\cdot d\mathbf{r}=\mu_0 I_\text{omfavnet}
 	\label{eq:etterStokes}
 \end{align}
-der $I_\text{omfavnet}$ er den totalle strømmen som går gjennom flaten omsluttet av den lukkede kurven $\mathcal{C}$.
+der $I_\text{omfavnet}$ er den totale strømmen som går gjennom flaten omsluttet av den lukkede kurven $\mathcal{C}$.
 
 Vi ser nå på en spole, et tilfelle som er skissert i figur~\ref{fig:spole}. Det magnetiske feltet er tilnærmet null utenfor spolen, og strømmen som går gjennom flaten omsluttet av den lukkede kurven er antall vindinger, $N$, multiplisert med strømmen vi har gjennom spolen.
 
